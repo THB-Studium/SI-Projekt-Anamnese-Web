@@ -44,3 +44,4 @@ deploy:
     wait_until_deployed: true
     on:
       branch: master
+      repo: "SI-Projekt-2/si-projekt-anamnese-web"

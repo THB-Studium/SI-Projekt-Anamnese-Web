@@ -1,0 +1,47 @@
+language: node_js
+dist: xenial
+node_js:
+  - "12"
+sudo: required
+
+env:
+  global:
+    # include $HOME/.local/bin for `aws`
+    - PATH=$HOME/.local/bin:$PATH
+cache:
+  directories:
+    - ./node_modules
+
+addons:
+  chrome: stable
+
+before_script:
+  - npm install -g @angular/cli
+  - sudo apt-get install -y dos2unix
+script:
+ # - npm run lint
+  #- npm run test -- --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox
+  - dos2unix scripts/*
+  - npm run build.aws  #this can be submitted as environment variable
+#  - ng build --prod #this can be submitted as environment variable
+
+before_install:
+  - pyenv global 3.7.1
+  - pip install -U pip
+  - pip install awscli
+
+before_deploy:
+  # make the script executable
+  - chmod +x scripts/set_aws_credentials.sh
+  - chmod +x scripts/deploy_script.sh
+  # set up temporary aws session credentials, remember to update env. variables
+  # in the file set_aws_credentials.sh in travis for every login and refresh on aws
+  - ./scripts/set_aws_credentials.sh
+
+deploy:
+  - provider: script
+    skip_cleanup: true
+    script: scripts/deploy_script.sh
+    wait_until_deployed: true
+    on:
+      branch: master

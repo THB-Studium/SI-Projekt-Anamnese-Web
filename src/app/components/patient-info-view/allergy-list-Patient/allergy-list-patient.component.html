@@ -1,0 +1,53 @@
+<mat-card>
+  <table [dataSource]="currentUser.allergies" class="mat-elevation-z8" mat-table>
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="#">
+      <th *matHeaderCellDef mat-header-cell> #</th>
+      <td *matCellDef="let personIndex = index" mat-cell> {{personIndex + 1}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="Name">
+      <th *matHeaderCellDef mat-header-cell> Name</th>
+      <td *matCellDef="let allergy" mat-cell> {{allergy.name | lowercase}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="action">
+
+      <th *matHeaderCellDef mat-header-cell style="text-align: right">
+
+        <!-- Add button -->
+        <button (click)="onAddNewOrEdit()" color="primary" id="add-button" mat-mini-fab matTooltip="Neuen Allergietyp hinzufügen">
+          <mat-icon class="example-tab-icon">add</mat-icon>
+        </button>
+
+      </th>
+
+      <td *matCellDef="let allergy" mat-cell style="text-align: right">
+
+        <!-- Edit button -->
+        <button (click)="onAddNewOrEdit(allergy)" id="edit-button"
+                mat-icon-button matTooltip="Allergietyp editieren" disabled>
+          <mat-icon class="example-tab-icon">edit</mat-icon>
+        </button>
+
+      </td>
+
+    </ng-container>
+
+    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+  </table>
+</mat-card>
+
+
+
+
+
+
+

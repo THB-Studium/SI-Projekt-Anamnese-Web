@@ -1,0 +1,69 @@
+<mat-card>
+  <table [dataSource]="diagnosisList" class="mat-elevation-z8" mat-table>
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="#">
+      <th *matHeaderCellDef mat-header-cell> #</th>
+      <td *matCellDef="let diagnosisIndex = index" mat-cell> {{diagnosisIndex + 1}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="patient">
+      <th *matHeaderCellDef mat-header-cell> diagnosis</th>
+      <td *matCellDef="let diagnosis" mat-cell> {{diagnosis.person?.name}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="examinations">
+      <th *matHeaderCellDef mat-header-cell> Examinations</th>
+      <td *matCellDef="let diagnosis" mat-cell> {{diagnosis.lastName}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="date">
+      <th *matHeaderCellDef mat-header-cell> Date</th>
+      <td *matCellDef="let diagnosis" mat-cell> {{diagnosis.examinationDate}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="type">
+      <th *matHeaderCellDef mat-header-cell> Type</th>
+      <td *matCellDef="let diagnosis" mat-cell> {{diagnosis.bodyRegion}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="action">
+      <th *matHeaderCellDef mat-header-cell style="text-align: right">
+        <button (click)="onAddNewOrEdit()" color="primary" id="add-button" mat-mini-fab
+                matTooltip="add new diagnosis">
+          <mat-icon class="example-tab-icon">add</mat-icon>
+        </button>
+      </th>
+
+      <td *matCellDef="let diagnosis" mat-cell style="text-align: right">
+
+
+        <button (click)="onAddNewOrEdit(diagnosis)" id="edit-button" mat-icon-button
+                matTooltip="edit diagnosis">
+          <mat-icon class="example-tab-icon">edit</mat-icon>
+        </button>
+
+        <button (click)="onDelete(diagnosis)" color="warn" id="delete-button"
+                mat-icon-button matTooltip="delete diagnosis">
+          <mat-icon class="example-tab-icon">delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+  </table>
+</mat-card>
+
+
+
+
+

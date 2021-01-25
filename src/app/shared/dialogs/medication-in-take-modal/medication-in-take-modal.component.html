@@ -1,0 +1,60 @@
+<div class="row" style="text-align: center">
+  <h3>
+    {{modalTitle}}
+  </h3>
+</div>
+
+<mat-divider style="margin-bottom: 10px"></mat-divider>
+
+
+<form [formGroup]="medicamentInTakeFormGroup">
+
+  <mat-form-field style="width: 45%">
+    <mat-label>Patient</mat-label>
+    <input formControlName="patientennameCtrl" [matAutocomplete]="patientAutoComplete"
+           matInput placeholder="Patientenname" (keyup)="applyPatientFilter($event.target)"  required>
+    <mat-autocomplete #patientAutoComplete="matAutocomplete" [displayWith]="displayAutoComplete">
+      <mat-option *ngFor="let patient of patientsListFiltered" [value]="patient">
+        <span>{{patient.firstName}} {{patient.lastName}}</span>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <mat-form-field style="width: 45%">
+    <mat-label>Medikamentname</mat-label>
+    <input formControlName="medikamentnameCtrl" matInput placeholder="Medikamentname (Designation)" required>
+  </mat-form-field>
+
+  <mat-form-field  style="width: 45%">
+    <mat-label>Dosierung</mat-label>
+    <input formControlName="dosierungCtrl" matInput placeholder="Dosierung" required>
+  </mat-form-field>
+
+  <mat-form-field style="width: 45%; top: -4px">
+    <mat-label>Startdatum *</mat-label>
+    <label>
+      <input #startDatumInput [formControl]="startDatumCtrl"
+             [matDatepicker]="startDatumId"
+             autocomplete="off" matInput required>
+    </label>
+    <mat-datepicker-toggle [for]="startDatumId" matSuffix></mat-datepicker-toggle>
+    <mat-datepicker #startDatumId color="primary" disabled="false">
+    </mat-datepicker>
+  </mat-form-field>
+
+  <div style="width: 45%">
+    <mat-label>Blutverdünnungsmittel</mat-label><br>
+    <mat-button-toggle-group appearance="legacy" name="blutverdünnungsmittel" (change)="onBlutverduennungsmittel($event.value)"
+                             aria-label="Font Style" [value]="medicationTO.bloodDiluent ? 'true' : 'false'" required>
+      <mat-button-toggle value="true">Ja</mat-button-toggle>
+      <mat-button-toggle value="false">Nein</mat-button-toggle>
+    </mat-button-toggle-group>
+
+  </div>
+
+  <div style="text-align: right">
+    <button (click)="onNoClick(false)" mat-button>Ablehnen</button>
+    <button [disabled]="!medicamentInTakeFormGroup.valid || !medication.startDate || searching"
+            (click)="onSave()" color="primary" mat-button>{{!searching ? 'Bestätigen' : 'Bestätigen...'}}</button>
+  </div>
+</form>

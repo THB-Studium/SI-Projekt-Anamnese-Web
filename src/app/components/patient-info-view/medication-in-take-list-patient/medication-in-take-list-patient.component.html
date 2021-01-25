@@ -1,0 +1,76 @@
+<mat-card>
+  <table [dataSource]="medicationInTakeList" class="mat-elevation-z8" mat-table>
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="#">
+      <th *matHeaderCellDef mat-header-cell> #</th>
+      <td *matCellDef="let personIndex = index" mat-cell> {{personIndex + 1}} </td>
+    </ng-container>
+
+    <!-- designation Column -->
+    <ng-container matColumnDef="Bezeichnung ">
+      <th *matHeaderCellDef mat-header-cell>Bezeichnung</th>
+      <td *matCellDef="let medicationInTake" mat-cell> {{medicationInTake.designation}} </td>
+    </ng-container>
+
+    <!-- dosage Column -->
+    <ng-container matColumnDef="Dosierung">
+      <th *matHeaderCellDef mat-header-cell>Dosierung</th>
+      <td *matCellDef="let medicationInTake" mat-cell> {{medicationInTake.dosage}} </td>
+    </ng-container>
+
+    <!-- startDate Column -->
+    <ng-container matColumnDef="Startdatum">
+      <th *matHeaderCellDef mat-header-cell>Startdatum</th>
+      <td *matCellDef="let medicationInTake" mat-cell> {{medicationInTake.startDate | date : 'dd-mm-yyyy'}} </td>
+    </ng-container>
+
+    <!-- bloodDiluent Column -->
+    <ng-container matColumnDef="bloodDiluent">
+      <th *matHeaderCellDef mat-header-cell>Blutverdünnungsmittel?</th>
+      <td *matCellDef="let medicationInTake" mat-cell> {{medicationInTake.bloodDiluent ? 'JA' : 'Nein'}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="action">
+
+      <th *matHeaderCellDef mat-header-cell style="text-align: right">
+
+        <!-- Add button -->
+        <button (click)="onAddNewOrEdit()" color="primary" id="add-button" mat-mini-fab
+                matTooltip="Neues Medikament hinzufügen">
+          <mat-icon class="example-tab-icon">add</mat-icon>
+        </button>
+
+      </th>
+
+      <td *matCellDef="let medicationInTake" mat-cell style="text-align: right">
+
+        <!-- Edit button -->
+        <button (click)="onAddNewOrEdit(medicationInTake)" id="edit-button" mat-icon-button matTooltip="Medikament editieren">
+          <mat-icon class="example-tab-icon">edit</mat-icon>
+        </button>
+
+        <!-- Delete button -->
+        <button (click)="onDelete(medicationInTake)" color="warn" id="delete-button"
+                mat-icon-button matTooltip="Medikament löschen">
+          <mat-icon class="example-tab-icon">delete</mat-icon>
+        </button>
+
+      </td>
+
+    </ng-container>
+
+    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+  </table>
+</mat-card>
+
+
+
+
+
+

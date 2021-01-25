@@ -1,0 +1,55 @@
+<app-header [title]="headerTitle"></app-header>
+
+
+<!--<app-person-view style="padding: 5 5 5 5"></app-person-view>-->
+
+<!--<mat-divider></mat-divider>-->
+
+
+<mat-tab-group [selectedIndex]="tabIndex" (selectedTabChange)="onTabClicked($event)">
+
+  <!-- DIAGNOSIS -->
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <img class="material-icons" height="24"
+           src="../../../assets/logos/diagnose.jpg" style="margin-right: 7px" viewBox="0 0 24 24"
+           width="24">
+      Meine Diagnosen
+    </ng-template>
+    <app-diagnosis-list-patient *ngIf="tabIndex === 0"></app-diagnosis-list-patient>
+  </mat-tab>
+
+  <!-- Disease -->
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <img class="material-icons" height="24"
+           src="../../../assets/logos/disease.png" style="margin-right: 7px" viewBox="0 0 24 24"
+           width="24">
+      Meine Krankheiten
+    </ng-template>
+    <app-disease-list-patient *ngIf="tabIndex === 1" [currentUser]="currentUser"></app-disease-list-patient>
+  </mat-tab>
+
+  <!-- AllergieTypen -->
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <img class="material-icons" height="24"
+           src="../../../assets/logos/allergie.png" style="margin-right: 7px" viewBox="0 0 24 24"
+           width="24">
+      Meine Allergien
+    </ng-template>
+    <app-allergy-list-patient *ngIf="tabIndex === 2" [currentUser]="currentUser"></app-allergy-list-patient>
+  </mat-tab>
+
+  <!-- MedicationInTake -->
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <img class="material-icons" height="24"
+           src="../../../assets/logos/medikamente.png" style="margin-right: 7px" viewBox="0 0 24 24"
+           width="24">
+      Meine Medikamente
+    </ng-template>
+    <app-medication-in-take-list-patient *ngIf="tabIndex === 3" [currentUser]="currentUser"></app-medication-in-take-list-patient>
+  </mat-tab>
+
+</mat-tab-group>

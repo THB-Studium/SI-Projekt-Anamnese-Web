@@ -1,0 +1,74 @@
+<mat-card>
+  <table [dataSource]="diseasesList" class="mat-elevation-z8" mat-table>
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="#">
+      <th *matHeaderCellDef mat-header-cell> #</th>
+      <td *matCellDef="let diseasesIndex = index" mat-cell> {{diseasesIndex + 1}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="preExistingIllness">
+      <th mat-header-cell *matHeaderCellDef> Vorerkrankung </th>
+      <td *matCellDef="let disease" mat-cell>
+        <ul *ngFor="let illness of disease.preExistingIllnesses">
+          <li>{{illness.name}}</li>
+        </ul>
+      </td>
+    </ng-container>
+
+    <!-- undergoneSurgery Column -->
+    <ng-container matColumnDef="undergoneSurgery">
+      <th *matHeaderCellDef mat-header-cell>Chirurgische Eingriffe?</th>
+      <td *matCellDef="let disease" mat-cell>
+        {{disease.undergoneSurgery ? 'Ja' : 'Nein'}}
+      </td>
+    </ng-container>
+
+    <!-- surgeryReason Column -->
+    <ng-container matColumnDef="surgeryReason">
+      <th *matHeaderCellDef mat-header-cell> Operationsgrund</th>
+      <td *matCellDef="let disease" mat-cell> {{disease.surgeriesDetails}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+
+      <th *matHeaderCellDef mat-header-cell style="text-align: right">
+
+        <!-- Add button -->
+        <button (click)="onAddNewOrEdit()" color="primary" id="add-button" mat-mini-fab matTooltip="Neue Krankheit hinzufügen">
+          <mat-icon class="example-tab-icon">add</mat-icon>
+        </button>
+
+      </th>
+
+      <td *matCellDef="let disease" mat-cell style="text-align: right">
+
+        <!-- Edit button -->
+        <button (click)="onAddNewOrEdit(disease)" id="edit-button" mat-icon-button matTooltip="Krankheit editieren">
+          <mat-icon class="example-tab-icon">edit</mat-icon>
+        </button>
+
+        <!-- Delete button -->
+<!--        <button (click)="onDelete(disease)" color="warn" id="delete-button"-->
+<!--                mat-icon-button matTooltip="Krankheit löschen">-->
+<!--          <mat-icon class="example-tab-icon">delete</mat-icon>-->
+<!--        </button>-->
+
+      </td>
+
+    </ng-container>
+
+    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+  </table>
+</mat-card>
+
+
+
+
+
+

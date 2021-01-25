@@ -1,0 +1,40 @@
+.toolbar {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  background-color: #1976d2;
+  color: white;
+  font-weight: 600;
+}
+
+.toolbar img {
+  margin: 0 16px;
+}
+
+table {
+  width: 100%;
+}
+
+
+#Log-out {
+  float: right;
+  font-size: 13px;
+  margin-top: 3%;
+}
+#user-name, #Log-out {
+  display: flex;
+  justify-content: flex-end;
+}
+#logout-logo, #user-name, #Log-out {
+  background: unset;
+  border: none;
+}
+#user-Icon {
+  margin-right: 8px;
+}
+#logout-logo {
+  right: 50px;
+}

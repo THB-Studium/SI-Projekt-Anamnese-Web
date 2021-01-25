@@ -1,0 +1,72 @@
+[
+  {
+    "di": "3b5cf476-c4f7-48e3-83f3-ebddc2a05fe9",
+    "userName": "steveCarmel",
+    "passWord": "steve",
+    "firstName": "Steve",
+    "lastName": "Carmel",
+    "type": "personal",
+    "recorded": false,
+    "security": {
+      "id": "980c324b-d566-456d-acca-978d1ed4b785",
+      "secretQuestion": "In welcher Straße sind Sie aufgewachsen?",
+      "answer": "Zanderstr"
+    }
+  },
+  {
+    "di": "3a5b3e0b-aa64-4a7f-87a7-f831d195851a",
+    "userName": "danieleFokam",
+    "passWord": "daniele",
+    "firstName": "Daniele",
+    "lastName": "Fokam",
+    "type": "personal",
+    "recorded": false,
+    "security": {
+      "id": "980c324b-d566-456d-acca-978d1ed4b785",
+      "secretQuestion": "In welcher Straße sind Sie aufgewachsen?",
+      "answer": "Zanderstr"
+    }
+  },
+  {
+    "di": "f34531b2-2b83-4255-8add-4ea287160e35",
+    "userName": "mistraForest",
+    "passWord": "mistra",
+    "firstName": "Mistra",
+    "lastName": "Forest",
+    "type": "personal",
+    "recorded": false,
+    "security": {
+      "id": "980c324b-d566-456d-acca-978d1ed4b785",
+      "secretQuestion": "In welcher Straße sind Sie aufgewachsen?",
+      "answer": "Zanderstr"
+    }
+  },
+  {
+    "di": "04e54a14-7103-45b5-9ec9-fad219670008",
+    "userName": "patient1",
+    "passWord": "pat#001",
+    "firstName": "patient1",
+    "lastName": "patient1",
+    "type": "patient",
+    "recorded": false,
+    "security": {
+      "id": "980c324b-d566-456d-acca-978d1ed4b785",
+      "secretQuestion": "In welcher Straße sind Sie aufgewachsen?",
+      "answer": "Zanderstr"
+    }
+  },
+  {
+    "di": "710a9961-b8ba-41e3-80f1-e0e48d7b1f50",
+    "userName": "patient2",
+    "passWord": "pat#002",
+    "firstName": "patient2",
+    "lastName": "patient2",
+    "type": "patient",
+    "recorded": true,
+    "security": {
+      "id": "980c324b-d566-456d-acca-978d1ed4b785",
+      "secretQuestion": "In welcher Straße sind Sie aufgewachsen?",
+      "answer": "Zanderstr"
+    }
+  }
+]

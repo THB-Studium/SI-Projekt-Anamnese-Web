@@ -1,0 +1,58 @@
+<mat-card>
+  <table [dataSource]="allergyList" class="mat-elevation-z8" mat-table>
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="#">
+      <th *matHeaderCellDef mat-header-cell> #</th>
+      <td *matCellDef="let personIndex = index" mat-cell> {{personIndex + 1}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="allergy">
+      <th *matHeaderCellDef mat-header-cell> Allergiename</th>
+      <td *matCellDef="let allergy" mat-cell> {{allergy.name | lowercase}} </td>
+    </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="patient">
+      <th *matHeaderCellDef mat-header-cell> Patient</th>
+      <td *matCellDef="let allergy" mat-cell></td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="action">
+      <th *matHeaderCellDef mat-header-cell style="text-align: right">
+        <button (click)="onAddNewOrEdit()" color="primary" id="add-button" mat-mini-fab
+                matTooltip="add new allergy">
+          <mat-icon class="example-tab-icon">add</mat-icon>
+        </button>
+      </th>
+
+      <td *matCellDef="let allergy" mat-cell style="text-align: right">
+
+
+        <button (click)="onAddNewOrEdit(allergy)" id="edit-button" mat-icon-button
+                matTooltip="edit allergy" disabled>
+          <mat-icon class="example-tab-icon">edit</mat-icon>
+        </button>
+
+        <button (click)="onDelete(allergy)" color="warn" id="delete-button"
+                mat-icon-button matTooltip="delete allergy">
+          <mat-icon class="example-tab-icon">delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+  </table>
+</mat-card>
+
+
+
+
+
+
+

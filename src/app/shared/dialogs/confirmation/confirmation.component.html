@@ -1,0 +1,29 @@
+<ng-template #defaultHeaderTemplate>Title</ng-template>
+<ng-template #defaultBodyTemplate>Content</ng-template>
+<ng-template #defaultPositiveAnswerTemplate>Yes</ng-template>
+<ng-template #defaultNegativeAnswerTemplate>No</ng-template>
+
+<mat-icon class="modal-close-icon" (click)="closeDialog(false)">close</mat-icon>
+
+<h2 mat-dialog-title>
+    <span *ngTemplateOutlet="headerTemplate ? headerTemplate : defaultHeaderTemplate"></span>
+</h2>
+
+<mat-dialog-content>
+    <span class="mat-body">
+        <span *ngTemplateOutlet="bodyTemplate ? bodyTemplate : defaultBodyTemplate"></span>
+    </span>
+</mat-dialog-content>
+
+<mat-dialog-actions id="confirmation-action-button">
+    <span fxFlex="row" fxLayoutAlign="end center" fxLayoutGap="4px">
+        <button mat-raised-button (click)="closeDialog(false)" fxFlex="none">
+            <span
+                *ngTemplateOutlet="negativeAnswerTemplate ? negativeAnswerTemplate : defaultNegativeAnswerTemplate"></span>
+        </button>
+        <button mat-raised-button color="primary" (click)="closeDialog(true)" cdkFocusInitial fxFlex="none">
+            <span
+                *ngTemplateOutlet="positiveAnswerTemplate ? positiveAnswerTemplate : defaultPositiveAnswerTemplate"></span>
+        </button>
+    </span>
+</mat-dialog-actions>

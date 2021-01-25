@@ -1,0 +1,32 @@
+/**
+ *
+ * @author Steve Ngalamo (Software Developer Intern)
+ *
+ */
+
+#container {
+    width: 550px;
+    text-align: center;
+}
+#decisionButton {
+    margin-top: 4px;
+    text-align: right;
+}
+#close-button {
+    position: relative;
+    float: right;
+    top: -70px;
+}
+
+
+.button-space {
+    margin-right: 10px;
+}
+.panel-costumed {
+    height: 200px;
+}
+
+p {
+    margin-top: 30px;
+    margin-bottom: 50px;
+}

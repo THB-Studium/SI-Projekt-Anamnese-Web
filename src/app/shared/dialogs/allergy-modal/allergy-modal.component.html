@@ -1,0 +1,59 @@
+<div class="row" style="text-align: center">
+  <h3>
+    {{modalTitle}}
+  </h3>
+</div>
+
+<mat-divider style="margin-bottom: 10px"></mat-divider>
+
+
+<form [formGroup]="allergyFormGroup">
+
+  <mat-form-field style="width: 45%">
+    <mat-label>Patient</mat-label>
+    <input formControlName="patientennameCtrl" [matAutocomplete]="patientAutoComplete"
+           matInput placeholder="Patientenname" (keyup)="applyPatientFilter($event.target)"  required>
+    <mat-autocomplete #patientAutoComplete="matAutocomplete" [displayWith]="displayAutoComplete">
+      <mat-option *ngFor="let patient of patientsListFiltered" [value]="patient">
+        <span>{{patient.firstName}} {{patient.lastName}}</span>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <mat-form-field style="width: 40%">
+    <mat-label>Add Allergy</mat-label>
+    <input formControlName="allergyCtrl" matInput placeholder="Allergyname"
+           [matAutocomplete]="allergiesAutoComplete">
+    <mat-autocomplete #allergiesAutoComplete="matAutocomplete" [displayWith]="displayAllergyAutoComplete">
+      <mat-option *ngFor="let allergy of allergyValuesFiltered" [value]="allergy">
+        <span>{{allergy.name}}</span>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <span>
+      <button (click)="addAllergy()"
+              [disabled]="!allergyFormGroup.controls.allergyCtrl.value"
+              mat-raised-button color="primary">Add</button>
+  </span>
+
+  <div style="width: 45%; margin-top: 30px; margin-bottom: 30px" *ngIf="allergies.length > 0">
+    <mat-label>Vorbestehende Allergies:</mat-label>
+    <ul *ngFor="let allergy of allergies; let i = index">
+      <li>
+        <label>{{allergy.name}} </label>
+        <a (click)="removeAllergy(i)"
+           *ngIf="allergies.length > 1"
+           title="Remove material" class="pointer" tooltip>
+          <i class="glyphicon glyphicon-remove-circle" style="color:red"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+  <div style="text-align: right">
+    <button (click)="onNoClick(false)" mat-button>Ablehnen</button>
+    <button [disabled]="!allergyFormGroup.valid || allergies.length === 0 || searching"
+            (click)="onSave()" color="primary" mat-button>{{!searching ? 'Bestätigen' : 'Bestätigen...'}}</button>
+  </div>
+</form>

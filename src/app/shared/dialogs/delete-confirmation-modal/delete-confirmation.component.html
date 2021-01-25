@@ -1,0 +1,22 @@
+<!--
+--@author Steve Ngalamo (Software Developer Intern)
+-->
+
+<ng-template #headerTemplate>Delete {{data.entityType}}</ng-template>
+
+<ng-template #bodyTemplate>
+    <span>Are you sure you want to remove this</span>
+    <span *ngIf="data.entityType == 'ET user'"> {{data.entityType}}:</span>
+    <span *ngIf="data.entityType != 'ET user'" style = "text-transform: lowercase"> {{data.entityType}}:</span>
+    <b> {{data.entityName}}</b>?
+</ng-template>
+
+<ng-template #positiveAnswerTemplate>Delete</ng-template>
+<ng-template #negativeAnswerTemplate>Cancel</ng-template>
+
+<app-confirmation
+        [headerTemplate]="headerTemplate"
+        [bodyTemplate]="bodyTemplate"
+        [positiveAnswerTemplate]="positiveAnswerTemplate"
+        [negativeAnswerTemplate]="negativeAnswerTemplate"></app-confirmation>
+

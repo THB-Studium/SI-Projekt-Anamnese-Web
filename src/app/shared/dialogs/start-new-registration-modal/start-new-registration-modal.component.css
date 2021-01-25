@@ -1,0 +1,67 @@
+.content {
+  display: flex;
+  margin: 82px auto 32px;
+  padding: 0 16px;
+  max-width: 960px;
+  flex-direction: column;
+  align-items: center;
+}
+
+/*** ids ***/
+#logo {
+  width: 30%;
+  margin-top: -2%;
+}
+
+#container {
+  justify-content: center;
+  align-items: center;
+  width: 1100px;
+}
+
+#loginButton {
+  width: 225px;
+}
+
+#login-button {
+  float: right;
+}
+
+#reset-password {
+  font-size: 11px;
+  position: absolute;
+  margin-top: 8px;
+  left: 110px;
+}
+
+/*** class ***/
+.colorEdit {
+  color: #337ab7;
+}
+
+.log-in-form-field {
+  width: 100%;
+}
+
+mat-card {
+  /*width: 1000px;*/
+}
+
+.input-position {
+  /*width: 300px;*/
+  /*display: block;*/
+  /*margin-left: auto;*/
+  /*margin-right: auto;*/
+}
+
+
+/* about stepper */
+.mat-stepper-horizontal {
+  margin-top: 8px;
+}
+
+.mat-form-field {
+  margin-top: 16px;
+  margin-right: 16px;
+}
+

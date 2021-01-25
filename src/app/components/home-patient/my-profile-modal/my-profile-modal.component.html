@@ -1,0 +1,163 @@
+<form #signupForm="ngForm" novalidate>
+  <div class="form-inputs clearfix">
+
+    <div class="row" style="text-align: center">
+      <h3>
+        {{modalTitle}}
+      </h3>
+    </div>
+
+    <mat-divider style="margin-bottom: 10px"></mat-divider>
+
+    <div class="row" style="text-align: right">
+
+      <button (click)="editMode = true" *ngIf="!editMode" color="primary"
+              id="edit-button"
+              mat-mini-fab
+              matTooltip="Mein Profil editieren"
+              style="right: 10px">
+        <mat-icon class="example-tab-icon">edit</mat-icon>
+      </button>
+
+      <button (click)="editMode = false" *ngIf="editMode"
+              id="cancel-button"
+              mat-raised-button
+              matTooltip="Meine Änderungen abbrechen">
+        Abbrechen
+      </button>
+
+      <button (click)="onFormSubmit()" *ngIf="editMode" [disabled]="!person.firstName || !person.lastName"
+              color="primary"
+              id="save-button"
+              mat-raised-button
+              matTooltip="Meine Änderungen speichern">
+        Speichern
+      </button>
+
+    </div>
+
+    <div class="row">
+
+      <div class="col-sm-12">
+        <div class="col-sm-4" style="margin-bottom: 15px">
+          <label class="required">Vorname *</label>
+          <input
+              #firstNameId="ngModel"
+              [(ngModel)]="person.firstName"
+              [disabled]="!editMode"
+              name="firstName"
+              required
+              type="text">
+        </div>
+
+        <div class="col-sm-4" style="margin-bottom: 15px">
+          <label class="required">Nachname *</label>
+          <input
+              #lastNameId="ngModel"
+              [(ngModel)]="person.lastName"
+              [disabled]="!editMode"
+              name="lastName"
+              required
+              type="text">
+        </div>
+
+        <div class="col-sm-4" style="margin-bottom: 15px">
+          <label class="required">Benutzername</label>
+          <input
+              #userNameId="ngModel"
+              [(ngModel)]="person.userName"
+              disabled
+              name="userName"
+              required
+              type="text">
+        </div>
+      </div>
+
+      <div class="col-sm-12" style="margin-bottom: 40px">
+
+        <div class="col-sm-4" style="margin-bottom: 15px">
+          <label class="required">Beruf</label>
+          <input
+              #professionId="ngModel"
+              [(ngModel)]="person.profession"
+              [disabled]="!editMode"
+              name="profession"
+              required
+              type="text">
+        </div>
+
+        <div class="col-sm-4" style="margin-bottom: 15px">
+          <label class="required">Handynummer</label>
+          <input
+              #phoneNumberId="ngModel"
+              [(ngModel)]="person.phoneNumber"
+              [disabled]="!editMode"
+              name="phoneNumber"
+              required
+              type="number">
+        </div>
+
+        <div class="col-sm-4" style="margin-bottom: 15px">
+          <label class="required">E-Mail</label>
+          <input
+              #EMailId="ngModel"
+              [(ngModel)]="person.email"
+              [disabled]="!editMode"
+              name="email"
+              required
+              type="email">
+        </div>
+
+      </div>
+
+      <p style="margin-left: 30px">Adresse: </p>
+
+      <div class="col-sm-12">
+
+        <div class="col-sm-3" style="margin-bottom: 15px">
+          <label class="required">Strasse</label>
+          <input
+              #streetAndNumberId="ngModel"
+              [(ngModel)]="person.address.streetAndNumber"
+              [disabled]="!editMode"
+              name="streetAndNumber"
+              required
+              type="text">
+        </div>
+
+        <div class="col-sm-3" style="margin-bottom: 15px">
+          <label class="required">Plz</label>
+          <input
+              #postalCodeId="ngModel"
+              [(ngModel)]="person.address.postalCode"
+              [disabled]="!editMode"
+              name="postalCode"
+              required
+              type="text">
+        </div>
+
+        <div class="col-sm-3" style="margin-bottom: 15px">
+          <label class="required">Stadt</label>
+          <input
+              #cityId="ngModel"
+              [(ngModel)]="person.address.city"
+              [disabled]="!editMode"
+              name="city"
+              required
+              type="text">
+        </div>
+        <div class="col-sm-3" style="margin-bottom: 15px">
+          <label class="required">Land</label>
+          <input
+              #countryId="ngModel"
+              [(ngModel)]="person.address.country"
+              [disabled]="!editMode"
+              name="country"
+              required
+              type="text">
+        </div>
+      </div>
+
+    </div>
+  </div>
+</form>

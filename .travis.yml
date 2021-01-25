@@ -19,11 +19,10 @@ before_script:
   - npm install -g @angular/cli
   - sudo apt-get install -y dos2unix
 script:
- # - npm run lint
-  #- npm run test -- --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox
+  - npm run lint
+  - npm run test -- --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox
   - dos2unix scripts/*
-  - npm run build.aws  #this can be submitted as environment variable
-#  - ng build --prod #this can be submitted as environment variable
+  - npm run build.aws
 
 before_install:
   - pyenv global 3.7.1

@@ -3,10 +3,10 @@ import { Injectable } from '@angular/core'
 
 @Injectable({providedIn: 'root'})
 export class SessionService {
-  private authTokenKey: string = 'authToken'
-  private usernameKey: string = 'username'
-  private userIdKey: string = 'userId'
-  private personTypeKey: string = 'personType'
+  private readonly authTokenKey: string = 'authToken'
+  private readonly usernameKey: string = 'username'
+  private readonly userIdKey: string = 'userId'
+  private readonly personTypeKey: string = 'personType'
 
   /*** is authenticated ***/
   isAuthenticated(): boolean {
@@ -32,12 +32,8 @@ export class SessionService {
   }
 
   getToken(): any {
-    const token = sessionStorage.getItem(this.authTokenKey)
-    if (token) {
-      return token
-    } else {
-      return ''
-    }
+    const token: string = sessionStorage.getItem(this.authTokenKey)
+    return token ? token : null
   }
 
   /*** about the userName ***/

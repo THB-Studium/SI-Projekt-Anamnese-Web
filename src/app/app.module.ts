@@ -66,68 +66,56 @@ const angularMaterialModules = [
 ]
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    AdmissionComponent,
-    HomePatientComponent,
-    HeaderComponent,
-    LogInComponent,
-    HomePersonalComponent,
-    PatientInfoViewComponent,
-    PersonalInfoViewComponent,
-    PersonListComponent,
-    DiagnosisListComponent,
-    DiseaseListComponent,
-    ResetPasswordComponent,
-    AllergyListComponent,
-    MedicationInTakeListComponent,
-    BackgroundComponent,
-    MyProfileModalComponent,
-    AllergyListPatientComponent,
-    DiagnosisListPatientComponent,
-    DiseaseListPatientComponent,
-    MedicationInTakeListPatientComponent,
-    DeleteConfirmationComponent,
-    ConfirmationComponent,
-    AllergyModalComponent,
-    DiagnosisModalComponent,
-    DiseaseModalComponent,
-    MedicationInTakeModalComponent,
-    StartNewRegistrationModalComponent,
-    PersonViewComponent
-  ],
-
-  imports: [
-    angularMaterialModules,
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    FormsModule, ReactiveFormsModule, CommonModule
-  ],
-
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true
-    },
-    angularMaterialModules,
-    LoginService,
-    AppConfigService,
-    AuthGuard,
-
-  ],
-
-  entryComponents: [
-    MyProfileModalComponent,
-    ConfirmationComponent,
-    DeleteConfirmationComponent,
-    MyProfileModalComponent,
-    StartNewRegistrationModalComponent
-  ],
-
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        AdmissionComponent,
+        HomePatientComponent,
+        HeaderComponent,
+        LogInComponent,
+        HomePersonalComponent,
+        PatientInfoViewComponent,
+        PersonalInfoViewComponent,
+        PersonListComponent,
+        DiagnosisListComponent,
+        DiseaseListComponent,
+        ResetPasswordComponent,
+        AllergyListComponent,
+        MedicationInTakeListComponent,
+        BackgroundComponent,
+        MyProfileModalComponent,
+        AllergyListPatientComponent,
+        DiagnosisListPatientComponent,
+        DiseaseListPatientComponent,
+        MedicationInTakeListPatientComponent,
+        DeleteConfirmationComponent,
+        ConfirmationComponent,
+        AllergyModalComponent,
+        DiagnosisModalComponent,
+        DiseaseModalComponent,
+        MedicationInTakeModalComponent,
+        StartNewRegistrationModalComponent,
+        PersonViewComponent
+    ],
+    imports: [
+        angularMaterialModules,
+        BrowserModule,
+        HttpClientModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        FormsModule, ReactiveFormsModule, CommonModule
+    ],
+    providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthInterceptor,
+            multi: true
+        },
+        angularMaterialModules,
+        LoginService,
+        AppConfigService,
+        AuthGuard,
+    ],
+    bootstrap: [AppComponent]
 })
 
 export class AppModule {

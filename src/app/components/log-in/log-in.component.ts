@@ -10,7 +10,7 @@ import { PersonService } from '../services/person.service'
 import { environment } from '../../../environments/environment'
 
 @Component({
-  // tslint:disable-next-line:component-selector
+  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'app-log-in',
   templateUrl: './log-in.component.html',
   styleUrls: ['./log-in.component.css']

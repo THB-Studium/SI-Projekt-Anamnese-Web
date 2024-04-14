@@ -6,7 +6,7 @@ import { rootingPath } from '../../shared/rooting-path'
 import { constant } from '../../shared/constante'
 
 @Component({
-  // tslint:disable-next-line:component-selector
+  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']

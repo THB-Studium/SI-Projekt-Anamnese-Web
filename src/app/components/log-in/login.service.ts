@@ -4,7 +4,7 @@ import { SessionService } from '../../core/authentification-and-authority/sessio
 import { Router } from '@angular/router'
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http'
 import { AppConfigService } from '../../core/app-config.service'
-// tslint:disable-next-line:import-blacklist
+// eslint-disable-next-line no-restricted-imports
 import { Observable } from 'rxjs'
 
 

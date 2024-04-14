@@ -1,135 +1,136 @@
-@import '~@angular/material/theming';
+@use '~node_modules/@angular/material' as mat;
+@import '~node_modules/@angular/material/theming';
 
 $mat-cu-grey: (
-    50: #f0f4f4,
-    100: #e2e9e9,
-    200: #c6d2d2,
-    300: #a9bbbc,
-    400: #8da4a5,
-    500: #799495,
-    600: #658081,
-    700: #4f6364,
-    800: #384747,
-    900: #222b2b,
-    A100: #f0f4f4,
-    A200: #f0f4f4,
-    A400: #f0f4f4,
-    A700: #f0f4f4,
-    contrast: (
-        50: $black-87-opacity,
-        100: $black-87-opacity,
-        200: $black-87-opacity,
-        300: $black-87-opacity,
-        400: $black-87-opacity,
-        500: white,
-        600: white,
-        700: white,
-        800: $white-87-opacity,
-        900: $white-87-opacity,
-        A100: $black-87-opacity,
-        A200: white,
-        A400: white,
-        A700: white
-    )
+  50: #f0f4f4,
+  100: #e2e9e9,
+  200: #c6d2d2,
+  300: #a9bbbc,
+  400: #8da4a5,
+  500: #799495,
+  600: #658081,
+  700: #4f6364,
+  800: #384747,
+  900: #222b2b,
+  A100: #f0f4f4,
+  A200: #f0f4f4,
+  A400: #f0f4f4,
+  A700: #f0f4f4,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: white,
+    600: white,
+    700: white,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: white,
+    A400: white,
+    A700: white
+  )
 );
 
 $mat-cu-blue: (
-    50: #e8f6fd,
-    100: #b9e3f8,
-    200: #8ad1f4,
-    300: #5cbef0,
-    400: #3eb2ed,
-    500: #16a3e9,
-    600: #1492d2,
-    700: #1182bb,
-    800: #0f72a3,
-    900: #0b5175,
-    A100: #e8f6fd,
-    A200: #e8f6fd,
-    A400: #e8f6fd,
-    A700: #e8f6fd,
-    contrast: (
-        50: $black-87-opacity,
-        100: $black-87-opacity,
-        200: $black-87-opacity,
-        300: $black-87-opacity,
-        400: $black-87-opacity,
-        500: white,
-        600: white,
-        700: white,
-        800: $white-87-opacity,
-        900: $white-87-opacity,
-        A100: $black-87-opacity,
-        A200: white,
-        A400: white,
-        A700: white
-    )
+  50: #e8f6fd,
+  100: #b9e3f8,
+  200: #8ad1f4,
+  300: #5cbef0,
+  400: #3eb2ed,
+  500: #16a3e9,
+  600: #1492d2,
+  700: #1182bb,
+  800: #0f72a3,
+  900: #0b5175,
+  A100: #e8f6fd,
+  A200: #e8f6fd,
+  A400: #e8f6fd,
+  A700: #e8f6fd,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: white,
+    600: white,
+    700: white,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: white,
+    A400: white,
+    A700: white
+  )
 );
 
 $mat-cu-dark-blue: (
-    50: #eceff8,
-    100: #dadef1,
-    200: #b5bee3,
-    300: #8f9dd6,
-    400: #6a7dc8,
-    500: #455cba,
-    600: #374a95,
-    700: #293770,
-    800: #202b56,
-    900: #151c38,
-    A100: #eceff8,
-    A200: #eceff8,
-    A400: #eceff8,
-    A700: #eceff8,
-    contrast: (
-        50: $black-87-opacity,
-        100: $black-87-opacity,
-        200: $black-87-opacity,
-        300: $black-87-opacity,
-        400: $black-87-opacity,
-        500: white,
-        600: white,
-        700: white,
-        800: $white-87-opacity,
-        900: $white-87-opacity,
-        A100: $black-87-opacity,
-        A200: white,
-        A400: white,
-        A700: white
-    )
+  50: #eceff8,
+  100: #dadef1,
+  200: #b5bee3,
+  300: #8f9dd6,
+  400: #6a7dc8,
+  500: #455cba,
+  600: #374a95,
+  700: #293770,
+  800: #202b56,
+  900: #151c38,
+  A100: #eceff8,
+  A200: #eceff8,
+  A400: #eceff8,
+  A700: #eceff8,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: white,
+    600: white,
+    700: white,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: white,
+    A400: white,
+    A700: white
+  )
 );
 
 $mat-cu-red: (
-    50: #fee6e8,
-    100: #fdb4b9,
-    200: #fc828a,
-    300: #fb515c,
-    400: #f91f2e,
-    500: #e30613,
-    600: #ab0715,
-    700: #930612,
-    800: #7a050f,
-    900: #62040c,
-    A100: #fee6e8,
-    A200: #fee6e8,
-    A400: #fee6e8,
-    A700: #fee6e8,
-    contrast: (
-        50: $black-87-opacity,
-        100: $black-87-opacity,
-        200: $black-87-opacity,
-        300: $black-87-opacity,
-        400: $black-87-opacity,
-        500: white,
-        600: white,
-        700: white,
-        800: $white-87-opacity,
-        900: $white-87-opacity,
-        A100: $black-87-opacity,
-        A200: white,
-        A400: white,
-        A700: white
-    )
+  50: #fee6e8,
+  100: #fdb4b9,
+  200: #fc828a,
+  300: #fb515c,
+  400: #f91f2e,
+  500: #e30613,
+  600: #ab0715,
+  700: #930612,
+  800: #7a050f,
+  900: #62040c,
+  A100: #fee6e8,
+  A200: #fee6e8,
+  A400: #fee6e8,
+  A700: #fee6e8,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: white,
+    600: white,
+    700: white,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: white,
+    A400: white,
+    A700: white
+  )
 );
 
 // https://material.io/guidelines/style/color.html#color-color-palette
@@ -142,12 +143,12 @@ $mat-cu-red: (
 // $insp-app-accent: mat-palette($mat-cu-dark-blue);
 // $insp-app-warn: mat-palette($mat-cu-red);
 
-$insp-app-primary: mat-palette($mat-indigo, 500, 200, 800);
-$insp-app-accent: mat-palette($mat-light-green, 600, 300, 900);
-$insp-app-warn: mat-palette($mat-red, 700, 300, 900);
-$insp-app-default-theme: mat-light-theme($insp-app-primary, $insp-app-accent, $insp-app-warn);
+//$insp-app-primary: mat.define-palette(mat.$indigo-palette, 500, 200, 800);
+//$insp-app-accent: mat.define-palette(mat.$light-green-palette, 600, 300, 900);
+//$insp-app-warn: mat.define-palette(mat.$red-palette, 700, 300, 900);
+//$insp-app-default-theme: mat.define-light-theme($insp-app-primary, $insp-app-accent, $insp-app-warn);
 
-$insp-app-yellow-primary: mat-palette($mat-blue, 500, 200, 800);
-$insp-app-yellow-accent: mat-palette($mat-amber, 600, 300, 900);
-$insp-app-yellow-warn: mat-palette($mat-red, 700, 300, 900);
-$insp-app-yellow-theme: mat-light-theme($insp-app-yellow-primary, $insp-app-yellow-accent, $insp-app-yellow-warn);
+//$insp-app-yellow-primary: mat.define-palette(mat.$blue-palette, 500, 200, 800);
+//$insp-app-yellow-accent: mat.define-palette(mat.$amber-palette, 600, 300, 900);
+//$insp-app-yellow-warn: mat.define-palette(mat.$red-palette, 700, 300, 900);
+//$insp-app-yellow-theme: mat.define-light-theme($insp-app-yellow-primary, $insp-app-yellow-accent, $insp-app-yellow-warn);

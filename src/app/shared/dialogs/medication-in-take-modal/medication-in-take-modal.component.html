@@ -53,7 +53,7 @@
   </div>
 
   <div style="text-align: right">
-    <button (click)="onNoClick(false)" mat-button>Ablehnen</button>
+    <button (click)="onNoClick(false)" mat-button>Abbrechen</button>
     <button [disabled]="!medicamentInTakeFormGroup.valid || !medication.startDate || searching"
             (click)="onSave()" color="primary" mat-button>{{!searching ? 'Bestätigen' : 'Bestätigen...'}}</button>
   </div>

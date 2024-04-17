@@ -7,15 +7,15 @@
     <!-- Position Column -->
     <ng-container matColumnDef="#">
       <th *matHeaderCellDef mat-header-cell> #</th>
-      <td *matCellDef="let diseasesIndex = index" mat-cell> {{diseasesIndex + 1}} </td>
+      <td *matCellDef="let diseasesIndex = index" mat-cell> {{ diseasesIndex + 1 }}</td>
     </ng-container>
 
     <!-- Symbol Column -->
     <ng-container matColumnDef="preExistingIllness">
-      <th mat-header-cell *matHeaderCellDef> Vorerkrankung </th>
+      <th *matHeaderCellDef mat-header-cell> Vorerkrankung</th>
       <td *matCellDef="let disease" mat-cell>
         <ul *ngFor="let illness of disease.preExistingIllnesses">
-          <li>{{illness.name}}</li>
+          <li>{{ illness.name }}</li>
         </ul>
       </td>
     </ng-container>
@@ -24,14 +24,14 @@
     <ng-container matColumnDef="undergoneSurgery">
       <th *matHeaderCellDef mat-header-cell>Chirurgische Eingriffe?</th>
       <td *matCellDef="let disease" mat-cell>
-        {{disease.undergoneSurgery ? 'Ja' : 'Nein'}}
+        {{ disease.undergoneSurgery ? 'Ja' : 'Nein' }}
       </td>
     </ng-container>
 
     <!-- surgeryReason Column -->
     <ng-container matColumnDef="surgeryReason">
       <th *matHeaderCellDef mat-header-cell> Operationsgrund</th>
-      <td *matCellDef="let disease" mat-cell> {{disease.surgeriesDetails}} </td>
+      <td *matCellDef="let disease" mat-cell> {{ disease.surgeriesDetails }}</td>
     </ng-container>
 
     <ng-container matColumnDef="action">
@@ -39,7 +39,8 @@
       <th *matHeaderCellDef mat-header-cell style="text-align: right">
 
         <!-- Add button -->
-        <button (click)="onAddNewOrEdit()" color="primary" id="add-button" mat-mini-fab matTooltip="Neue Krankheit hinzufügen">
+        <button (click)="onAddNewOrEdit()" color="primary" id="add-button" mat-mini-fab
+                matTooltip="Neue Krankheit hinzufügen">
           <mat-icon class="example-tab-icon">add</mat-icon>
         </button>
 
@@ -53,10 +54,10 @@
         </button>
 
         <!-- Delete button -->
-<!--        <button (click)="onDelete(disease)" color="warn" id="delete-button"-->
-<!--                mat-icon-button matTooltip="Krankheit löschen">-->
-<!--          <mat-icon class="example-tab-icon">delete</mat-icon>-->
-<!--        </button>-->
+        <!--        <button (click)="onDelete(disease)" color="warn" id="delete-button"-->
+        <!--                mat-icon-button matTooltip="Krankheit löschen">-->
+        <!--          <mat-icon class="example-tab-icon">delete</mat-icon>-->
+        <!--        </button>-->
 
       </td>
 

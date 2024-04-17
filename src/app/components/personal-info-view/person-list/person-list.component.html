@@ -1,60 +1,59 @@
-
 <mat-card>
-  <table mat-table [dataSource]="filteredPersonsList" class="mat-elevation-z8">
+  <table [dataSource]="filteredPersonsList" class="mat-elevation-z8" mat-table>
 
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
 
     <!-- Position Column -->
     <ng-container matColumnDef="#">
-      <th mat-header-cell *matHeaderCellDef> # </th>
-      <td mat-cell *matCellDef="let personIndex = index"> {{personIndex + 1}} </td>
+      <th *matHeaderCellDef mat-header-cell> #</th>
+      <td *matCellDef="let personIndex = index" mat-cell> {{ personIndex + 1 }}</td>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="vorname">
-      <th mat-header-cell *matHeaderCellDef> Vorname </th>
-      <td mat-cell *matCellDef="let patient"> {{patient.firstName}} </td>
+      <th *matHeaderCellDef mat-header-cell> Vorname</th>
+      <td *matCellDef="let patient" mat-cell> {{ patient.firstName }}</td>
     </ng-container>
 
     <!-- Weight Column -->
     <ng-container matColumnDef="nachname">
-      <th mat-header-cell *matHeaderCellDef> Nachname </th>
-      <td mat-cell *matCellDef="let patient"> {{patient.lastName}} </td>
+      <th *matHeaderCellDef mat-header-cell> Nachname</th>
+      <td *matCellDef="let patient" mat-cell> {{ patient.lastName }}</td>
     </ng-container>
 
     <!-- Symbol Column -->
     <ng-container matColumnDef="username">
-      <th mat-header-cell *matHeaderCellDef> Benutzername </th>
-      <td mat-cell *matCellDef="let patient"> {{patient.userName}} </td>
+      <th *matHeaderCellDef mat-header-cell> Benutzername</th>
+      <td *matCellDef="let patient" mat-cell> {{ patient.userName }}</td>
     </ng-container>
 
     <!-- Symbol Column -->
     <ng-container matColumnDef="action">
-      <th mat-header-cell *matHeaderCellDef style="text-align: right">
-        <button mat-mini-fab color="primary" id="add-button" (click)="onAddNewPerson()"
-                [matTooltip]="personType === 'patienten'
-                ? 'Einen neuen Patien hinzufuegen' : 'Einen neuen Personal hinzufuegen'">
+      <th *matHeaderCellDef mat-header-cell style="text-align: right">
+        <button (click)="onAddNewPerson()" [matTooltip]="personType === 'patienten'
+                ? 'Einen neuen Patien hinzufuegen' : 'Einen neuen Personal hinzufuegen'" color="primary" id="add-button"
+                mat-mini-fab>
           <mat-icon class="example-tab-icon">add</mat-icon>
         </button>
       </th>
 
-      <td mat-cell *matCellDef="let patient" style="text-align: right">
+      <td *matCellDef="let patient" mat-cell style="text-align: right">
 
-        <button mat-icon-button id="person-view-button" (click)="onPersonInfo(patient)"
-                [matTooltip]="patient.type === 'patient' ? 'Patientinfos ansehen' : 'Personalinfos ansehen'">
+        <button (click)="onPersonInfo(patient)" [matTooltip]="patient.type === 'patient' ? 'Patientinfos ansehen' : 'Personalinfos ansehen'" id="person-view-button"
+                mat-icon-button>
           <mat-icon class="example-tab-icon">remove_red_eye</mat-icon>
         </button>
 
-        <button mat-icon-button color="warn" id="delete-button"
-                (click)="onDeletePatient(patient)" matTooltip="delete patient">
+        <button (click)="onDeletePatient(patient)" color="warn" id="delete-button"
+                mat-icon-button matTooltip="delete patient">
           <mat-icon class="example-tab-icon">delete</mat-icon>
         </button>
       </td>
     </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
   </table>
 </mat-card>
 

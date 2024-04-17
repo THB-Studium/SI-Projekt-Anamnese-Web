@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { DeleteConfirmationComponent } from './delete-confirmation.component'
-import { MatDialogModule } from '@angular/material/dialog'
+import { MatLegacyDialogModule as MatDialogModule } from '@angular/material/legacy-dialog'
 
 describe('DeleteConfirmationComponent', () => {
   let component: DeleteConfirmationComponent

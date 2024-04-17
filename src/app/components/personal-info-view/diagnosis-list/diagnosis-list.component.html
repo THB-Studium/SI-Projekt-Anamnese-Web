@@ -7,31 +7,31 @@
     <!-- Position Column -->
     <ng-container matColumnDef="#">
       <th *matHeaderCellDef mat-header-cell> #</th>
-      <td *matCellDef="let diagnosisIndex = index" mat-cell> {{diagnosisIndex + 1}} </td>
+      <td *matCellDef="let diagnosisIndex = index" mat-cell> {{ diagnosisIndex + 1 }}</td>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="patient">
       <th *matHeaderCellDef mat-header-cell> diagnosis</th>
-      <td *matCellDef="let diagnosis" mat-cell> {{diagnosis.person?.name}} </td>
+      <td *matCellDef="let diagnosis" mat-cell> {{ diagnosis.person?.name }}</td>
     </ng-container>
 
     <!-- Weight Column -->
     <ng-container matColumnDef="examinations">
       <th *matHeaderCellDef mat-header-cell> Examinations</th>
-      <td *matCellDef="let diagnosis" mat-cell> {{diagnosis.lastName}} </td>
+      <td *matCellDef="let diagnosis" mat-cell> {{ diagnosis.lastName }}</td>
     </ng-container>
 
     <!-- Symbol Column -->
     <ng-container matColumnDef="date">
       <th *matHeaderCellDef mat-header-cell> Date</th>
-      <td *matCellDef="let diagnosis" mat-cell> {{diagnosis.examinationDate}} </td>
+      <td *matCellDef="let diagnosis" mat-cell> {{ diagnosis.examinationDate }}</td>
     </ng-container>
 
     <!-- Symbol Column -->
     <ng-container matColumnDef="type">
       <th *matHeaderCellDef mat-header-cell> Type</th>
-      <td *matCellDef="let diagnosis" mat-cell> {{diagnosis.bodyRegion}} </td>
+      <td *matCellDef="let diagnosis" mat-cell> {{ diagnosis.bodyRegion }}</td>
     </ng-container>
 
     <!-- Symbol Column -->

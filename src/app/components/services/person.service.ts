@@ -24,20 +24,20 @@ export class PersonService {
 
   /*** TO GET ALL PERSON: ***/
   getAll(queryParam?: HttpParams): any {
-    return this.httpClient.get<Response>(this.personUrl, {params: queryParam})
-      .pipe(map((res: Response) => res))
+    return this.httpClient.get<Array<IPerson>>(this.personUrl, {params: queryParam})
+      .pipe(map((res: Array<IPerson>) => res))
   }
 
   /*** TO GET ONE BY PERSON ID: ***/
   getOne(personId: uuid): any {
-    return this.httpClient.get(this.personItemUrl + personId)
-      .pipe(map((res: any) => res))
+    return this.httpClient.get<IPerson>(this.personItemUrl + personId)
+      .pipe(map((res: IPerson) => res))
   }
 
   /*** TO ADD A NEW PERSON ***/
   add(person: IPersonTO): any {
     return this.httpClient.post(this.personUrl, person)
-      .pipe(map((res: Response) => res))
+      .pipe(map((res: IPerson) => res))
   }
 
   /***  TO EDIT A PERSON ***/

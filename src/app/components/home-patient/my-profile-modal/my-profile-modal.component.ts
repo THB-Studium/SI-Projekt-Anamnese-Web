@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core'
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 import { IPerson } from '../../../model/person.interface'
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog'
 
 @Component({
   selector: 'app-my-profile-modal',
@@ -15,12 +15,13 @@ export class MyProfileModalComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<MyProfileModalComponent>,
     @Inject(MAT_DIALOG_DATA) public receivedData: any
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.person = this.receivedData.person
     this.receivedData.personType === 'personal'
-      ? this.modalTitle = 'Pernalsprofil' : this.modalTitle = 'Mein Profil'
+      ? this.modalTitle = 'Personalsprofil' : this.modalTitle = 'Mein Profil'
   }
 
   onNoClick(): void {

@@ -5,9 +5,9 @@ import { SessionService } from '../../core/authentification-and-authority/sessio
 import { RouterTestingModule } from '@angular/router/testing'
 import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { CommonModule } from '@angular/common'
-import { MatCardModule } from '@angular/material/card'
-import { MatTabsModule } from '@angular/material/tabs'
-import { MatSnackBarModule } from '@angular/material/snack-bar'
+import { MatLegacyCardModule as MatCardModule } from '@angular/material/legacy-card'
+import { MatLegacyTabsModule as MatTabsModule } from '@angular/material/legacy-tabs'
+import { MatLegacySnackBarModule as MatSnackBarModule } from '@angular/material/legacy-snack-bar'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 describe('HomeComponent', () => {

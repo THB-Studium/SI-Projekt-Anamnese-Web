@@ -7,14 +7,15 @@
     <!-- Position Column -->
     <ng-container matColumnDef="#">
       <th *matHeaderCellDef mat-header-cell> #</th>
-      <td *matCellDef="let personIndex = index" mat-cell> {{personIndex + 1}} </td>
+      <td *matCellDef="let personIndex = index" mat-cell> {{ personIndex + 1 }}</td>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="patient">
       <th *matHeaderCellDef mat-header-cell>Patient</th>
       <td *matCellDef="let disease" mat-cell>
-        {{disease.person?.firstName}} {{disease.person?.lastName}} </td>
+        {{ disease.person?.firstName }} {{ disease.person?.lastName }}
+      </td>
     </ng-container>
 
     <!-- Symbol Column -->
@@ -22,7 +23,7 @@
       <th *matHeaderCellDef mat-header-cell>Vorerkrankung</th>
       <td *matCellDef="let disease" mat-cell>
         <ul *ngFor="let illness of disease.preExistingIllnesses">
-          <li>{{illness.name}}</li>
+          <li>{{ illness.name }}</li>
         </ul>
       </td>
     </ng-container>
@@ -31,14 +32,14 @@
     <ng-container matColumnDef="undergoneSurgery">
       <th *matHeaderCellDef mat-header-cell>Chirurgische Eingriffe?</th>
       <td *matCellDef="let disease" mat-cell>
-        {{disease.undergoneSurgery ? 'Ja' : 'Nein'}}
+        {{ disease.undergoneSurgery ? 'Ja' : 'Nein' }}
       </td>
     </ng-container>
 
     <!-- Symbol Column -->
     <ng-container matColumnDef="surgeryReason">
       <th *matHeaderCellDef mat-header-cell>Operationsgrund</th>
-      <td *matCellDef="let disease" mat-cell> {{disease.surgeriesDetails}} </td>
+      <td *matCellDef="let disease" mat-cell> {{ disease.surgeriesDetails }}</td>
     </ng-container>
 
     <!-- Symbol Column -->

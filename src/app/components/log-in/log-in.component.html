@@ -23,7 +23,7 @@
       </g>
     </svg>
 
-    <span>SI-Projekt-Anamnese-App läuft auf "{{currentEnvironment}}"!</span>
+    <span>SI-Projekt-Anamnese-App läuft auf "{{ currentEnvironment }}"!</span>
 
     <svg alt="Rocket Ship Smoke" height="1083.632" id="rocket-smoke" viewBox="0 0 516.119 1083.632" width="516.119"
          xmlns="http://www.w3.org/2000/svg">
@@ -42,24 +42,24 @@
     <mat-card>
 
       <div class="panel panel-primary">
-        <form class="log-in-form" #userData="ngForm">
+        <form class="log-in-form">
           <div>
             <div style="margin-bottom: 50px">
               <p>
                 Willkommen im Projekt Anamnese System - Bitte loggen Sie sich ein
               </p>
-<!--              <p style="text-align: center">-->
-<!--                Kein Konto? Jetzt <a href="{{new_registration_path}}" class="pointer">registrieren</a>-->
-<!--              </p>-->
+              <!--              <p style="text-align: center">-->
+              <!--                Kein Konto? Jetzt <a href="{{new_registration_path}}" class="pointer">registrieren</a>-->
+              <!--              </p>-->
             </div>
 
             <!-- USERNAME FIELD -->
             <div class="input-position">
               <mat-form-field appearance="outline" class="log-in-form-field" id="userNameForm">
                 <mat-label>Username:</mat-label>
-                <input matInput type="text" placeholder="Username"
-                       [(ngModel)]="username" name="username" id="username" required>
-                <mat-icon matSuffix class="colorEdit">account_circle</mat-icon>
+                <input [(ngModel)]="username" id="username" matInput
+                       name="username" placeholder="Username" required type="text">
+                <mat-icon class="colorEdit" matSuffix>account_circle</mat-icon>
               </mat-form-field>
             </div>
 
@@ -68,11 +68,11 @@
             <div class="input-position">
               <mat-form-field appearance="outline" class="log-in-form-field" id="passwordForm">
                 <mat-label>Password:</mat-label>
-                <input matInput autocomplete="off" placeholder="Password"
-                       [(ngModel)]="password" name="password" id="password" required
-                       [type] = "hidePassword ? 'password' : 'text'">
-                <mat-icon matSuffix class="colorEdit pointer" (click)="hidePassword = !hidePassword">
-                  {{hidePassword ? 'visibility_off' : 'visibility'}}
+                <input [(ngModel)]="password" [type]="hidePassword ? 'password' : 'text'" autocomplete="off"
+                       id="password" matInput name="password" placeholder="Password"
+                       required>
+                <mat-icon (click)="hidePassword = !hidePassword" class="colorEdit pointer" matSuffix>
+                  {{ hidePassword ? 'visibility_off' : 'visibility' }}
                 </mat-icon>
               </mat-form-field>
             </div>
@@ -82,10 +82,11 @@
 
 
             <!-- LOG IN BUTTON -->
-            <div style="margin-bottom: 65px" class="input-position">
-              <button mat-raised-button type="button" class="btn btn-primary button" id="login-button"
-                      [disabled]="!username || !password || isClicked" (click)="login()">
-                {{isClicked ? 'Loading...' : 'Login'}}
+            <div class="input-position" style="margin-bottom: 65px">
+              <button (click)="login()" [disabled]="!username || !password || isClicked" class="btn btn-primary button"
+                      id="login-button"
+                      mat-raised-button type="button">
+                {{ isClicked ? 'Loading...' : 'Login' }}
               </button>
             </div>
 

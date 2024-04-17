@@ -14,15 +14,16 @@ const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: '/' + rootingPath.login},
   {path: rootingPath.login, component: LogInComponent},
   {path: rootingPath.reset_password, component: ResetPasswordComponent},
-  {path: rootingPath.home_patient, component: HomePatientComponent, canActivate:[AuthGuard]},
-  {path: rootingPath.home_personal, component: HomePersonalComponent, canActivate:[AuthGuard]},
-  {path: rootingPath.aufnahme, component: AdmissionComponent, canActivate:[AuthGuard]},
-  {path: rootingPath.patient_info_view, component: PatientInfoViewComponent, canActivate:[AuthGuard]},
-  {path: rootingPath.personal_info_view, component: PersonalInfoViewComponent, canActivate:[AuthGuard]}
+  {path: rootingPath.home_patient, component: HomePatientComponent, canActivate: [AuthGuard]},
+  {path: rootingPath.home_personal, component: HomePersonalComponent, canActivate: [AuthGuard]},
+  {path: rootingPath.aufnahme, component: AdmissionComponent, canActivate: [AuthGuard]},
+  {path: rootingPath.patient_info_view, component: PatientInfoViewComponent, canActivate: [AuthGuard]},
+  {path: rootingPath.personal_info_view, component: PersonalInfoViewComponent, canActivate: [AuthGuard]}
 ]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}

@@ -1,24 +1,22 @@
 <app-header [title]="headerTitle"></app-header>
 
-<mat-tab-group [selectedIndex]="tabIndex" (selectedTabChange)="onTabClicked($event)">
+<mat-tab-group (selectedTabChange)="onTabClicked($event)" [selectedIndex]="tabIndex">
 
- <!-- PERSONAL -->
+  <!-- PERSONAL -->
   <mat-tab>
     <ng-template mat-tab-label>
-      <img class="material-icons" style="margin-right: 7px"
-           height="30" viewBox="0 0 24 24" width="30"
-           src="../../../assets/logos/personal.jpg">
+      <img alt="personal logo" class="material-icons" height="30" ngSrc="../../../assets/logos/personal.jpg"
+           style="margin-right: 7px" viewBox="0 0 24 24" width="30">
       Personal
     </ng-template>
     <app-person-list *ngIf="tabIndex === 0" [personType]="personType[0]"></app-person-list>
   </mat-tab>
 
- <!-- PATIENTS -->
+  <!-- PATIENTS -->
   <mat-tab>
     <ng-template mat-tab-label>
-      <img class="material-icons" style="margin-right: 7px"
-           height="24" viewBox="0 0 24 24" width="24"
-           src="../../../assets/logos/patient-logo.png">
+      <img alt="patient logo" class="material-icons" height="24" src="../../../assets/logos/patient-logo.png"
+           style="margin-right: 7px" viewBox="0 0 24 24" width="24">
       Patienten
     </ng-template>
     <app-person-list *ngIf="tabIndex === 1" [personType]="personType[1]"></app-person-list>
@@ -27,9 +25,8 @@
   <!-- DIAGNOSIS -->
   <mat-tab>
     <ng-template mat-tab-label>
-      <img class="material-icons" style="margin-right: 7px"
-           height="24" viewBox="0 0 24 24" width="24"
-           src="../../../assets/logos/diagnose.jpg">
+      <img alt="diagnose logo" class="material-icons" height="24" src="../../../assets/logos/diagnose.jpg"
+           style="margin-right: 7px" viewBox="0 0 24 24" width="24">
       Diagnose
     </ng-template>
     <app-diagnosis-list *ngIf="tabIndex === 2" [patientsList]="patientsList"></app-diagnosis-list>
@@ -38,9 +35,8 @@
   <!-- Disease -->
   <mat-tab>
     <ng-template mat-tab-label>
-      <img class="material-icons" style="margin-right: 7px"
-           height="24" viewBox="0 0 24 24" width="24"
-           src="../../../assets/logos/disease.png">
+      <img alt="disease logo" class="material-icons" height="24" src="../../../assets/logos/disease.png"
+           style="margin-right: 7px" viewBox="0 0 24 24" width="24">
       Krankheiten
     </ng-template>
     <app-disease-list *ngIf="tabIndex === 3" [patientsList]="patientsList"></app-disease-list>
@@ -49,9 +45,8 @@
   <!-- AllergieTypen -->
   <mat-tab>
     <ng-template mat-tab-label>
-      <img class="material-icons" style="margin-right: 7px"
-           height="24" viewBox="0 0 24 24" width="24"
-           src="../../../assets/logos/allergie.png">
+      <img alt="allergie logo" class="material-icons" height="24" src="../../../assets/logos/allergie.png"
+           style="margin-right: 7px" viewBox="0 0 24 24" width="24">
       Allergien
     </ng-template>
     <app-allergy-list *ngIf="tabIndex === 4" [patientsList]="patientsList"></app-allergy-list>
@@ -60,9 +55,8 @@
   <!-- MedicationInTake -->
   <mat-tab>
     <ng-template mat-tab-label>
-      <img class="material-icons" style="margin-right: 7px"
-           height="24" viewBox="0 0 24 24" width="24"
-           src="../../../assets/logos/medikamente.png">
+      <img alt="medikamente logo" class="material-icons" height="24" src="../../../assets/logos/medikamente.png"
+           style="margin-right: 7px" viewBox="0 0 24 24" width="24">
       Medikamente
     </ng-template>
     <app-medication-in-take-list *ngIf="tabIndex === 5" [patientsList]="patientsList"></app-medication-in-take-list>

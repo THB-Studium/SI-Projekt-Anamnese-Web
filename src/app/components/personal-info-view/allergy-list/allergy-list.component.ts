@@ -1,12 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core'
 import { v4 as uuid } from 'uuid'
 import { AllergyService } from '../../services/allergy.service'
-import { MatSnackBar } from '@angular/material/snack-bar'
-import { MatDialog } from '@angular/material/dialog'
 import { DeleteConfirmationComponent } from '../../../shared/dialogs/delete-confirmation-modal/delete-confirmation.component'
 import { IDeleteConfirmation } from '../../../model/delete-confirmation.interface'
 import { IAllergy, IPerson } from '../../../model/person.interface'
 import { AllergyModalComponent } from '../../../shared/dialogs/allergy-modal/allergy-modal.component'
+import { MatSnackBar } from '@angular/material/snack-bar'
+import { MatDialog, MatDialogRef } from '@angular/material/dialog'
 
 @Component({
   selector: 'app-allergy-list',
@@ -16,21 +16,22 @@ import { AllergyModalComponent } from '../../../shared/dialogs/allergy-modal/all
 export class AllergyListComponent implements OnInit {
   @Input() patientsList: Array<IPerson> = []
 
-  displayedColumns: string[] = ['#', 'allergy', 'patient', 'action']
+  displayedColumns: Array<string> = ['#', 'allergy', 'patient', 'action']
   allergyList: Array<IAllergy>
 
   constructor(
     private allergyService: AllergyService,
     private snackBar: MatSnackBar,
     public dialog: MatDialog,
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.listAllergies()
   }
 
   onAddNewOrEdit(allergy?: IAllergy): void {
-    const dialogRef = this.dialog.open(AllergyModalComponent, {
+    const dialogRef: MatDialogRef<AllergyModalComponent> = this.dialog.open(AllergyModalComponent, {
       width: '750px',
       data: {update: allergy, parent: 'personal', patientsList: this.patientsList}
     })
@@ -43,7 +44,7 @@ export class AllergyListComponent implements OnInit {
   }
 
   onDelete(allergy: IAllergy): void {
-    const dialogRef = this.dialog.open(DeleteConfirmationComponent, {
+    const dialogRef: MatDialogRef<DeleteConfirmationComponent> = this.dialog.open(DeleteConfirmationComponent, {
       disableClose: true,
       data: <IDeleteConfirmation>{entityType: 'Allergy', entityName: allergy.name}
     })
@@ -56,10 +57,10 @@ export class AllergyListComponent implements OnInit {
   }
 
   private listAllergies(): void {
-    this.allergyService.getAll().subscribe((allergies: any) => {
+    this.allergyService.getAll().subscribe((allergies: any): void => {
         this.allergyList = allergies
       },
-      err => {
+      (err: Error): void => {
         console.log('Error in AllergyComponent.listAllergies()')
         console.log(err)
         this.snackBar.open('Could not fetch allergies', 'Close', {
@@ -70,10 +71,10 @@ export class AllergyListComponent implements OnInit {
   }
 
   private deleteAllergy(allergyId: uuid): void {
-    this.allergyService.delete(allergyId).subscribe(() => {
+    this.allergyService.delete(allergyId).subscribe((): void => {
         this.listAllergies()
       },
-      err => {
+      (err: Error): void => {
         console.log('Error in AllergyComponent.deleteAllergy()')
         console.log(err)
         this.snackBar.open('Could not delete allergy', 'Close', {

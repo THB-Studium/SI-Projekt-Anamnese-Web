@@ -25,7 +25,7 @@
       </g>
     </svg>
 
-    <span>SI-Projekt-Anamnese-App läuft auf "{{currentEnvironment}}"!</span>
+    <span>SI-Projekt-Anamnese-App läuft auf "{{ currentEnvironment }}"!</span>
 
     <svg alt="Rocket Ship Smoke" height="1083.632" id="rocket-smoke" viewBox="0 0 516.119 1083.632" width="516.119"
          xmlns="http://www.w3.org/2000/svg">
@@ -44,51 +44,51 @@
 
   <div class="card-container" style="margin-top: 90px">
 
-      <a *ngIf="!currentUser.recorded" class="card" rel="noopener" routerLink="{{aufnahme_path}}"
-         style="margin-right: 10px; margin-bottom: 50px" disabled="true">
-        <img class="material-icons" style="margin-right: 7px"
-             height="24" viewBox="0 0 24 24" width="24"
-             src="../../../assets/logos/new-aufnahme.jpg">
+    <a *ngIf="!currentUser.recorded" class="card" disabled="true" rel="noopener"
+       routerLink="{{aufnahme_path}}" style="margin-right: 10px; margin-bottom: 50px">
+      <img alt="new-aufnahme logo" class="material-icons"
+           height="24" ngSrc="../../../assets/logos/new-aufnahme.jpg" style="margin-right: 7px"
+           viewBox="0 0 24 24" width="24">
 
-        <span>New aufnahme</span>
+      <span>New aufnahme</span>
 
-        <svg class="material-icons" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-        </svg>
-      </a>
+      <svg class="material-icons" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+      </svg>
+    </a>
 
-      <a class="card" rel="noopener" (click)="openMyProfilModal()"
-         style="margin-right: 10px; margin-bottom: 50px">
-        <mat-icon>person</mat-icon>
+    <a (click)="openMyProfilModal()" class="card" rel="noopener"
+       style="margin-right: 10px; margin-bottom: 50px">
+      <mat-icon>person</mat-icon>
 
-        <span>Mein Profil</span>
+      <span>Mein Profil</span>
 
-        <svg class="material-icons" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-        </svg>
-      </a>
+      <svg class="material-icons" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+      </svg>
+    </a>
 
-      <a class="card" href="https://www.google.com/search?client=avast&q=Notdienstapotheke" rel="noopener"
-         target="_blank"  style="margin-right: 10px">
-        <img class="material-icons" style="margin-right: 7px"
-             height="24" viewBox="0 0 24 24" width="24"
-             src="../../../assets/logos/apotheke.png">
+    <a class="card" href="https://www.google.com/search?client=avast&q=Notdienstapotheke" rel="noopener"
+       style="margin-right: 10px" target="_blank">
+      <img alt="apotheke logo" class="material-icons" height="24"
+           ngSrc="../../../assets/logos/apotheke.png" style="margin-right: 7px" viewBox="0 0 24 24"
+           width="24">
 
-        <span>Notdienstapotheke</span>
+      <span>Notdienstapotheke</span>
 
-        <svg class="material-icons" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-        </svg>
-      </a>
+      <svg class="material-icons" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+      </svg>
+    </a>
   </div>
 
   <div class="card-container" style="margin-top: 90px">
 
-    <a *ngIf="currentUser.recorded" class="card" (click)="navTo('diagnose')"
+    <a (click)="navTo('diagnose')" *ngIf="currentUser.recorded" class="card"
        routerLink="{{patient_info_view_path}}" style="margin-right: 10px; margin-bottom: 50px">
-      <img class="material-icons" style="margin-right: 7px"
-           height="24" viewBox="0 0 24 24" width="24"
-           src="../../../assets/logos/diagnose.jpg">
+      <img alt="diagnose logo" class="material-icons" height="24"
+           ngSrc="../../../assets/logos/diagnose.jpg" style="margin-right: 7px" viewBox="0 0 24 24"
+           width="24">
 
       <span>Meine Diagnose</span>
 
@@ -97,11 +97,11 @@
       </svg>
     </a>
 
-    <a *ngIf="currentUser.recorded" class="card" (click)="navTo('krankheiten')"
+    <a (click)="navTo('krankheiten')" *ngIf="currentUser.recorded" class="card"
        routerLink="{{patient_info_view_path}}" style="margin-right: 10px; margin-bottom: 50px">
-      <img class="material-icons" style="margin-right: 7px"
-           height="24" viewBox="0 0 24 24" width="24"
-           src="../../../assets/logos/disease.png">
+      <img alt="disease logo" class="material-icons" height="24"
+           ngSrc="../../../assets/logos/disease.png" style="margin-right: 7px" viewBox="0 0 24 24"
+           width="24">
 
       <span>Meine Krankheiten</span>
 
@@ -110,11 +110,11 @@
       </svg>
     </a>
 
-    <a *ngIf="currentUser.recorded" class="card" (click)="navTo('allergien')"
+    <a (click)="navTo('allergien')" *ngIf="currentUser.recorded" class="card"
        routerLink="{{patient_info_view_path}}" style="margin-right: 10px; margin-bottom: 50px">
-      <img class="material-icons" style="margin-right: 7px"
-           height="24" viewBox="0 0 24 24" width="24"
-           src="../../../assets/logos/allergie.png">
+      <img alt="allergie logo" class="material-icons" height="24"
+           ngSrc="../../../assets/logos/allergie.png" style="margin-right: 7px" viewBox="0 0 24 24"
+           width="24">
 
       <span>Meine Allergien</span>
 
@@ -123,11 +123,11 @@
       </svg>
     </a>
 
-    <a *ngIf="currentUser.recorded" class="card" (click)="navTo('medikamenten')"
+    <a (click)="navTo('medikamenten')" *ngIf="currentUser.recorded" class="card"
        routerLink="{{patient_info_view_path}}" style="margin-right: 10px; margin-bottom: 50px">
-      <img class="material-icons" style="margin-right: 7px"
-           height="24" viewBox="0 0 24 24" width="24"
-           src="../../../assets/logos/medikamente.png">
+      <img alt="medikamente logo" class="material-icons" height="24"
+           ngSrc="../../../assets/logos/medikamente.png" style="margin-right: 7px" viewBox="0 0 24 24"
+           width="24">
 
       <span>Meine Medikamenten</span>
 

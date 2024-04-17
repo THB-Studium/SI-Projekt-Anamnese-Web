@@ -9,12 +9,12 @@ describe('AllergyListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AllergyListComponent ],
+      declarations: [AllergyListComponent],
       imports: [
         HttpClientTestingModule
       ],
     })
-    .compileComponents()
+      .compileComponents()
   })
 
   beforeEach(() => {

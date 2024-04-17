@@ -6,26 +6,26 @@
 
     <!-- Position Column -->
     <ng-container matColumnDef="#">
-      <th *matHeaderCellDef mat-header-cell style="width: 5%"> # </th>
-      <td *matCellDef="let personIndex = index" mat-cell> {{personIndex + 1}} </td>
+      <th *matHeaderCellDef mat-header-cell style="width: 5%"> #</th>
+      <td *matCellDef="let personIndex = index" mat-cell> {{ personIndex + 1 }}</td>
     </ng-container>
 
     <!-- examinationName Column -->
     <ng-container matColumnDef="Untersuchungsname">
       <th *matHeaderCellDef mat-header-cell style="width: 25%"> Untersuchungsname</th>
-      <td *matCellDef="let diagnosis" mat-cell> {{diagnosis.examinationName}} </td>
+      <td *matCellDef="let diagnosis" mat-cell> {{ diagnosis.examinationName }}</td>
     </ng-container>
 
     <!-- examinationDate Column -->
     <ng-container matColumnDef="Datum">
       <th *matHeaderCellDef mat-header-cell style="width: 25%"> Datum</th>
-      <td *matCellDef="let diagnosis" mat-cell> {{diagnosis.examinationDate}} </td>
+      <td *matCellDef="let diagnosis" mat-cell> {{ diagnosis.examinationDate }}</td>
     </ng-container>
 
     <!-- bodyRegion Column -->
     <ng-container matColumnDef="Körperteil">
       <th *matHeaderCellDef mat-header-cell style="width: 25%"> Körperteil</th>
-      <td *matCellDef="let diagnosis" mat-cell> {{diagnosis.bodyRegion}} </td>
+      <td *matCellDef="let diagnosis" mat-cell> {{ diagnosis.bodyRegion }}</td>
     </ng-container>
 
     <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>

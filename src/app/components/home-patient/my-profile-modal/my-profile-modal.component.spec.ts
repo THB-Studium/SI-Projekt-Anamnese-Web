@@ -1,9 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { MyProfileModalComponent } from './my-profile-modal.component'
-import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog'
 import { MatIconModule } from '@angular/material/icon'
 import { HeaderComponent } from '../../header/header.component'
+import { MatDialogModule } from '@angular/material/dialog'
 
 describe('MyProfileModalComponent', () => {
   let component: MyProfileModalComponent

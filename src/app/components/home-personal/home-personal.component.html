@@ -25,7 +25,7 @@
       </g>
     </svg>
 
-    <span>SI-Projekt-Anamnese-App läuft auf "{{currentEnvironment}}"!</span>
+    <span>SI-Projekt-Anamnese-App läuft auf "{{ currentEnvironment }}"!</span>
 
     <svg alt="Rocket Ship Smoke" height="1083.632" id="rocket-smoke" viewBox="0 0 516.119 1083.632" width="516.119"
          xmlns="http://www.w3.org/2000/svg">
@@ -44,9 +44,9 @@
 
   <div class="card-container" style="margin-top: 50px">
     <a (click)="navTo('personal-list')" class="card" rel="noopener" style="margin-right: 10px">
-      <img class="material-icons" height="30"
-           src="../../../assets/logos/personal.jpg" style="margin-right: 7px" viewBox="0 0 24 24"
-           width="30">
+      <img alt="personal icon" class="material-icons"
+           height="30" ngSrc="../../../assets/logos/personal.jpg" style="margin-right: 7px"
+           viewBox="0 0 24 24" width="30">
 
       <span>Personal</span>
 
@@ -58,8 +58,8 @@
 
   <div class="card-container" style="margin-top: 50px">
     <a (click)="navTo('patienten')" class="card" rel="noopener" style="margin-right: 10px">
-      <img class="material-icons" height="24"
-           src="../../../assets/logos/patient-logo.png" style="margin-right: 7px" viewBox="0 0 24 24"
+      <img alt="patient icon" class="material-icons" height="24"
+           ngSrc="../../../assets/logos/patient-logo.png" style="margin-right: 7px" viewBox="0 0 24 24"
            width="24">
 
       <span>Patienten</span>
@@ -70,8 +70,8 @@
     </a>
 
     <a (click)="navTo('diagnose')" class="card" style="margin-right: 10px">
-      <img class="material-icons" height="24"
-           src="../../../assets/logos/diagnose.jpg" style="margin-right: 7px" viewBox="0 0 24 24"
+      <img alt="diagnose icon" class="material-icons" height="24"
+           ngSrc="../../../assets/logos/diagnose.jpg" style="margin-right: 7px" viewBox="0 0 24 24"
            width="24">
 
       <span>Diagnose</span>
@@ -82,8 +82,8 @@
     </a>
 
     <a (click)="navTo('krankheiten')" class="card" style="margin-right: 10px">
-      <img class="material-icons" height="24"
-           src="../../../assets/logos/disease.png" style="margin-right: 7px" viewBox="0 0 24 24"
+      <img alt="disease icon" class="material-icons" height="24"
+           ngSrc="../../../assets/logos/disease.png" style="margin-right: 7px" viewBox="0 0 24 24"
            width="24">
 
       <span>Krankheiten</span>
@@ -96,8 +96,8 @@
     <div class="card-container" style="margin-top: 50px">
 
       <a (click)="navTo('allergien')" class="card" style="margin-right: 10px">
-        <img class="material-icons" height="24"
-             src="../../../assets/logos/allergie.png" style="margin-right: 7px" viewBox="0 0 24 24"
+        <img alt="allergie icon" class="material-icons" height="24"
+             ngSrc="../../../assets/logos/allergie.png" style="margin-right: 7px" viewBox="0 0 24 24"
              width="24">
 
         <span>Allergien</span>
@@ -108,8 +108,8 @@
       </a>
 
       <a (click)="navTo('medikamenten')" class="card" style="margin-right: 10px">
-        <img class="material-icons" height="24"
-             src="../../../assets/logos/medikamente.png" style="margin-right: 7px" viewBox="0 0 24 24"
+        <img alt="medikamente icon" class="material-icons" height="24"
+             ngSrc="../../../assets/logos/medikamente.png" style="margin-right: 7px" viewBox="0 0 24 24"
              width="24">
 
         <span>Medikamenten</span>

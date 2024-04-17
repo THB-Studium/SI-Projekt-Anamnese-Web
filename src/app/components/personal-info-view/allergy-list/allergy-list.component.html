@@ -7,13 +7,13 @@
     <!-- Position Column -->
     <ng-container matColumnDef="#">
       <th *matHeaderCellDef mat-header-cell> #</th>
-      <td *matCellDef="let personIndex = index" mat-cell> {{personIndex + 1}} </td>
+      <td *matCellDef="let personIndex = index" mat-cell> {{ personIndex + 1 }}</td>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="allergy">
       <th *matHeaderCellDef mat-header-cell> Allergiename</th>
-      <td *matCellDef="let allergy" mat-cell> {{allergy.name | lowercase}} </td>
+      <td *matCellDef="let allergy" mat-cell> {{ allergy.name | lowercase }}</td>
     </ng-container>
     <!-- Name Column -->
     <ng-container matColumnDef="patient">
@@ -33,8 +33,8 @@
       <td *matCellDef="let allergy" mat-cell style="text-align: right">
 
 
-        <button (click)="onAddNewOrEdit(allergy)" id="edit-button" mat-icon-button
-                matTooltip="edit allergy" disabled>
+        <button (click)="onAddNewOrEdit(allergy)" disabled id="edit-button"
+                mat-icon-button matTooltip="edit allergy">
           <mat-icon class="example-tab-icon">edit</mat-icon>
         </button>
 

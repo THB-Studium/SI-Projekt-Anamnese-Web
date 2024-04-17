@@ -25,7 +25,7 @@ export class HomePersonalComponent implements OnInit {
   }
 
   navTo(tabName: string): void {
-    this.router.navigate([this.personal_info_view_path, {fragment: tabName}])
+    this.router.navigate([this.personal_info_view_path, {fragment: tabName}]).then()
   }
 
 }

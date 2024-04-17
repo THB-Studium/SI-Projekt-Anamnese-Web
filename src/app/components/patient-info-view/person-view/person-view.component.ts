@@ -17,4 +17,7 @@ export class PersonViewComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onFormSubmit(): void {
+  }
+
 }

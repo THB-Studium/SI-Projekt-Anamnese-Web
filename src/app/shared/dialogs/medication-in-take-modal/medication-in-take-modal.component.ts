@@ -1,13 +1,12 @@
-import { Component, Inject, Input, OnInit, ViewChild } from '@angular/core'
+import { Component, Inject, OnInit, ViewChild } from '@angular/core'
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
-import { MatInput } from '@angular/material/input'
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 import { IMedication, IMedicationTO } from '../../../model/medication.interface'
 import { IPerson } from '../../../model/person.interface'
-import { PersonService } from '../../../components/services/person.service'
-import { MatSnackBar } from '@angular/material/snack-bar'
 import { MedicationService } from '../../../components/services/medication.service'
 import { FilterService } from '../../../core/filter.service'
+import { MatInput } from '@angular/material/input'
+import { MatSnackBar } from '@angular/material/snack-bar'
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog'
 
 @Component({
   selector: 'app-medication-in-take-modal',
@@ -15,7 +14,7 @@ import { FilterService } from '../../../core/filter.service'
   styleUrls: ['./medication-in-take-modal.component.css']
 })
 export class MedicationInTakeModalComponent implements OnInit {
-  @ViewChild('startDatumInput', { read: MatInput, static: true }) startDatumInput: MatInput
+  @ViewChild('startDatumInput', {read: MatInput, static: true}) startDatumInput: MatInput
   medicamentInTakeFormGroup: FormGroup
   modalTitle: string
   startDatumCtrl: FormControl
@@ -30,13 +29,13 @@ export class MedicationInTakeModalComponent implements OnInit {
 
   constructor(
     private _formBuilder: FormBuilder,
-    private personService: PersonService,
     private medicationService: MedicationService,
     private filterService: FilterService,
     private snackBar: MatSnackBar,
     public dialogRef: MatDialogRef<MedicationInTakeModalComponent>,
     @Inject(MAT_DIALOG_DATA) public receivedData: any
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.patient = this.receivedData.patient
@@ -70,26 +69,26 @@ export class MedicationInTakeModalComponent implements OnInit {
   }
 
   onBlutverduennungsmittel(event: any): void {
-    this.medicationTO.bloodDiluent = event === 'true' ? true : false
-    this.medication.bloodDiluent = event === 'true' ? true : false
+    this.medicationTO.bloodDiluent = event === 'true'
+    this.medication.bloodDiluent = event === 'true'
   }
 
   applyPatientFilter(filterValue: any): void {
-    if (filterValue && filterValue.value.length >= 2) {
-      this.patientsListFiltered = this.filterService.searchBy(this.patientsList, filterValue.value, 'firstName')
-    } else {
-      this.patientsListFiltered = this.patientsList
-    }
+    this.patientsListFiltered = filterValue && filterValue.value.length >= 2
+      ? this.filterService.searchBy(this.patientsList, filterValue.value, 'firstName')
+      : this.patientsList
   }
 
   displayAutoComplete(patient: IPerson): string {
-    return patient ? patient.firstName + ' ' + patient.lastName : ''
+    return patient
+      ? patient.firstName + ' ' + patient.lastName
+      : ''
   }
 
   private formGroupInit(): void {
     this.startDatumCtrl = new FormControl(
       {value: this.editedMod ? this.medication.startDate : '', disabled: true}
-      )
+    )
     this.startDatumCtrl.valueChanges.subscribe(value => {
       this.medicationTO.startDate = new Date(value)
       this.medication.startDate = new Date(value)
@@ -98,14 +97,15 @@ export class MedicationInTakeModalComponent implements OnInit {
     this.medicamentInTakeFormGroup = this._formBuilder.group({
       patientennameCtrl: [{
         value: this.getPatientName(),
-        disabled: this.receivedData.parent === 'patient'},
+        disabled: this.receivedData.parent === 'patient'
+      },
         Validators.required],
       medikamentnameCtrl: [this.editedMod ? this.medication.designation : '', Validators.required],
       dosierungCtrl: [this.editedMod ? this.medication.dosage : '', Validators.required],
     })
 
     this.medicamentInTakeFormGroup.controls.patientennameCtrl.valueChanges.subscribe(
-      (value: IPerson) => {
+      (value: IPerson): void => {
         this.patient = value
         this.medicationTO.patientId = value.id
         this.medication.person = value
@@ -129,11 +129,11 @@ export class MedicationInTakeModalComponent implements OnInit {
   }
 
   private createMedication(): void {
-    this.medicationService.add(this.medicationTO).subscribe(() => {
+    this.medicationService.add(this.medicationTO).subscribe((): void => {
         console.log('New medication added!')
         this.onNoClick(true)
       },
-      err => {
+      (err: Error): void => {
         console.log('Error in MedicationInTakeModalComponent.createMedication()')
         console.log(err)
         this.searching = false
@@ -145,11 +145,11 @@ export class MedicationInTakeModalComponent implements OnInit {
   }
 
   private updateMedication(): void {
-    this.medicationService.edit(this.medication.id, this.medication).subscribe(() => {
+    this.medicationService.edit(this.medication.id, this.medication).subscribe((): void => {
         console.log('Medication updated!')
         this.onNoClick(true)
       },
-      err => {
+      (err: Error): void => {
         console.log('Error in MedicationInTakeModalComponent.updateMedication()')
         console.log(err)
         this.searching = false
@@ -161,15 +161,9 @@ export class MedicationInTakeModalComponent implements OnInit {
   }
 
   private getPatientName(): IPerson {
-    if (this.receivedData.parent === 'patient') {
-      return this.receivedData.patient
-    } else {
-      if (this.medication && this.medication.person) {
-        return this.medication.person
-      } else {
-        return null
-      }
-    }
+    return this.receivedData.parent === 'patient'
+      ? this.receivedData.patient
+      : this.medication && this.medication.person ? this.medication.person : null
   }
 
 }

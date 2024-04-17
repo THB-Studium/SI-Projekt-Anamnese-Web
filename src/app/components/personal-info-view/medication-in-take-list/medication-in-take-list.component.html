@@ -7,37 +7,37 @@
     <!-- Position Column -->
     <ng-container matColumnDef="#">
       <th *matHeaderCellDef mat-header-cell> #</th>
-      <td *matCellDef="let personIndex = index" mat-cell> {{personIndex + 1}} </td>
+      <td *matCellDef="let personIndex = index" mat-cell> {{ personIndex + 1 }}</td>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="patient">
       <th *matHeaderCellDef mat-header-cell>Patient</th>
-      <td *matCellDef="let medication" mat-cell> {{medication.person?.firstName}} </td>
+      <td *matCellDef="let medication" mat-cell> {{ medication.person?.firstName }}</td>
     </ng-container>
 
     <!-- Weight Column -->
     <ng-container matColumnDef="designation">
       <th *matHeaderCellDef mat-header-cell>Medikamentname</th>
-      <td *matCellDef="let medication" mat-cell> {{medication.designation}} </td>
+      <td *matCellDef="let medication" mat-cell> {{ medication.designation }}</td>
     </ng-container>
 
     <!-- Symbol Column -->
     <ng-container matColumnDef="dosage">
       <th *matHeaderCellDef mat-header-cell>Dosierung</th>
-      <td *matCellDef="let medication" mat-cell> {{medication.dosage}} </td>
+      <td *matCellDef="let medication" mat-cell> {{ medication.dosage }}</td>
     </ng-container>
 
     <!-- Symbol Column -->
     <ng-container matColumnDef="startDate">
       <th *matHeaderCellDef mat-header-cell>Startdatum</th>
-      <td *matCellDef="let medication" mat-cell> {{medication.startDate | date : 'dd-mm-yyyy'}} </td>
+      <td *matCellDef="let medication" mat-cell> {{ medication.startDate | date : 'dd-mm-yyyy' }}</td>
     </ng-container>
 
     <!-- Symbol Column -->
     <ng-container matColumnDef="bloodDiluent">
       <th *matHeaderCellDef mat-header-cell>Blutverdünnungsmittel?</th>
-      <td *matCellDef="let medication" mat-cell> {{medication.bloodDiluent ? 'JA' : 'Nein'}} </td>
+      <td *matCellDef="let medication" mat-cell> {{ medication.bloodDiluent ? 'JA' : 'Nein' }}</td>
     </ng-container>
 
     <!-- Symbol Column -->

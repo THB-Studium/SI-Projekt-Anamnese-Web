@@ -7,31 +7,31 @@
     <!-- Position Column -->
     <ng-container matColumnDef="#">
       <th *matHeaderCellDef mat-header-cell> #</th>
-      <td *matCellDef="let personIndex = index" mat-cell> {{personIndex + 1}} </td>
+      <td *matCellDef="let personIndex = index" mat-cell> {{ personIndex + 1 }}</td>
     </ng-container>
 
     <!-- designation Column -->
     <ng-container matColumnDef="Bezeichnung ">
       <th *matHeaderCellDef mat-header-cell>Bezeichnung</th>
-      <td *matCellDef="let medicationInTake" mat-cell> {{medicationInTake.designation}} </td>
+      <td *matCellDef="let medicationInTake" mat-cell> {{ medicationInTake.designation }}</td>
     </ng-container>
 
     <!-- dosage Column -->
     <ng-container matColumnDef="Dosierung">
       <th *matHeaderCellDef mat-header-cell>Dosierung</th>
-      <td *matCellDef="let medicationInTake" mat-cell> {{medicationInTake.dosage}} </td>
+      <td *matCellDef="let medicationInTake" mat-cell> {{ medicationInTake.dosage }}</td>
     </ng-container>
 
     <!-- startDate Column -->
     <ng-container matColumnDef="Startdatum">
       <th *matHeaderCellDef mat-header-cell>Startdatum</th>
-      <td *matCellDef="let medicationInTake" mat-cell> {{medicationInTake.startDate | date : 'dd-mm-yyyy'}} </td>
+      <td *matCellDef="let medicationInTake" mat-cell> {{ medicationInTake.startDate | date : 'dd-mm-yyyy' }}</td>
     </ng-container>
 
     <!-- bloodDiluent Column -->
     <ng-container matColumnDef="bloodDiluent">
       <th *matHeaderCellDef mat-header-cell>Blutverdünnungsmittel?</th>
-      <td *matCellDef="let medicationInTake" mat-cell> {{medicationInTake.bloodDiluent ? 'JA' : 'Nein'}} </td>
+      <td *matCellDef="let medicationInTake" mat-cell> {{ medicationInTake.bloodDiluent ? 'JA' : 'Nein' }}</td>
     </ng-container>
 
     <!-- Symbol Column -->
@@ -50,7 +50,8 @@
       <td *matCellDef="let medicationInTake" mat-cell style="text-align: right">
 
         <!-- Edit button -->
-        <button (click)="onAddNewOrEdit(medicationInTake)" id="edit-button" mat-icon-button matTooltip="Medikament editieren">
+        <button (click)="onAddNewOrEdit(medicationInTake)" id="edit-button" mat-icon-button
+                matTooltip="Medikament editieren">
           <mat-icon class="example-tab-icon">edit</mat-icon>
         </button>
 

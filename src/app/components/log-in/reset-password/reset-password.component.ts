@@ -4,8 +4,8 @@ import { rootingPath } from '../../../shared/rooting-path'
 // @ts-ignore
 import personsJson from '../../../shared/data/person-list.json'
 import { IPerson } from '../../../model/person.interface'
-import { MatSnackBar } from '@angular/material/snack-bar'
 import { environment } from '../../../../environments/environment'
+import { MatSnackBar } from '@angular/material/snack-bar'
 
 @Component({
   selector: 'app-reset-password',

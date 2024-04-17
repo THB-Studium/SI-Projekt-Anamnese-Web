@@ -4,12 +4,12 @@ import { rootingPath } from '../../shared/rooting-path'
 import { SessionService } from '../../core/authentification-and-authority/session.service'
 import { IPerson } from '../../model/person.interface'
 import { MyProfileModalComponent } from './my-profile-modal/my-profile-modal.component'
-import { MatDialog } from '@angular/material/dialog'
 import { Router } from '@angular/router'
 import { IAddress } from '../../model/address.interface'
 import { PersonService } from '../services/person.service'
-import { MatSnackBar } from '@angular/material/snack-bar'
 import { environment } from '../../../environments/environment'
+import { MatDialog, MatDialogRef } from '@angular/material/dialog'
+import { MatSnackBar } from '@angular/material/snack-bar'
 
 @Component({
   selector: 'app-home-patient',
@@ -42,29 +42,26 @@ export class HomePatientComponent implements OnInit {
 
   openMyProfilModal(): void {
     this.currentUser.address = <IAddress>{}
-    const dialogRef = this.dialog.open(MyProfileModalComponent, {
+    const dialogRef: MatDialogRef<MyProfileModalComponent> = this.dialog.open(MyProfileModalComponent, {
       width: '750px',
       data: {person: this.currentUser, personType: 'patient'}
     })
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed')
-      // this.animal = result
     })
   }
 
   navTo(tabName: string): void {
-    this.router.navigate([this.patient_info_view_path, {fragment: tabName}])
+    this.router.navigate([this.patient_info_view_path, {fragment: tabName}]).then()
   }
 
   private getCurrentUser(): void {
     this.personService.getOne(this.sessionService.getUserId()).subscribe(
-      (person: IPerson) => {
+      (person: IPerson): void => {
         this.currentUser = person
-        console.log(this.currentUser)
       }
       ,
-      err => {
+      (err: Error): void => {
         console.log('Error in HomePatientComponent.getCurrentUser()')
         console.log(err)
         this.snackBar.open('Could not fetch this current user data', 'Close', {

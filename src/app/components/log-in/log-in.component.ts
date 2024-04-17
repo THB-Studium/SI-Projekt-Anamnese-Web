@@ -2,12 +2,12 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core'
 import { Router } from '@angular/router'
 import { LoginService } from './login.service'
 import { SessionService } from '../../core/authentification-and-authority/session.service'
-import { MatSnackBar } from '@angular/material/snack-bar'
 import { IPerson } from '../../model/person.interface'
 import { rootingPath } from '../../shared/rooting-path'
 import { v4 as uuid } from 'uuid'
 import { PersonService } from '../services/person.service'
 import { environment } from '../../../environments/environment'
+import { MatSnackBar } from '@angular/material/snack-bar'
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector

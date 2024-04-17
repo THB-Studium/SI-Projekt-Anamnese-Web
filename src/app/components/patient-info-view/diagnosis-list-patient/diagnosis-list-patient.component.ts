@@ -1,10 +1,10 @@
 import { Component, Input, OnChanges, OnInit, SimpleChange } from '@angular/core'
 import { v4 as uuid } from 'uuid'
 import { DiagnosisService } from '../../services/diagnosis.service'
-import { MatSnackBar } from '@angular/material/snack-bar'
-import { MatDialog } from '@angular/material/dialog'
 import { SessionService } from '../../../core/authentification-and-authority/session.service'
 import { IDiagnosis } from '../../../model/diagnosis.interface'
+import { MatSnackBar } from '@angular/material/snack-bar'
+import { MatDialog } from '@angular/material/dialog'
 
 @Component({
   selector: 'app-diagnosis-list-patient',
@@ -14,7 +14,7 @@ import { IDiagnosis } from '../../../model/diagnosis.interface'
 export class DiagnosisListPatientComponent implements OnInit, OnChanges {
   @Input() patientId: uuid
 
-  displayedColumns: string[] = ['#', 'Untersuchungsname', 'Datum', 'Körperteil']
+  displayedColumns: Array<string> = ['#', 'Untersuchungsname', 'Datum', 'Körperteil']
   diagnosisList: Array<IDiagnosis> = []
 
   constructor(
@@ -30,29 +30,26 @@ export class DiagnosisListPatientComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: { [propertyName: string]: SimpleChange }): void {
-    console.log(changes)
-
     if (changes.patientId && this.patientId) {
       this.listPersonDiagnosis()
     }
-
   }
 
   private listPersonDiagnosis(): void {
     if (!this.patientId) {
       this.patientId = this.sessionService.getUserId()
     }
-    this.diagnosisService.getAllByPersonId(this.patientId).subscribe((diagnosis: any) => {
-        this.diagnosisList = diagnosis
-      },
-      err => {
-        console.log('Error in DiagnosisListPatientComponent.listPersonDiagnosis()')
-        console.log(err)
-        this.snackBar.open('Could not fetch diagnosis', 'Close', {
-          duration: 4000
-        })
-      }
-    )
+
+    this.diagnosisService.getAllByPersonId(this.patientId)
+      .subscribe((diagnosisList: Array<IDiagnosis>) => this.diagnosisList = diagnosisList,
+        (err: Error): void => {
+          console.log('Error in DiagnosisListPatientComponent.listPersonDiagnosis()')
+          console.log(err)
+          this.snackBar.open('Could not fetch diagnosis', 'Close', {
+            duration: 4000
+          })
+        }
+      )
   }
 
 }

@@ -8,12 +8,12 @@ describe('MedicationInTakeListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MedicationInTakeListComponent ],
+      declarations: [MedicationInTakeListComponent],
       imports: [
         // DynamicTestModule, HttpClientTestingModule
       ],
     })
-    .compileComponents()
+      .compileComponents()
   })
 
   beforeEach(() => {

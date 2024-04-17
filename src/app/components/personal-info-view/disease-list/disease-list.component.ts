@@ -1,14 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core'
 import { v4 as uuid } from 'uuid'
 import { DiseaseService } from '../../services/disease.service'
-import { MatSnackBar } from '@angular/material/snack-bar'
-import { MatDialog } from '@angular/material/dialog'
 import { DeleteConfirmationComponent } from '../../../shared/dialogs/delete-confirmation-modal/delete-confirmation.component'
 import { IDeleteConfirmation } from '../../../model/delete-confirmation.interface'
 import { IDisease } from '../../../model/disease.interface'
 import { DiseaseModalComponent } from '../../../shared/dialogs/disease-modal/disease-modal.component'
 import { IPerson } from '../../../model/person.interface'
-import { IllnessService } from '../../services/illness.service'
+import { MatSnackBar } from '@angular/material/snack-bar'
+import { MatDialog, MatDialogRef } from '@angular/material/dialog'
 
 @Component({
   selector: 'app-disease-list',
@@ -16,7 +15,7 @@ import { IllnessService } from '../../services/illness.service'
   styleUrls: ['./disease-list.component.css']
 })
 export class DiseaseListComponent implements OnInit {
-  displayedColumns: string[] = ['#', 'patient', 'preExistingIllness', 'undergoneSurgery', 'surgeryReason', 'action']
+  displayedColumns: Array<string> = ['#', 'patient', 'preExistingIllness', 'undergoneSurgery', 'surgeryReason', 'action']
   diseasesList: Array<IDisease> = []
   @Input() patientsList: Array<IPerson> = []
 
@@ -24,14 +23,15 @@ export class DiseaseListComponent implements OnInit {
     private diseaseService: DiseaseService,
     private snackBar: MatSnackBar,
     public dialog: MatDialog,
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.listDisease()
   }
 
   onAddNewOrEdit(disease?: IDisease): void {
-    const dialogRef = this.dialog.open(DiseaseModalComponent, {
+    const dialogRef: MatDialogRef<DiseaseModalComponent> = this.dialog.open(DiseaseModalComponent, {
       width: '750px',
       data: {update: disease, parent: 'personal', patientsList: this.patientsList}
     })
@@ -44,7 +44,7 @@ export class DiseaseListComponent implements OnInit {
   }
 
   onDelete(disease: IDisease): void {
-    const dialogRef = this.dialog.open(DeleteConfirmationComponent, {
+    const dialogRef: MatDialogRef<DeleteConfirmationComponent> = this.dialog.open(DeleteConfirmationComponent, {
       disableClose: true,
       data: <IDeleteConfirmation>{entityType: 'Disease', entityName: ''}
     })
@@ -58,10 +58,10 @@ export class DiseaseListComponent implements OnInit {
 
 
   private listDisease(): void {
-    this.diseaseService.getAll().subscribe((diseases: any) => {
+    this.diseaseService.getAll().subscribe((diseases: any): void => {
         this.diseasesList = diseases
       },
-      err => {
+      (err: Error): void => {
         console.log('Error in DiseaseListComponent.listDisease()')
         console.log(err)
         this.snackBar.open('Could not fetch diseases', 'Close', {
@@ -72,10 +72,10 @@ export class DiseaseListComponent implements OnInit {
   }
 
   private deleteDisease(diseaseId: uuid): void {
-    this.diseaseService.delete(diseaseId).subscribe(() => {
+    this.diseaseService.delete(diseaseId).subscribe((): void => {
         this.listDisease()
       },
-      err => {
+      (err: Error): void => {
         console.log('Error in DiseaseListComponent.deleteDisease()')
         console.log(err)
         this.snackBar.open('Could not delete disease', 'Close', {

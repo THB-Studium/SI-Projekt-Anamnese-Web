@@ -13,8 +13,8 @@ import { constant } from '../../shared/constante'
 })
 export class HeaderComponent implements OnInit {
   @Input() title: string
-  currentUserName: string
 
+  currentUserName: string
   readonly homePath: string
 
   constructor(
@@ -40,7 +40,7 @@ export class HeaderComponent implements OnInit {
   }
 
   toHomePage(): void {
-    this.router.navigate([this.homePath])
+    this.router.navigate([this.homePath]).then()
   }
 
 }

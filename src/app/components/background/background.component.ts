@@ -9,8 +9,11 @@ import { environment } from '../../../environments/environment'
 export class BackgroundComponent implements OnInit {
   readonly currentEnvironment: string
 
-  constructor() { this.currentEnvironment = environment.currentEnvironment }
+  constructor() {
+    this.currentEnvironment = environment.currentEnvironment
+  }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+  }
 
 }

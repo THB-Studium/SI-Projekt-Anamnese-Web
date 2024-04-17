@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute, Router } from '@angular/router'
-import { MatTabChangeEvent } from '@angular/material/tabs'
+import { MatLegacyTabChangeEvent as MatTabChangeEvent } from '@angular/material/legacy-tabs'
 import { rootingPath } from '../../shared/rooting-path'
 import { IPerson } from '../../model/person.interface'
 import { PersonService } from '../services/person.service'
@@ -13,15 +13,15 @@ import { MatSnackBar } from '@angular/material/snack-bar'
   styleUrls: ['./patient-info-view.component.css']
 })
 export class PatientInfoViewComponent implements OnInit {
-  currentUser: IPerson = <IPerson>{}
   headerTitle: string = 'Patient information view'
+  currentUser: IPerson = <IPerson>{}
+  tabIndex: number
 
   readonly allergien: string = 'allergien'
   readonly diagnose: string = 'diagnose'
   readonly krankheiten: string = 'krankheiten'
   readonly medikamenten: string = 'medikamenten'
 
-  tabIndex: number
 
   constructor(
     private router: Router,
@@ -34,7 +34,8 @@ export class PatientInfoViewComponent implements OnInit {
     this.getCurrentUser()
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+  }
 
   activeTab(): void {
     const fragment: string = this.route.snapshot.params.fragment
@@ -48,7 +49,9 @@ export class PatientInfoViewComponent implements OnInit {
       case this.allergien:
         this.tabIndex = 2
         break
-      case this.medikamenten: this.tabIndex = 3; break
+      case this.medikamenten:
+        this.tabIndex = 3
+        break
     }
   }
 
@@ -64,22 +67,24 @@ export class PatientInfoViewComponent implements OnInit {
       case 2:
         this.navTo(this.allergien)
         break
-      case 3:  this.navTo(this.medikamenten); break
+      case 3:
+        this.navTo(this.medikamenten)
+        break
     }
   }
 
   private navTo(fragment: string): void {
-    this.router.navigate([rootingPath.patient_info_view, {fragment: fragment}])
+    this.router.navigate([rootingPath.patient_info_view, {fragment: fragment}]).then()
   }
 
   private getCurrentUser(): void {
     this.personService.getOne(this.sessionService.getUserId()).subscribe(
-      (person: IPerson) => {
+      (person: IPerson): void => {
         this.currentUser = person
         console.log(this.currentUser)
       }
       ,
-      err => {
+      (err: Error): void => {
         console.log('Error in PatientInfoViewComponent.getCurrentUser()')
         console.log(err)
         this.snackBar.open('Could not fetch this current user data', 'Close', {

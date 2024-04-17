@@ -1,5 +1,5 @@
-@use '~node_modules/@angular/material' as mat;
-@import '~node_modules/@angular/material/theming';
+@use '@angular/material' as mat;
+@import '@angular/material/theming';
 
 $mat-cu-grey: (
   50: #f0f4f4,
@@ -143,12 +143,16 @@ $mat-cu-red: (
 // $insp-app-accent: mat-palette($mat-cu-dark-blue);
 // $insp-app-warn: mat-palette($mat-cu-red);
 
-//$insp-app-primary: mat.define-palette(mat.$indigo-palette, 500, 200, 800);
-//$insp-app-accent: mat.define-palette(mat.$light-green-palette, 600, 300, 900);
-//$insp-app-warn: mat.define-palette(mat.$red-palette, 700, 300, 900);
-//$insp-app-default-theme: mat.define-light-theme($insp-app-primary, $insp-app-accent, $insp-app-warn);
+$insp-app-primary: mat.define-palette(mat.$indigo-palette, 500, 200, 800);
+$insp-app-accent: mat.define-palette(mat.$light-green-palette, 600, 300, 900);
+$insp-app-warn: mat.define-palette(mat.$red-palette, 700, 300, 900);
+$insp-app-default-theme: mat.define-light-theme((
+  color: (primary: $insp-app-primary, accent: $insp-app-accent, warn: $insp-app-warn)
+));
 
-//$insp-app-yellow-primary: mat.define-palette(mat.$blue-palette, 500, 200, 800);
-//$insp-app-yellow-accent: mat.define-palette(mat.$amber-palette, 600, 300, 900);
-//$insp-app-yellow-warn: mat.define-palette(mat.$red-palette, 700, 300, 900);
-//$insp-app-yellow-theme: mat.define-light-theme($insp-app-yellow-primary, $insp-app-yellow-accent, $insp-app-yellow-warn);
+$insp-app-yellow-primary: mat.define-palette(mat.$blue-palette, 500, 200, 800);
+$insp-app-yellow-accent: mat.define-palette(mat.$amber-palette, 600, 300, 900);
+$insp-app-yellow-warn: mat.define-palette(mat.$red-palette, 700, 300, 900);
+$insp-app-yellow-theme: mat.define-light-theme((
+  color: (primary: $insp-app-yellow-primary, accent: $insp-app-yellow-accent, warn: $insp-app-yellow-warn)
+));

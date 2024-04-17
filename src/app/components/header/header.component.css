@@ -24,17 +24,21 @@ table {
   font-size: 13px;
   margin-top: 3%;
 }
+
 #user-name, #Log-out {
   display: flex;
   justify-content: flex-end;
 }
+
 #logout-logo, #user-name, #Log-out {
   background: unset;
   border: none;
 }
+
 #user-Icon {
   margin-right: 8px;
 }
+
 #logout-logo {
   right: 50px;
 }

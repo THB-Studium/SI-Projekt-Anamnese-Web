@@ -2,12 +2,12 @@ import { Component, Input, OnInit } from '@angular/core'
 import { v4 as uuid } from 'uuid'
 import { IDiagnosis } from '../../../model/diagnosis.interface'
 import { DiagnosisService } from '../../services/diagnosis.service'
-import { MatSnackBar } from '@angular/material/snack-bar'
-import { MatDialog } from '@angular/material/dialog'
 import { DeleteConfirmationComponent } from '../../../shared/dialogs/delete-confirmation-modal/delete-confirmation.component'
 import { IDeleteConfirmation } from '../../../model/delete-confirmation.interface'
 import { DiagnosisModalComponent } from '../../../shared/dialogs/diagnosis-modal/diagnosis-modal.component'
 import { IPerson } from '../../../model/person.interface'
+import { MatSnackBar } from '@angular/material/snack-bar'
+import { MatDialog, MatDialogRef } from '@angular/material/dialog'
 
 @Component({
   selector: 'app-diagnosis-list',
@@ -17,21 +17,22 @@ import { IPerson } from '../../../model/person.interface'
 export class DiagnosisListComponent implements OnInit {
   @Input() patientsList: Array<IPerson> = []
 
-  displayedColumns: string[] = ['#', 'patient', 'examinations', 'date', 'type', 'action']
+  displayedColumns: Array<string> = ['#', 'patient', 'examinations', 'date', 'type', 'action']
   diagnosisList: Array<IDiagnosis> = []
 
   constructor(
     private diagnosisService: DiagnosisService,
     private snackBar: MatSnackBar,
     public dialog: MatDialog,
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.listDiagnosis()
   }
 
   onAddNewOrEdit(diagnosis?: IDiagnosis): void {
-    const dialogRef = this.dialog.open(DiagnosisModalComponent, { // TODO
+    const dialogRef: MatDialogRef<DiagnosisModalComponent> = this.dialog.open(DiagnosisModalComponent, { // TODO
       width: '750px',
       data: diagnosis
     })
@@ -44,7 +45,7 @@ export class DiagnosisListComponent implements OnInit {
   }
 
   onDelete(diagnosis: IDiagnosis): void {
-    const dialogRef = this.dialog.open(DeleteConfirmationComponent, {
+    const dialogRef: MatDialogRef<DeleteConfirmationComponent> = this.dialog.open(DeleteConfirmationComponent, {
       disableClose: true,
       data: <IDeleteConfirmation>{entityType: 'Diagnosis', entityName: diagnosis.examinationName}
     })
@@ -57,10 +58,10 @@ export class DiagnosisListComponent implements OnInit {
   }
 
   private saveOnAddNew(diagnosis: IDiagnosis): void {
-    this.diagnosisService.add(diagnosis).subscribe(() => {
+    this.diagnosisService.add(diagnosis).subscribe((): void => {
         this.listDiagnosis()
       },
-      err => {
+      (err: Error): void => {
         console.log('Error in DiagnosisListComponent.saveAddNewDiagnosis()')
         console.log(err)
         this.snackBar.open('Could not add this allergy', 'Close', {
@@ -71,10 +72,10 @@ export class DiagnosisListComponent implements OnInit {
   }
 
   private saveOnEdit(diagnosisId: uuid, update: IDiagnosis): void {
-    this.diagnosisService.edit(diagnosisId, update).subscribe(() => {
+    this.diagnosisService.edit(diagnosisId, update).subscribe((): void => {
         this.listDiagnosis()
       },
-      err => {
+      (err: Error): void => {
         console.log('Error in DiagnosisListComponent.saveEditDiagnosis()')
         console.log(err)
         this.snackBar.open('Could not edit this diagnosis', 'Close', {
@@ -85,10 +86,10 @@ export class DiagnosisListComponent implements OnInit {
   }
 
   private listDiagnosis(): void {
-    this.diagnosisService.getAll().subscribe((diagnosis: any) => {
+    this.diagnosisService.getAll().subscribe((diagnosis: any): void => {
         this.diagnosisList = diagnosis
       },
-      err => {
+      (err: Error): void => {
         console.log('Error in DiagnosisListComponent.listDiagnosis()')
         console.log(err)
         this.snackBar.open('Could not fetch diagnosis', 'Close', {
@@ -99,10 +100,10 @@ export class DiagnosisListComponent implements OnInit {
   }
 
   private deleteDiagnosis(diagnosisId: uuid): void {
-    this.diagnosisService.delete(diagnosisId).subscribe(() => {
+    this.diagnosisService.delete(diagnosisId).subscribe((): void => {
         this.listDiagnosis()
       },
-      err => {
+      (err: Error): void => {
         console.log('Error in DiagnosisListComponent.deleteDiagnosis()')
         console.log(err)
         this.snackBar.open('Could not delete diagnosis', 'Close', {

@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { AllergyModalComponent } from './allergy-modal.component'
-import { MatDialogModule } from '@angular/material/dialog'
+import { MatLegacyDialogModule as MatDialogModule } from '@angular/material/legacy-dialog'
 
 describe('AllergyModalComponent', () => {
   let component: AllergyModalComponent

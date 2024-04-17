@@ -1,8 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { MedicationInTakeListPatientComponent } from './medication-in-take-list-patient.component'
-import { MatDialogModule } from '@angular/material/dialog'
-import { MatIconModule } from '@angular/material/icon'
 import { HttpClientTestingModule } from '@angular/common/http/testing'
 
 describe('MedicationInTakeListPatientComponent', () => {

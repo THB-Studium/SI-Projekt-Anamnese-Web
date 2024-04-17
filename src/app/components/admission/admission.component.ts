@@ -8,10 +8,10 @@ import { Component, OnInit } from '@angular/core'
 export class AdmissionComponent implements OnInit {
   headerTitle: string = 'Aufname'
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
-    console.log('admin component work')
   }
 
 }

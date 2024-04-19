@@ -1,6 +1,6 @@
 <div class="row" style="text-align: center">
   <h3>
-    {{modalTitle}}
+    {{ modalTitle }}
   </h3>
 </div>
 
@@ -11,11 +11,11 @@
 
   <mat-form-field style="width: 45%">
     <mat-label>Patient</mat-label>
-    <input formControlName="patientennameCtrl" [matAutocomplete]="patientAutoComplete"
-           matInput placeholder="Patientenname" (keyup)="applyPatientFilter($event.target)"  required>
+    <input (keyup)="applyPatientFilter($event.target)" [matAutocomplete]="patientAutoComplete"
+           formControlName="patientennameCtrl" matInput placeholder="Patientenname" required>
     <mat-autocomplete #patientAutoComplete="matAutocomplete" [displayWith]="displayAutoComplete">
       <mat-option *ngFor="let patient of patientsListFiltered" [value]="patient">
-        <span>{{patient.firstName}} {{patient.lastName}}</span>
+        <span>{{ patient.firstName }} {{ patient.lastName }}</span>
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
@@ -25,7 +25,7 @@
     <input formControlName="medikamentnameCtrl" matInput placeholder="Medikamentname (Designation)" required>
   </mat-form-field>
 
-  <mat-form-field  style="width: 45%">
+  <mat-form-field style="width: 45%">
     <mat-label>Dosierung</mat-label>
     <input formControlName="dosierungCtrl" matInput placeholder="Dosierung" required>
   </mat-form-field>
@@ -43,9 +43,12 @@
   </mat-form-field>
 
   <div style="width: 45%">
-    <mat-label>Blutverdünnungsmittel</mat-label><br>
-    <mat-button-toggle-group appearance="legacy" name="blutverdünnungsmittel" (change)="onBlutverduennungsmittel($event.value)"
-                             aria-label="Font Style" [value]="medicationTO.bloodDiluent ? 'true' : 'false'" required>
+    <mat-label>Blutverdünnungsmittel</mat-label>
+    <br>
+    <mat-button-toggle-group (change)="onBlutverduennungsmittel($event.value)"
+                             [value]="medicationTO.bloodDiluent ? 'true' : 'false'"
+                             appearance="legacy"
+                             aria-label="Font Style" name="blutverdünnungsmittel">
       <mat-button-toggle value="true">Ja</mat-button-toggle>
       <mat-button-toggle value="false">Nein</mat-button-toggle>
     </mat-button-toggle-group>
@@ -54,7 +57,9 @@
 
   <div style="text-align: right">
     <button (click)="onNoClick(false)" mat-button>Abbrechen</button>
-    <button [disabled]="!medicamentInTakeFormGroup.valid || !medication.startDate || searching"
-            (click)="onSave()" color="primary" mat-button>{{!searching ? 'Bestätigen' : 'Bestätigen...'}}</button>
+    <button (click)="onSave()"
+            [disabled]="!medicamentInTakeFormGroup.valid || !medication.startDate || searching" color="primary"
+            mat-button>{{ !searching ? 'Bestätigen' : 'Bestätigen...' }}
+    </button>
   </div>
 </form>

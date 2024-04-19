@@ -1,4 +1,4 @@
-export const rootingPath = {
+export const rootingPaths = {
   login: 'login',
   home_patient: 'home_patient',
   home_personal: 'home_personal',

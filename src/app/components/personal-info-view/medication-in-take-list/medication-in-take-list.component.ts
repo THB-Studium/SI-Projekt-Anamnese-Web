@@ -1,13 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core'
 import { v4 as uuid } from 'uuid'
-import { MedicationService } from '../../services/medication.service'
-import { DeleteConfirmationComponent } from '../../../shared/dialogs/delete-confirmation-modal/delete-confirmation.component'
+import { MedicationService } from '../../../services/medication.service'
 import { IDeleteConfirmation } from '../../../model/delete-confirmation.interface'
 import { IMedication } from '../../../model/medication.interface'
 import { MedicationInTakeModalComponent } from '../../../shared/dialogs/medication-in-take-modal/medication-in-take-modal.component'
 import { IPerson } from '../../../model/person.interface'
 import { MatSnackBar } from '@angular/material/snack-bar'
 import { MatDialog, MatDialogRef } from '@angular/material/dialog'
+import { DeleteConfirmationComponent } from '../../../shared/dialogs/delete-confirmation/delete-confirmation.component'
 
 @Component({
   selector: 'app-medication-in-take-list',

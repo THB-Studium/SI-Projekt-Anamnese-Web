@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { rootingPath } from '../../shared/rooting-path'
+import { rootingPaths } from '../../shared/const/rooting-paths'
 import { Router } from '@angular/router'
 import { environment } from '../../../environments/environment'
 
@@ -17,7 +17,7 @@ export class HomePersonalComponent implements OnInit {
     private router: Router
   ) {
     this.headerTitle = 'Administration - Home'
-    this.personal_info_view_path = '/' + rootingPath.personal_info_view
+    this.personal_info_view_path = '/' + rootingPaths.personal_info_view
     this.currentEnvironment = environment.currentEnvironment
   }
 

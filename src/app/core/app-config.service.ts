@@ -1,6 +1,6 @@
 import { environment } from '../../environments/environment'
 import { Injectable } from '@angular/core'
-import { CONFIG, EnvConfig } from '../shared/env.config'
+import { CONFIG, EnvConfig } from '../shared/const/env.config'
 
 @Injectable()
 export class AppConfigService {

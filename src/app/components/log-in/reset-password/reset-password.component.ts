@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { rootingPath } from '../../../shared/rooting-path'
+import { rootingPaths } from '../../../shared/const/rooting-paths'
 
 // @ts-ignore
 import personsJson from '../../../shared/data/person-list.json'
@@ -29,7 +29,7 @@ export class ResetPasswordComponent implements OnInit {
   constructor(
     private snackBar: MatSnackBar
   ) {
-    this.login_path = rootingPath.login
+    this.login_path = rootingPaths.login
     this.currentEnvironment = environment.currentEnvironment
   }
 

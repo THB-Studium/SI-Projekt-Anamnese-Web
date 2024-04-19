@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core'
 import { HttpClient, HttpParams } from '@angular/common/http'
 import { map } from 'rxjs/operators'
 import { v4 as uuid } from 'uuid'
-import { AppConfigService } from '../../core/app-config.service'
-import { IPerson, IPersonTO } from '../../model/person.interface'
+import { AppConfigService } from '../core/app-config.service'
+import { IPerson, IPersonTO } from '../model/person.interface'
 
 
 @Injectable({providedIn: 'root'})

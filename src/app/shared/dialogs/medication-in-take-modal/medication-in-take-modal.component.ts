@@ -2,7 +2,7 @@ import { Component, Inject, OnInit, ViewChild } from '@angular/core'
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { IMedication, IMedicationTO } from '../../../model/medication.interface'
 import { IPerson } from '../../../model/person.interface'
-import { MedicationService } from '../../../components/services/medication.service'
+import { MedicationService } from '../../../services/medication.service'
 import { FilterService } from '../../../core/filter.service'
 import { MatInput } from '@angular/material/input'
 import { MatSnackBar } from '@angular/material/snack-bar'
@@ -68,7 +68,7 @@ export class MedicationInTakeModalComponent implements OnInit {
     this.dialogRef.close({answer: dataSaved})
   }
 
-  onBlutverduennungsmittel(event: any): void {
+  onBlutverduennungsmittel(event: string): void {
     this.medicationTO.bloodDiluent = event === 'true'
     this.medication.bloodDiluent = event === 'true'
   }

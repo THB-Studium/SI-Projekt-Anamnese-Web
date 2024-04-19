@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, OnInit, SimpleChange } from '@angular/core'
 import { v4 as uuid } from 'uuid'
-import { DiagnosisService } from '../../services/diagnosis.service'
+import { DiagnosisService } from '../../../services/diagnosis.service'
 import { SessionService } from '../../../core/authentification-and-authority/session.service'
 import { IDiagnosis } from '../../../model/diagnosis.interface'
 import { MatSnackBar } from '@angular/material/snack-bar'

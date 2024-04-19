@@ -1,14 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core'
 import { IAllergy, IPerson } from '../../../model/person.interface'
-import { AllergyService } from '../../services/allergy.service'
+import { AllergyService } from '../../../services/allergy.service'
 import { SessionService } from '../../../core/authentification-and-authority/session.service'
 import { AllergyModalComponent } from '../../../shared/dialogs/allergy-modal/allergy-modal.component'
-import { DeleteConfirmationComponent } from '../../../shared/dialogs/delete-confirmation-modal/delete-confirmation.component'
 import { IDeleteConfirmation } from '../../../model/delete-confirmation.interface'
-import { PersonService } from '../../services/person.service'
+import { PersonService } from '../../../services/person.service'
 import { v4 as uuid } from 'uuid'
 import { MatSnackBar } from '@angular/material/snack-bar'
 import { MatDialog, MatDialogRef } from '@angular/material/dialog'
+import { DeleteConfirmationComponent } from '../../../shared/dialogs/delete-confirmation/delete-confirmation.component'
 
 @Component({
   selector: 'app-allergy-list-patient',

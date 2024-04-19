@@ -1,13 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core'
 import { v4 as uuid } from 'uuid'
-import { DiseaseService } from '../../services/disease.service'
-import { DeleteConfirmationComponent } from '../../../shared/dialogs/delete-confirmation-modal/delete-confirmation.component'
+import { DiseaseService } from '../../../services/disease.service'
 import { IDeleteConfirmation } from '../../../model/delete-confirmation.interface'
 import { IDisease } from '../../../model/disease.interface'
 import { DiseaseModalComponent } from '../../../shared/dialogs/disease-modal/disease-modal.component'
 import { IPerson } from '../../../model/person.interface'
 import { MatSnackBar } from '@angular/material/snack-bar'
 import { MatDialog, MatDialogRef } from '@angular/material/dialog'
+import { DeleteConfirmationComponent } from '../../../shared/dialogs/delete-confirmation/delete-confirmation.component'
 
 @Component({
   selector: 'app-disease-list',

@@ -7,6 +7,7 @@
 // @import '~@angular/material/_theming';
 
 @import 'theme';
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
 
 // TODO(v15): As of v15 mat.legacy-core no longer includes default typography styles.
 //  The following line adds:
@@ -36,14 +37,33 @@
   @include mat.all-legacy-component-themes($insp-app-yellow-theme);
 }
 
-html {
+html, body, table {
   width: 100%;
+}
+
+html, body {
   height: 100%;
 }
 
 body {
-  width: 100%;
-  height: 100%;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.spacer5 {
+  margin-top: 5px;
+}
+
+.spacer10 {
+  margin-top: 10px;
+}
+
+.spacer30 {
+  margin-top: 100px;
+}
+
+.button-row button {
+  margin-right: 5px;
 }
 
 .pointer {

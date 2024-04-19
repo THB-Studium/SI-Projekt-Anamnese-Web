@@ -1,0 +1,51 @@
+.toolbar {
+  padding: 0 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: right;
+
+  background-color: #1976d2;
+  color: white;
+
+  font-weight: 600;
+}
+
+.toolbar,
+#user-name-button b {
+  text-transform: capitalize;
+}
+
+.toolbar img {
+  cursor: pointer;
+  width: 60px;
+}
+
+#title-span {
+  margin-left: 10px;
+}
+
+#user-name-button,
+#logout-button {
+  background: unset;
+  border: none;
+
+  display: flex;
+  justify-content: flex-end;
+  margin-left: auto;
+}
+
+#user-name-button mat-icon {
+  position: absolute;
+  margin-right: 2cm;
+  margin-top: -2px;
+}
+
+#logout-button {
+  width: 25px;
+  height: 25px;
+}
+
+#logout-button img {
+  color: white !important;
+}

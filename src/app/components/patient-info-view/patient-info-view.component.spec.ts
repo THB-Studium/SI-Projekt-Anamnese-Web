@@ -5,7 +5,7 @@ import { RouterTestingModule } from '@angular/router/testing'
 import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { AppConfigService } from '../../core/app-config.service'
 import { SessionService } from '../../core/authentification-and-authority/session.service'
-import { PersonService } from '../services/person.service'
+import { PersonService } from '../../services/person.service'
 import { MatSnackBarModule } from '@angular/material/snack-bar'
 
 describe('PatientInfoViewComponent', () => {

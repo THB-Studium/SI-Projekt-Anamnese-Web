@@ -1,13 +1,12 @@
 import { IPerson, IPersonTO } from '../../../model/person.interface'
 import { Component, Inject, OnInit } from '@angular/core'
-import { Router } from '@angular/router'
-import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar'
-import { MatLegacyDialogRef as MatDialogRef, MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
-import { PersonService } from '../../../components/services/person.service'
+import { PersonService } from '../../../services/person.service'
 import { MyProfileModalComponent } from '../../../components/home-patient/my-profile-modal/my-profile-modal.component'
-import { rootingPath } from '../../rooting-path'
-import { geheimfragen, genderConstants, maritalStatusValues } from '../../constante'
+import { rootingPaths } from '../../const/rooting-paths'
+import { geheimfragen, genderConstants, maritalStatusValues } from '../../const/constante'
+import { MatSnackBar } from '@angular/material/snack-bar'
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog'
 
 @Component({
   selector: 'app-start-new-registration-modal',
@@ -31,7 +30,7 @@ export class StartNewRegistrationModalComponent implements OnInit {
   hidePassword1: boolean = true
   hidePassword2: boolean = true
 
-  userCreted: boolean
+  userCreated: boolean
   berich: string = ''
 
   readonly login_path: string
@@ -39,22 +38,21 @@ export class StartNewRegistrationModalComponent implements OnInit {
   private personsList: Array<IPerson> = []
 
   constructor(
-    private router: Router,
     private _formBuilder: FormBuilder,
     private snackBar: MatSnackBar,
     private personService: PersonService,
     public dialogRef: MatDialogRef<MyProfileModalComponent>,
     @Inject(MAT_DIALOG_DATA) public receivedData: any
   ) {
-    this.login_path = rootingPath.login
+    this.login_path = rootingPaths.login
   }
 
   ngOnInit(): void {
     this.receivedData.personType === 'patient'
-      ? this.modalTitle  = 'Neue Patientenregistrierung'
-      : this.modalTitle  = 'Neue Personalregistrierung'
+      ? this.modalTitle = 'Neue Patientenregistrierung'
+      : this.modalTitle = 'Neue Personalregistrierung'
 
-    this.initperson()
+    this.initPerson()
     this.formGroupInit()
     this.listPersons()
   }
@@ -63,13 +61,16 @@ export class StartNewRegistrationModalComponent implements OnInit {
     this.dialogRef.close({answer: answerValue})
   }
 
-  onHasChildren(event: any): void {
-    this.person.children = event === 'true' ? true : false
+  onHasChildren(event: string): void {
+    this.person.children = event === 'true'
   }
 
-  checkForUnicness(): void {
-    const personFound = this.personsList.filter((person: IPerson) => person.userName === this.person.userName)
-    if (personFound.length > 0) {
+  checkForUniqueness(): void {
+    const personExist: boolean = this.personsList
+      .filter((person: IPerson): boolean => person.userName === this.person.userName)
+      .length > 0
+
+    if (personExist) {
       this.person.userName += '_' + Math.floor(Math.random() * 3).toString()
       this.zugangdatenFormGroup.controls['benutzernameCtrl'].setValue([this.person.userName])
     }
@@ -97,7 +98,7 @@ export class StartNewRegistrationModalComponent implements OnInit {
       vornameCtrl: ['', Validators.required],
       nachnameCtrl: ['', Validators.required],
       berufCtrl: '',
-      groeßeCtrl: '',
+      groesseCtrl: '',
       gewichtCtrl: '',
       familienstandCtrl: '',
     })
@@ -130,7 +131,7 @@ export class StartNewRegistrationModalComponent implements OnInit {
 
     // Personenbezogene Daten:
     this.personenbezogeneFormGroup.controls['vornameCtrl'].valueChanges.subscribe(
-      (firstName: string) => {
+      (firstName: string): void => {
         this.person.firstName = firstName
         const editedFirstName = firstName.split(' ')[0].toLowerCase()
         this.person.userName = editedFirstName
@@ -138,65 +139,65 @@ export class StartNewRegistrationModalComponent implements OnInit {
       })
 
     this.personenbezogeneFormGroup.controls['nachnameCtrl'].valueChanges.subscribe(
-      (lastName: string) => {
+      (lastName: string): void => {
         this.person.lastName = lastName
-        const editedFirstName = this.person.firstName.split(' ')[0].toLowerCase()
-        const editedLastName = lastName.split(' ')[0]
-        this.person.userName = editedFirstName + this.firstLatterToUpperCase(editedLastName)
+        const editedFirstName: string = this.person.firstName.split(' ')[0].toLowerCase()
+        const editedLastName: string = lastName.split(' ')[0]
+        this.person.userName = editedFirstName + this.firstLetterToUpperCase(editedLastName)
         console.log(this.person.userName)
       })
 
     this.personenbezogeneFormGroup.controls['berufCtrl'].valueChanges.subscribe(
-      (beruf: string) => {
+      (beruf: string): void => {
         this.person.profession = beruf
       })
 
-    this.personenbezogeneFormGroup.controls['groeßeCtrl'].valueChanges.subscribe(
-      (groeße: string) => {
+    this.personenbezogeneFormGroup.controls['groesseCtrl'].valueChanges.subscribe(
+      (groeße: string): void => {
         this.person.height = +groeße
       })
 
     this.personenbezogeneFormGroup.controls['gewichtCtrl'].valueChanges.subscribe(
-      (gewicht: string) => {
+      (gewicht: string): void => {
         this.person.weight = +gewicht
       })
 
     this.personenbezogeneFormGroup.controls['familienstandCtrl'].valueChanges.subscribe(
-      (maritalStatus: string) => {
+      (maritalStatus: string): void => {
         this.person.maritalStatus = maritalStatus
       })
 
 
     // Kontaktdaten:
     this.kontaktdatenFormGroup.controls['handyNumberCtrl'].valueChanges.subscribe(
-      (handynumber: string) => {
+      (handynumber: string): void => {
         this.person.phoneNumber = '+49' + handynumber
       })
 
     this.kontaktdatenFormGroup.controls['emailCtrl'].valueChanges.subscribe(
-      (email: string) => {
+      (email: string): void => {
         this.person.email = email
       })
 
 
     // Anschrift Infos:
     this.anschriftFormGroup.controls['strasseCtrl'].valueChanges.subscribe(
-      (strasse: string) => {
+      (strasse: string): void => {
         this.person.streetAndNumber = strasse
       })
 
     this.anschriftFormGroup.controls['plzCtrl'].valueChanges.subscribe(
-      (plz: string) => {
+      (plz: string): void => {
         this.person.postalCode = plz
       })
 
     this.anschriftFormGroup.controls['landCtrl'].valueChanges.subscribe(
-      (land: string) => {
+      (land: string): void => {
         this.person.country = land
       })
 
     this.anschriftFormGroup.controls['stadtCtrl'].valueChanges.subscribe(
-      (stadt: string) => {
+      (stadt: string): void => {
         this.person.city = stadt
       })
 
@@ -205,37 +206,38 @@ export class StartNewRegistrationModalComponent implements OnInit {
     let password: string = ''
 
     this.zugangdatenFormGroup.controls['passwort1Ctrl'].valueChanges.subscribe(
-      (passwort1: string) => {
+      (passwort1: string): void => {
         password = passwort1
       })
 
     this.zugangdatenFormGroup.controls['passwort2Ctrl'].valueChanges.subscribe(
-      (passwort2: string) => {
+      (passwort2: string): void => {
         password === passwort2
           ? this.person.password = passwort2
           : this.snackBar.open(
-          'Die Passwörter stimmen nicht überein!', 'Close',
-          {duration: 5000}
+            'Die Passwörter stimmen nicht überein!', 'Close',
+            {duration: 5000}
           )
       })
 
     this.zugangdatenFormGroup.controls['geheimfrageCtrl'].valueChanges.subscribe(
-      (geheimfrage: string) => {
+      (geheimfrage: string): void => {
         this.person.secretQuestion = geheimfrage
       })
 
     this.zugangdatenFormGroup.controls['antwortCtrl'].valueChanges.subscribe(
-      (antwort: string) => {
+      (antwort: string): void => {
         this.person.answer = antwort
       })
 
   }
 
-  private firstLatterToUpperCase(text: string): string {
-    return text.toLowerCase().replace(/^[a-zA-z]|\s(.)/ig, L => L.toUpperCase())
+  private firstLetterToUpperCase(text: string): string {
+    return text.toLowerCase()
+      .replace(/^[a-zA-z]|\s(.)/ig, (letter: string) => letter.toUpperCase())
   }
 
-  private initperson(): void {
+  private initPerson(): void {
     this.person = <IPersonTO>{
       userName: null,
       password: null,
@@ -271,10 +273,10 @@ export class StartNewRegistrationModalComponent implements OnInit {
   }
 
   private listPersons(): void {
-    this.personService.getAll().subscribe((data: any) => {
+    this.personService.getAll().subscribe((data: any): void => {
         this.personsList = data
       },
-      err => {
+      (err: Error): void => {
         console.log('Error in NewRegistrationModalComponent.listPersons()')
         console.log(err)
         this.snackBar.open('Could not fetch persons', 'Close', {
@@ -285,12 +287,12 @@ export class StartNewRegistrationModalComponent implements OnInit {
   }
 
   private createPerson(): void {
-    this.personService.add(this.person).subscribe(() => {
-        this.userCreted = true
+    this.personService.add(this.person).subscribe((): void => {
+        this.userCreated = true
         this.berich = 'Registrierung abgeschlossen: Benutzer erfolgreich registriert!'
       },
-      err => {
-        this.userCreted = false
+      (err: Error): void => {
+        this.userCreated = false
         this.berich = 'Error: Benutzer nicht erfolgreich registriert!'
 
         console.log('Error in NewRegistrationModalComponent.listPersons()')

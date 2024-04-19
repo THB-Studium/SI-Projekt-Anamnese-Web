@@ -1,12 +1,12 @@
 import { Component, Inject, OnInit } from '@angular/core'
-import { MatLegacyDialogRef as MatDialogRef, MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog'
 import { IAllergy, IAllergyTO, IPerson } from '../../../model/person.interface'
-import { AllergyService } from '../../../components/services/allergy.service'
+import { AllergyService } from '../../../services/allergy.service'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
-import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar'
-import { PersonService } from '../../../components/services/person.service'
-import { allergyValues } from '../../constante'
+import { PersonService } from '../../../services/person.service'
+import { allergyValues } from '../../const/constante'
 import { FilterService } from '../../../core/filter.service'
+import { MatSnackBar } from '@angular/material/snack-bar'
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog'
 
 @Component({
   selector: 'app-allergy-modal',
@@ -29,7 +29,6 @@ export class AllergyModalComponent implements OnInit {
 
   constructor(
     private _formBuilder: FormBuilder,
-    private personService: PersonService,
     private allergyService: AllergyService,
     private filterService: FilterService,
     private snackBar: MatSnackBar,
@@ -46,17 +45,16 @@ export class AllergyModalComponent implements OnInit {
     this.patient = this.receivedData.patient
     this.patientsList = this.receivedData.patientsList
     this.patientsListFiltered = this.receivedData.patientsList
+    this.editedMod = this.receivedData.update?.id
 
-    if (this.patient && this.patient.id) {
+    if (this.patient?.id) {
       this.allergyTO.patientId = this.patient.id
     }
 
-    if (this.receivedData.update && this.receivedData.update.id) {
-      this.editedMod = true
+    if (this.editedMod) {
       this.modalTitle = 'Allergie bearbeiten'
       this.allergy = this.receivedData.update
     } else {
-      this.editedMod = false
       this.modalTitle = 'Neue Allergie(n) hinzufügen'
     }
 
@@ -64,11 +62,9 @@ export class AllergyModalComponent implements OnInit {
   }
 
   applyPatientFilter(filterValue: any): void {
-    if (filterValue && filterValue.value.length >= 2) {
-      this.patientsListFiltered = this.filterService.searchBy(this.patientsList, filterValue.value, 'firstName')
-    } else {
-      this.patientsListFiltered = this.patientsList
-    }
+    filterValue.value.length >= 2
+      ? this.patientsListFiltered = this.filterService.searchBy(this.patientsList, filterValue.value, 'firstName')
+      : this.patientsListFiltered = this.patientsList
   }
 
   displayAutoComplete(patient: IPerson): string {
@@ -104,11 +100,11 @@ export class AllergyModalComponent implements OnInit {
   private createAllergies(): void {
     this.allergies.forEach((allergy: IAllergy) => this.allergyTO.allergies.push(allergy.name))
     console.log(this.allergyTO)
-    this.allergyService.add(this.allergyTO.patientId, this.allergyTO).subscribe(() => {
+    this.allergyService.add(this.allergyTO.patientId, this.allergyTO).subscribe((): void => {
         console.log('New allergies added!')
         this.onNoClick(true)
       },
-      err => {
+        (err: Error): void => {
         console.log('Error in AllergyModalComponent.createAllergies()')
         console.log(err)
         this.searching = false
@@ -120,11 +116,11 @@ export class AllergyModalComponent implements OnInit {
   }
 
   private updateAllergy(): void {
-    // this.allergyService.edit(this.allergies.id, this.allergies).subscribe(() => {
+    // this.allergyService.edit(this.allergies.id, this.allergies).subscribe((): void => {
     //     console.log('Medication updated!')
     //     this.onNoClick(true)
     //   },
-    //   err => {
+    //   (err: Error): void => {
     //     console.log('Error in AllergyModalComponent.updateAllergy()')
     //     console.log(err)
     //     this.searching = false
@@ -144,7 +140,7 @@ export class AllergyModalComponent implements OnInit {
     })
 
     this.allergyFormGroup.controls.patientennameCtrl.valueChanges.subscribe(
-      (value: IPerson) => {
+      (value: IPerson): void => {
         this.patient = value
         this.allergyTO.patientId = value.id
         this.allergies = value.allergies
@@ -157,9 +153,8 @@ export class AllergyModalComponent implements OnInit {
     if (this.receivedData.parent === 'patient') {
       this.allergies = this.receivedData.patient.allergies
       return this.receivedData.patient
-    } else {
-      return null
     }
+    return null
   }
 
 }

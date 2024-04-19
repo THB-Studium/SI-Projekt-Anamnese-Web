@@ -57,7 +57,7 @@
 
       <mat-form-field>
         <mat-label>Größe</mat-label>
-        <input matInput type="number" placeholder="Größe" formControlName="groeßeCtrl">
+        <input matInput type="number" placeholder="Größe" formControlName="groesseCtrl">
       </mat-form-field>
 
       <mat-form-field>
@@ -77,7 +77,7 @@
       </mat-form-field>
 
       <div style="text-align: right">
-        <button mat-button color="primary" matStepperNext (click)="checkForUnicness()">Weiter</button>
+        <button mat-button color="primary" matStepperNext (click)="checkForUniqueness()">Weiter</button>
       </div>
     </form>
   </mat-step>
@@ -189,7 +189,7 @@
     <ng-template matStepLabel>Bericht</ng-template>
     <p>{{berich}}</p>
 
-    <ul *ngIf="userCreted" style="margin-top: 20px">
+    <ul *ngIf="userCreated" style="margin-top: 20px">
       <li>
         Benutzername: <h3>{{person.userName}}</h3>
       </li>
@@ -199,9 +199,9 @@
     </ul>
 
     <div style="text-align: right">
-      <button *ngIf="!userCreted" mat-button matStepperPrevious>Zurrück</button>
-      <button *ngIf="!userCreted" mat-button color="accent" (click)="stepper.reset(); onNoClick(false)">Schließen</button>
-      <button *ngIf="userCreted" mat-button color="accent" (click)="stepper.reset(); onNoClick(true)">Schließen</button>
+      <button *ngIf="!userCreated" mat-button matStepperPrevious>Zurrück</button>
+      <button *ngIf="!userCreated" mat-button color="accent" (click)="stepper.reset(); onNoClick(false)">Schließen</button>
+      <button *ngIf="userCreated" mat-button color="accent" (click)="stepper.reset(); onNoClick(true)">Schließen</button>
     </div>
   </mat-step>
 

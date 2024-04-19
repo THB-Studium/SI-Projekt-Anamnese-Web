@@ -1,14 +1,13 @@
-import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar'
 import { Component, Inject, OnInit } from '@angular/core'
 import { IDisease, IDiseaseTO } from '../../../model/disease.interface'
 import { IPerson } from '../../../model/person.interface'
-import { PersonService } from '../../../components/services/person.service'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
-import { MatLegacyDialogRef as MatDialogRef, MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog'
-import { DiseaseService } from '../../../components/services/disease.service'
+import { DiseaseService } from '../../../services/disease.service'
 import { IIllness } from '../../../model/illness.interface'
 import { FilterService } from '../../../core/filter.service'
-import { IllnessService } from '../../../components/services/illness.service'
+import { IllnessService } from '../../../services/illness.service'
+import { MatSnackBar } from '@angular/material/snack-bar'
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog'
 
 @Component({
   selector: 'app-disease-modal',
@@ -32,31 +31,30 @@ export class DiseaseModalComponent implements OnInit {
 
   constructor(
     private _formBuilder: FormBuilder,
-    private personService: PersonService,
     private diseaseService: DiseaseService,
     private illnessService: IllnessService,
     private filterService: FilterService,
     private snackBar: MatSnackBar,
     public dialogRef: MatDialogRef<DiseaseModalComponent>,
     @Inject(MAT_DIALOG_DATA) public receivedData: any
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.patient = this.receivedData.patient
     this.patientsList = this.receivedData.patientsList
     this.patientsListFiltered = this.receivedData.patientsList
+    this.editedMod = this.receivedData?.update?.id
 
-    if (this.patient && this.patient.id) {
+    if (this.patient?.id) {
       this.diseaseTO.patientId = this.patient.id
     }
 
-    if (this.receivedData.update && this.receivedData.update.id) {
-      this.editedMod = true
+    if (this.editedMod) {
       this.modalTitle = 'Erkrankung bearbeiten'
       this.disease = this.receivedData.update
       this.preExistingIllnessesList = this.disease.preExistingIllnesses
     } else {
-      this.editedMod = false
       this.modalTitle = 'Neue Erkrankung(en) hinzufügen'
     }
 
@@ -65,25 +63,21 @@ export class DiseaseModalComponent implements OnInit {
   }
 
   applyPatientFilter(filterValue: any): void {
-    if (filterValue && filterValue.value.length >= 2) {
-      this.patientsListFiltered = this.filterService.searchBy(this.patientsList, filterValue.value, 'firstName')
-    } else {
-      this.patientsListFiltered = this.patientsList
-    }
+    filterValue?.value?.length >= 2
+      ? this.patientsListFiltered = this.filterService.searchBy(this.patientsList, filterValue.value, 'firstName')
+      : this.patientsListFiltered = this.patientsList
   }
 
   applyIllnessFilter(filterValue: any): void {
-    if (filterValue && filterValue.value.length >= 2) {
-      this.illnessValuesFiltered = this.filterService.searchBy(this.illnessValues, filterValue.value, 'name')
-    } else {
-      this.illnessValuesFiltered = this.illnessValues
-    }
+    filterValue?.value?.length >= 2
+      ? this.illnessValuesFiltered = this.filterService.searchBy(this.illnessValues, filterValue.value, 'name')
+      : this.illnessValuesFiltered = this.illnessValues
   }
 
   addPreExistingIllnesses(): void {
     let illness: any = this.diseaseFormGroup.controls.preExistingIllnessesCtrl.value
     if (!illness.id) {
-      illness = <IIllness> {id: null, name: illness}
+      illness = <IIllness>{id: null, name: illness}
     }
     this.preExistingIllnessesList.push(illness)
     this.diseaseFormGroup.controls.preExistingIllnessesCtrl.setValue('')
@@ -109,9 +103,9 @@ export class DiseaseModalComponent implements OnInit {
     this.dialogRef.close({answer: dataSaved})
   }
 
-  onUndergoneSurgery(event: any): void {
-    this.diseaseTO.undergoneSurgery = event === 'true' ? true : false
-    this.disease.undergoneSurgery = event === 'true' ? true : false
+  onUndergoneSurgery(event: string): void {
+    this.diseaseTO.undergoneSurgery = event === 'true'
+    this.disease.undergoneSurgery = event === 'true'
   }
 
   displayPatientAutoComplete(patient: IPerson): string {
@@ -125,14 +119,14 @@ export class DiseaseModalComponent implements OnInit {
   private formGroupInit(): void {
     this.diseaseFormGroup = this._formBuilder.group({
       patientennameCtrl: [{
-        value: this.getPatient(), disabled: this.receivedData.parent === 'patient' },
-        Validators.required],
+        value: this.getPatient(), disabled: this.receivedData.parent === 'patient'
+      }, Validators.required],
       surgeriesDetailsCtrl: [this.editedMod ? this.disease.surgeriesDetails : ''],
       preExistingIllnessesCtrl: [''],
     })
 
     this.diseaseFormGroup.controls.patientennameCtrl.valueChanges.subscribe(
-      (value: IPerson) => {
+      (value: IPerson): void => {
         this.patient = value
         this.diseaseTO.patientId = value.id
         this.disease.person = value
@@ -149,11 +143,11 @@ export class DiseaseModalComponent implements OnInit {
   }
 
   private createDisease(): void {
-    this.diseaseService.add(this.diseaseTO).subscribe(() => {
+    this.diseaseService.add(this.diseaseTO).subscribe((): void => {
         console.log('New disease added!')
         this.onNoClick(true)
       },
-      err => {
+      (err: Error): void => {
         console.log('Error in DiseaseModalComponent.createDisease()')
         console.log(err)
         this.searching = false
@@ -165,11 +159,11 @@ export class DiseaseModalComponent implements OnInit {
   }
 
   private updateDisease(): void {
-    this.diseaseService.edit(this.disease.id, this.disease).subscribe(() => {
+    this.diseaseService.edit(this.disease.id, this.disease).subscribe((): void => {
         console.log('Medication updated!')
         this.onNoClick(true)
       },
-      err => {
+      (err: Error): void => {
         console.log('Error in DiseaseModalComponent.updateDisease()')
         console.log(err)
         this.searching = false
@@ -181,11 +175,11 @@ export class DiseaseModalComponent implements OnInit {
   }
 
   private listIllnesses(): void {
-    this.illnessService.getAll().subscribe((illnesses: Array<IIllness>) => {
+    this.illnessService.getAll().subscribe((illnesses: Array<IIllness>): void => {
         this.illnessValues = illnesses
         this.illnessValuesFiltered = illnesses
       },
-      err => {
+      (err: Error): void => {
         console.log('Error in DiseaseModalComponent.listIllnesses()')
         console.log(err)
         this.snackBar.open('Could not fetch illnesses', 'Close', {
@@ -198,13 +192,13 @@ export class DiseaseModalComponent implements OnInit {
   private getPatient(): IPerson {
     if (this.receivedData.parent === 'patient') {
       return this.receivedData.patient
-    } else {
-      if (this.disease && this.disease.person) {
-        return this.disease.person
-      } else {
-        return null
-      }
     }
+
+    if (this.disease?.person) {
+      return this.disease.person
+    }
+
+    return null
   }
 
 }

@@ -1,13 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core'
 import { v4 as uuid } from 'uuid'
 import { IDiagnosis } from '../../../model/diagnosis.interface'
-import { DiagnosisService } from '../../services/diagnosis.service'
-import { DeleteConfirmationComponent } from '../../../shared/dialogs/delete-confirmation-modal/delete-confirmation.component'
+import { DiagnosisService } from '../../../services/diagnosis.service'
 import { IDeleteConfirmation } from '../../../model/delete-confirmation.interface'
 import { DiagnosisModalComponent } from '../../../shared/dialogs/diagnosis-modal/diagnosis-modal.component'
 import { IPerson } from '../../../model/person.interface'
 import { MatSnackBar } from '@angular/material/snack-bar'
 import { MatDialog, MatDialogRef } from '@angular/material/dialog'
+import { DeleteConfirmationComponent } from '../../../shared/dialogs/delete-confirmation/delete-confirmation.component'
 
 @Component({
   selector: 'app-diagnosis-list',

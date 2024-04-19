@@ -3,9 +3,9 @@ import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { HeaderComponent } from './header.component'
 import { RouterTestingModule } from '@angular/router/testing'
 import { HttpClientTestingModule } from '@angular/common/http/testing'
-import { LoginService } from '../log-in/login.service'
-import { SessionService } from '../../core/authentification-and-authority/session.service'
-import { AppConfigService } from '../../core/app-config.service'
+import { LoginService } from '../../../components/log-in/login.service'
+import { SessionService } from '../../../core/authentification-and-authority/session.service'
+import { AppConfigService } from '../../../core/app-config.service'
 import { MatSnackBarModule } from '@angular/material/snack-bar'
 
 describe('HeaderComponent', () => {

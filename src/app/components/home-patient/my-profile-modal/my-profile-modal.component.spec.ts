@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { MyProfileModalComponent } from './my-profile-modal.component'
 import { MatIconModule } from '@angular/material/icon'
-import { HeaderComponent } from '../../header/header.component'
+import { HeaderComponent } from '../../../shared/components/header/header.component'
 import { MatDialogModule } from '@angular/material/dialog'
 
 describe('MyProfileModalComponent', () => {

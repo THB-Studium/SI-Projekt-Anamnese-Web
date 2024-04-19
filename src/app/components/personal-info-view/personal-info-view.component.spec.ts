@@ -6,7 +6,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { PersonListComponent } from './person-list/person-list.component'
 import { DiagnosisListComponent } from './diagnosis-list/diagnosis-list.component'
 import { AppConfigService } from '../../core/app-config.service'
-import { PersonService } from '../services/person.service'
+import { PersonService } from '../../services/person.service'
 import { MatTableModule } from '@angular/material/table'
 import { MatSnackBarModule } from '@angular/material/snack-bar'
 

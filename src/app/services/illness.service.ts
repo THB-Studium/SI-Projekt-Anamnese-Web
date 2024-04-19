@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core'
 import { HttpClient, HttpParams } from '@angular/common/http'
 import { map } from 'rxjs/operators'
 import { v4 as uuid } from 'uuid'
-import { AppConfigService } from '../../core/app-config.service'
-import { IIllness } from '../../model/illness.interface'
+import { AppConfigService } from '../core/app-config.service'
+import { IIllness } from '../model/illness.interface'
 
 
 @Injectable({providedIn: 'root'})

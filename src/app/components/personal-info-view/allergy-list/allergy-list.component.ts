@@ -1,12 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core'
 import { v4 as uuid } from 'uuid'
-import { AllergyService } from '../../services/allergy.service'
-import { DeleteConfirmationComponent } from '../../../shared/dialogs/delete-confirmation-modal/delete-confirmation.component'
+import { AllergyService } from '../../../services/allergy.service'
 import { IDeleteConfirmation } from '../../../model/delete-confirmation.interface'
 import { IAllergy, IPerson } from '../../../model/person.interface'
 import { AllergyModalComponent } from '../../../shared/dialogs/allergy-modal/allergy-modal.component'
 import { MatSnackBar } from '@angular/material/snack-bar'
 import { MatDialog, MatDialogRef } from '@angular/material/dialog'
+import { DeleteConfirmationComponent } from '../../../shared/dialogs/delete-confirmation/delete-confirmation.component'
 
 @Component({
   selector: 'app-allergy-list',

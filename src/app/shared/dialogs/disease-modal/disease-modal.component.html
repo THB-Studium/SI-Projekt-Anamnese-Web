@@ -1,6 +1,6 @@
 <div class="row" style="text-align: center">
   <h3>
-    {{modalTitle}}
+    {{ modalTitle }}
   </h3>
 </div>
 
@@ -12,9 +12,11 @@
   <div class="row">
     <div class="col-sm-12">
       <div class="col-sm-6">
-        <mat-label>Chirurgische Eingriffe?</mat-label><br>
-        <mat-button-toggle-group appearance="legacy" name="undergoneSurgery" (change)="onUndergoneSurgery($event.value)"
-                                 aria-label="Font Style" [value]="disease.undergoneSurgery ? 'true' : 'false'" required>
+        <mat-label>Chirurgische Eingriffe?</mat-label>
+        <br>
+        <mat-button-toggle-group (change)="onUndergoneSurgery($event.value)"
+                                 [value]="disease.undergoneSurgery ? 'true' : 'false'"
+                                 appearance="legacy" aria-label="Font Style" name="undergoneSurgery">
           <mat-button-toggle value="true">Ja</mat-button-toggle>
           <mat-button-toggle value="false">Nein</mat-button-toggle>
         </mat-button-toggle-group>
@@ -25,45 +27,46 @@
   <mat-form-field *ngIf="disease.undergoneSurgery"
                   style="width: 98%; margin-top: 10px; margin-bottom: 10px">
     <mat-label>Details zu chirurgischer Eingriffe</mat-label>
-    <textarea  formControlName="surgeriesDetailsCtrl" matInput type="text"
-               placeholder="Details zum Op"></textarea>
+    <textarea formControlName="surgeriesDetailsCtrl" matInput placeholder="Details zum Op"
+              type="text"></textarea>
   </mat-form-field>
 
   <mat-form-field style="width: 45%; margin-bottom: 10px">
     <mat-label>Patient</mat-label>
-    <input formControlName="patientennameCtrl" [matAutocomplete]="patientAutoComplete"
-           matInput placeholder="Patientenname" (keyup)="applyPatientFilter($event.target)"  required>
+    <input (keyup)="applyPatientFilter($event.target)" [matAutocomplete]="patientAutoComplete"
+           formControlName="patientennameCtrl" matInput placeholder="Patientenname" required>
     <mat-autocomplete #patientAutoComplete="matAutocomplete" [displayWith]="displayPatientAutoComplete">
       <mat-option *ngFor="let patient of patientsListFiltered" [value]="patient">
-        <span>{{patient.firstName}} {{patient.lastName}}</span>
+        <span>{{ patient.firstName }} {{ patient.lastName }}</span>
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
 
-  <mat-form-field  style="width: 40%; margin-bottom: 10px">
+  <mat-form-field style="width: 40%; margin-bottom: 10px">
     <mat-label>Add vorbestehende Krankheiten</mat-label>
-    <input matInput formControlName="preExistingIllnessesCtrl" (keyup)="applyIllnessFilter($event.target)"
-           placeholder="Vorbestehende Krankheiten" [matAutocomplete]="preExistingIllnessesAutoComplete">
+    <input (keyup)="applyIllnessFilter($event.target)" [matAutocomplete]="preExistingIllnessesAutoComplete"
+           formControlName="preExistingIllnessesCtrl"
+           matInput placeholder="Vorbestehende Krankheiten">
     <mat-autocomplete #preExistingIllnessesAutoComplete="matAutocomplete" [displayWith]="displayIllnessAutoComplete">
       <mat-option *ngFor="let illness of illnessValuesFiltered" [value]="illness">
-        <span>{{illness.name}}</span>
+        <span>{{ illness.name }}</span>
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
   <span>
       <button (click)="addPreExistingIllnesses()"
               [disabled]="!diseaseFormGroup.controls.preExistingIllnessesCtrl.value"
-              mat-raised-button color="primary">Add</button>
+              color="primary" mat-raised-button>Add</button>
   </span>
 
-  <div style="width: 45%" *ngIf="preExistingIllnessesList.length > 0">
+  <div *ngIf="preExistingIllnessesList.length > 0" style="width: 45%">
     <mat-label>Vorbestehende Krankheiten:</mat-label>
     <ul *ngFor="let illness of preExistingIllnessesList; let i = index">
       <li>
-        <label>{{illness.name}} </label>
+        <label>{{ illness.name }} </label>
         <a (click)="removePreExistingIllnesses(i)"
            *ngIf="preExistingIllnessesList.length > 1"
-           title="Remove material" class="pointer" tooltip>
+           class="pointer" title="Remove material" tooltip>
           <i class="glyphicon glyphicon-remove-circle" style="color:red"></i>
         </a>
       </li>
@@ -72,7 +75,9 @@
 
   <div style="text-align: right">
     <button (click)="onNoClick(false)" mat-button>Abbrechen</button>
-    <button [disabled]="!diseaseFormGroup.valid || searching"
-            (click)="onSave()" color="primary" mat-button>{{!searching ? 'Bestätigen' : 'Bestätigen...'}}</button>
+    <button (click)="onSave()"
+            [disabled]="!diseaseFormGroup.valid || searching" color="primary"
+            mat-button>{{ !searching ? 'Bestätigen' : 'Bestätigen...' }}
+    </button>
   </div>
 </form>

@@ -3,9 +3,9 @@ import { Router } from '@angular/router'
 import { LoginService } from './login.service'
 import { SessionService } from '../../core/authentification-and-authority/session.service'
 import { IPerson } from '../../model/person.interface'
-import { rootingPath } from '../../shared/rooting-path'
+import { rootingPaths } from '../../shared/const/rooting-paths'
 import { v4 as uuid } from 'uuid'
-import { PersonService } from '../services/person.service'
+import { PersonService } from '../../services/person.service'
 import { environment } from '../../../environments/environment'
 import { MatSnackBar } from '@angular/material/snack-bar'
 
@@ -34,8 +34,8 @@ export class LogInComponent implements OnInit {
     private snackBar: MatSnackBar,
   ) {
     this.currentEnvironment = environment.currentEnvironment
-    this.new_registration_path = '/' + rootingPath.new_registration
-    this.reset_password_path = '/' + rootingPath.reset_password
+    this.new_registration_path = '/' + rootingPaths.new_registration
+    this.reset_password_path = '/' + rootingPaths.reset_password
   }
 
   ngOnInit(): void { this.cleanAllOnInit() }

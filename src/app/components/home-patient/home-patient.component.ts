@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core'
-import { rootingPath } from '../../shared/rooting-path'
+import { rootingPaths } from '../../shared/const/rooting-paths'
 
 import { SessionService } from '../../core/authentification-and-authority/session.service'
 import { IPerson } from '../../model/person.interface'
 import { MyProfileModalComponent } from './my-profile-modal/my-profile-modal.component'
 import { Router } from '@angular/router'
 import { IAddress } from '../../model/address.interface'
-import { PersonService } from '../services/person.service'
+import { PersonService } from '../../services/person.service'
 import { environment } from '../../../environments/environment'
 import { MatDialog, MatDialogRef } from '@angular/material/dialog'
 import { MatSnackBar } from '@angular/material/snack-bar'
@@ -31,8 +31,8 @@ export class HomePatientComponent implements OnInit {
     private personService: PersonService,
     private snackBar: MatSnackBar
   ) {
-    this.aufnahme_path = '/' + rootingPath.aufnahme
-    this.patient_info_view_path = '/' + rootingPath.patient_info_view
+    this.aufnahme_path = '/' + rootingPaths.aufnahme
+    this.patient_info_view_path = '/' + rootingPaths.patient_info_view
     this.currentEnvironment = environment.currentEnvironment
   }
 

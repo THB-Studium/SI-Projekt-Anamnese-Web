@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute, Router } from '@angular/router'
 import { MatLegacyTabChangeEvent as MatTabChangeEvent } from '@angular/material/legacy-tabs'
-import { rootingPath } from '../../shared/rooting-path'
+import { rootingPaths } from '../../shared/const/rooting-paths'
 import { IPerson } from '../../model/person.interface'
-import { PersonService } from '../services/person.service'
+import { PersonService } from '../../services/person.service'
 import { MatSnackBar } from '@angular/material/snack-bar'
 
 @Component({
@@ -86,7 +86,7 @@ export class PersonalInfoViewComponent implements OnInit {
   }
 
   private navTo(fragment: string): void {
-    this.router.navigate([rootingPath.personal_info_view, {fragment: fragment}]).then()
+    this.router.navigate([rootingPaths.personal_info_view, {fragment: fragment}]).then()
   }
 
   private listPatients(): void {

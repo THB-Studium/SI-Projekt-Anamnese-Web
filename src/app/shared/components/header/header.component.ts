@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { SessionService } from '../../core/authentification-and-authority/session.service'
-import { LoginService } from '../log-in/login.service'
+import { SessionService } from '../../../core/authentification-and-authority/session.service'
+import { LoginService } from '../../../components/log-in/login.service'
 import { Router } from '@angular/router'
-import { rootingPath } from '../../shared/rooting-path'
-import { constant } from '../../shared/constante'
+import { rootingPaths } from '../../const/rooting-paths'
+import { constant } from '../../const/constante'
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
@@ -23,11 +23,11 @@ export class HeaderComponent implements OnInit {
     private router: Router,
   ) {
     if (this.sessionService.getPersonTypeKey() === constant.patient) {
-      this.homePath = '/' + rootingPath.home_patient
+      this.homePath = '/' + rootingPaths.home_patient
     }
 
     if (this.sessionService.getPersonTypeKey() === constant.personal) {
-      this.homePath = '/' + rootingPath.home_personal
+      this.homePath = '/' + rootingPaths.home_personal
     }
   }
 

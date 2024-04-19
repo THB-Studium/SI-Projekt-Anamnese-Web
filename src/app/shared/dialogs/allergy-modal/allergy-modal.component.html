@@ -1,6 +1,6 @@
 <div class="row" style="text-align: center">
   <h3>
-    {{modalTitle}}
+    {{ modalTitle }}
   </h3>
 </div>
 
@@ -11,39 +11,39 @@
 
   <mat-form-field style="width: 45%">
     <mat-label>Patient</mat-label>
-    <input formControlName="patientennameCtrl" [matAutocomplete]="patientAutoComplete"
-           matInput placeholder="Patientenname" (keyup)="applyPatientFilter($event.target)"  required>
+    <input (keyup)="applyPatientFilter($event.target)" [matAutocomplete]="patientAutoComplete"
+           formControlName="patientennameCtrl" matInput placeholder="Patientenname" required>
     <mat-autocomplete #patientAutoComplete="matAutocomplete" [displayWith]="displayAutoComplete">
       <mat-option *ngFor="let patient of patientsListFiltered" [value]="patient">
-        <span>{{patient.firstName}} {{patient.lastName}}</span>
+        <span>{{ patient.firstName }} {{ patient.lastName }}</span>
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
 
   <mat-form-field style="width: 40%">
     <mat-label>Add Allergy</mat-label>
-    <input formControlName="allergyCtrl" matInput placeholder="Allergyname"
-           [matAutocomplete]="allergiesAutoComplete">
+    <input [matAutocomplete]="allergiesAutoComplete" formControlName="allergyCtrl" matInput
+           placeholder="Allergyname">
     <mat-autocomplete #allergiesAutoComplete="matAutocomplete" [displayWith]="displayAllergyAutoComplete">
       <mat-option *ngFor="let allergy of allergyValuesFiltered" [value]="allergy">
-        <span>{{allergy.name}}</span>
+        <span>{{ allergy.name }}</span>
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
   <span>
       <button (click)="addAllergy()"
               [disabled]="!allergyFormGroup.controls.allergyCtrl.value"
-              mat-raised-button color="primary">Add</button>
+              color="primary" mat-raised-button>Add</button>
   </span>
 
-  <div style="width: 45%; margin-top: 30px; margin-bottom: 30px" *ngIf="allergies.length > 0">
+  <div *ngIf="allergies.length > 0" style="width: 45%; margin-top: 30px; margin-bottom: 30px">
     <mat-label>Vorbestehende Allergies:</mat-label>
     <ul *ngFor="let allergy of allergies; let i = index">
       <li>
-        <label>{{allergy.name}} </label>
+        <label>{{ allergy.name }} </label>
         <a (click)="removeAllergy(i)"
            *ngIf="allergies.length > 1"
-           title="Remove material" class="pointer" tooltip>
+           class="pointer" title="Remove material" tooltip>
           <i class="glyphicon glyphicon-remove-circle" style="color:red"></i>
         </a>
       </li>
@@ -53,7 +53,8 @@
 
   <div style="text-align: right">
     <button (click)="onNoClick(false)" mat-button>Abbrechen</button>
-    <button [disabled]="!allergyFormGroup.valid || allergies.length === 0 || searching"
-            (click)="onSave()" color="primary" mat-button>{{!searching ? 'Bestätigen' : 'Bestätigen...'}}</button>
+    <button (click)="onSave()"
+            [disabled]="!allergyFormGroup.valid || allergies.length === 0 || searching" color="primary" mat-button>{{ !searching ? 'Bestätigen' : 'Bestätigen...' }}
+    </button>
   </div>
 </form>

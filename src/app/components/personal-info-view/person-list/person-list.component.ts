@@ -1,10 +1,10 @@
 import { Component, Input, OnChanges, OnInit, SimpleChange } from '@angular/core'
 
-import { PersonService } from '../../services/person.service'
+import { PersonService } from '../../../services/person.service'
 import { IPerson } from '../../../model/person.interface'
 import { MyProfileModalComponent } from '../../home-patient/my-profile-modal/my-profile-modal.component'
 import { IDeleteConfirmation } from '../../../model/delete-confirmation.interface'
-import { DeleteConfirmationComponent } from '../../../shared/dialogs/delete-confirmation-modal/delete-confirmation.component'
+import { DeleteConfirmationComponent } from '../../../shared/dialogs/delete-confirmation/delete-confirmation.component'
 import {
   StartNewRegistrationModalComponent
 } from '../../../shared/dialogs/start-new-registration-modal/start-new-registration-modal.component'

@@ -14,12 +14,13 @@ import { MatTooltipModule } from '@angular/material/tooltip'
 import { MatButtonModule } from '@angular/material/button'
 import { PersonalInfoViewComponent } from './personal-info-view.component'
 import { MatTabsModule } from '@angular/material/tabs'
-import { AppModule } from '../../app.module'
 import { SharedModule } from '../../shared/shared.module'
+import { MatNativeDateModule } from '@angular/material/core'
 
 @NgModule({
   imports: [
     CommonModule,
+    SharedModule,
     RouterModule.forChild(PersonalInfoViewRoutes),
     MatCardModule,
     MatTableModule,
@@ -29,8 +30,7 @@ import { SharedModule } from '../../shared/shared.module'
     MatButtonModule,
     MatTabsModule,
     NgOptimizedImage,
-    AppModule,
-    SharedModule
+    MatNativeDateModule
   ],
   exports: [
     PersonalInfoViewComponent,

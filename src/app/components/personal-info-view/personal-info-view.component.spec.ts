@@ -16,16 +16,14 @@ describe('PersonalInfoViewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [
-        PersonalInfoViewComponent, PersonListComponent, DiagnosisListComponent,
-      ],
-      imports: [
-        HttpClientTestingModule, MatTableModule, RouterTestingModule, MatSnackBarModule
-      ],
-      providers: [
+    imports: [
+        HttpClientTestingModule, MatTableModule, RouterTestingModule, MatSnackBarModule,
+        PersonalInfoViewComponent, PersonListComponent, DiagnosisListComponent
+    ],
+    providers: [
         AppConfigService, PersonService
-      ]
-    })
+    ]
+})
       .compileComponents()
   })
 

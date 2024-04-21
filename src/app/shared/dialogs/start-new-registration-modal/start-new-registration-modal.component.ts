@@ -1,17 +1,30 @@
 import { IPerson, IPersonTO } from '../../../model/person.interface'
 import { Component, Inject, OnInit } from '@angular/core'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms'
 import { PersonService } from '../../../services/person.service'
 import { MyProfileModalComponent } from '../../../components/home-patient/my-profile-modal/my-profile-modal.component'
 import { rootingPaths } from '../../const/rooting-paths'
 import { geheimfragen, genderConstants, maritalStatusValues } from '../../const/constante'
 import { MatSnackBar } from '@angular/material/snack-bar'
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog'
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatOptionModule } from '@angular/material/core';
+import { NgFor, NgIf } from '@angular/common';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatDividerModule } from '@angular/material/divider';
 
 @Component({
-  selector: 'app-start-new-registration-modal',
-  templateUrl: './start-new-registration-modal.component.html',
-  styleUrls: ['./start-new-registration-modal.component.css']
+    selector: 'app-start-new-registration-modal',
+    templateUrl: './start-new-registration-modal.component.html',
+    styleUrls: ['./start-new-registration-modal.component.css'],
+    standalone: true,
+    imports: [MatDividerModule, MatStepperModule, ReactiveFormsModule, MatFormFieldModule, MatSelectModule, NgFor, MatOptionModule, MatButtonToggleModule, MatInputModule, MatAutocompleteModule, MatButtonModule, MatIconModule, NgIf]
 })
 export class StartNewRegistrationModalComponent implements OnInit {
   modalTitle: string

@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core'
 import { IDeleteConfirmation } from '../../../model/delete-confirmation.interface'
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog'
+import { ConfirmationComponent } from '../confirmation-modal/confirmation.component';
 
 /**
  *
@@ -8,9 +9,11 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog'
  *
  */
 @Component({
-  selector: 'app-delete-confirmation',
-  templateUrl: './delete-confirmation.component.html',
-  styleUrls: ['./delete-confirmation.component.css']
+    selector: 'app-delete-confirmation',
+    templateUrl: './delete-confirmation.component.html',
+    styleUrls: ['./delete-confirmation.component.css'],
+    standalone: true,
+    imports: [ConfirmationComponent]
 })
 export class DeleteConfirmationComponent {
 

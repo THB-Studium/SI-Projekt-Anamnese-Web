@@ -9,11 +9,19 @@ import { v4 as uuid } from 'uuid'
 import { MatSnackBar } from '@angular/material/snack-bar'
 import { MatDialog, MatDialogRef } from '@angular/material/dialog'
 import { DeleteConfirmationComponent } from '../../../shared/dialogs/delete-confirmation/delete-confirmation.component'
+import { LowerCasePipe } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  selector: 'app-allergy-list-patient',
-  templateUrl: './allergy-list-patient.component.html',
-  styleUrls: ['./allergy-list-patient.component.css']
+    selector: 'app-allergy-list-patient',
+    templateUrl: './allergy-list-patient.component.html',
+    styleUrls: ['./allergy-list-patient.component.css'],
+    standalone: true,
+    imports: [MatCardModule, MatTableModule, MatButtonModule, MatTooltipModule, MatIconModule, LowerCasePipe]
 })
 export class AllergyListPatientComponent implements OnInit {
   @Input() currentUser: IPerson

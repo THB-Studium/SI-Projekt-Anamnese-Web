@@ -8,12 +8,20 @@ import { v4 as uuid } from 'uuid'
 import { PersonService } from '../../services/person.service'
 import { environment } from '../../../environments/environment'
 import { MatSnackBar } from '@angular/material/snack-bar'
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  // eslint-disable-next-line @angular-eslint/component-selector
-  selector: 'app-log-in',
-  templateUrl: './log-in.component.html',
-  styleUrls: ['./log-in.component.css']
+    // eslint-disable-next-line @angular-eslint/component-selector
+    selector: 'app-log-in',
+    templateUrl: './log-in.component.html',
+    styleUrls: ['./log-in.component.css'],
+    standalone: true,
+    imports: [MatCardModule, ReactiveFormsModule, FormsModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule]
 })
 export class LogInComponent implements OnInit {
   @Output() registered: EventEmitter<any> = new EventEmitter()

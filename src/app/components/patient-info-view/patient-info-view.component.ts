@@ -6,11 +6,20 @@ import { IPerson } from '../../model/person.interface'
 import { PersonService } from '../../services/person.service'
 import { SessionService } from '../../core/authentification-and-authority/session.service'
 import { MatSnackBar } from '@angular/material/snack-bar'
+import { MedicationInTakeListPatientComponent } from './medication-in-take-list-patient/medication-in-take-list-patient.component';
+import { AllergyListPatientComponent } from './allergy-list-Patient/allergy-list-patient.component';
+import { DiseaseListPatientComponent } from './disease-list-patient/disease-list-patient.component';
+import { DiagnosisListPatientComponent } from './diagnosis-list-patient/diagnosis-list-patient.component';
+import { NgOptimizedImage, NgIf } from '@angular/common';
+import { MatTabsModule } from '@angular/material/tabs';
+import { HeaderComponent } from '../../shared/components/header/header.component';
 
 @Component({
-  selector: 'app-patient-info-view',
-  templateUrl: './patient-info-view.component.html',
-  styleUrls: ['./patient-info-view.component.css']
+    selector: 'app-patient-info-view',
+    templateUrl: './patient-info-view.component.html',
+    styleUrls: ['./patient-info-view.component.css'],
+    standalone: true,
+    imports: [HeaderComponent, MatTabsModule, NgOptimizedImage, NgIf, DiagnosisListPatientComponent, DiseaseListPatientComponent, AllergyListPatientComponent, MedicationInTakeListPatientComponent]
 })
 export class PatientInfoViewComponent implements OnInit {
   headerTitle: string = 'Patient information view'

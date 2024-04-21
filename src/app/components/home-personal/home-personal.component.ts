@@ -2,11 +2,15 @@ import { Component, OnInit } from '@angular/core'
 import { rootingPaths } from '../../shared/const/rooting-paths'
 import { Router } from '@angular/router'
 import { environment } from '../../../environments/environment'
+import { NgOptimizedImage } from '@angular/common';
+import { HeaderComponent } from '../../shared/components/header/header.component';
 
 @Component({
-  selector: 'app-home-personal',
-  templateUrl: './home-personal.component.html',
-  styleUrls: ['./home-personal.component.css']
+    selector: 'app-home-personal',
+    templateUrl: './home-personal.component.html',
+    styleUrls: ['./home-personal.component.css'],
+    standalone: true,
+    imports: [HeaderComponent, NgOptimizedImage]
 })
 export class HomePersonalComponent implements OnInit {
   readonly headerTitle: string = 'Administration - Home'

@@ -1,18 +1,28 @@
 import { Component, Inject, OnInit } from '@angular/core'
 import { IDisease, IDiseaseTO } from '../../../model/disease.interface'
 import { IPerson } from '../../../model/person.interface'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms'
 import { DiseaseService } from '../../../services/disease.service'
 import { IIllness } from '../../../model/illness.interface'
 import { FilterService } from '../../../core/filter.service'
 import { IllnessService } from '../../../services/illness.service'
 import { MatSnackBar } from '@angular/material/snack-bar'
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog'
+import { MatButtonModule } from '@angular/material/button';
+import { MatOptionModule } from '@angular/material/core';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatInputModule } from '@angular/material/input';
+import { NgIf, NgFor } from '@angular/common';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDividerModule } from '@angular/material/divider';
 
 @Component({
-  selector: 'app-disease-modal',
-  templateUrl: './disease-modal.component.html',
-  styleUrls: ['./disease-modal.component.css']
+    selector: 'app-disease-modal',
+    templateUrl: './disease-modal.component.html',
+    styleUrls: ['./disease-modal.component.css'],
+    standalone: true,
+    imports: [MatDividerModule, ReactiveFormsModule, MatFormFieldModule, MatButtonToggleModule, NgIf, MatInputModule, MatAutocompleteModule, NgFor, MatOptionModule, MatButtonModule]
 })
 export class DiseaseModalComponent implements OnInit {
   diseaseFormGroup: FormGroup

@@ -1,10 +1,15 @@
 import { Component, Input, OnInit, TemplateRef } from '@angular/core'
-import { MatDialogRef } from '@angular/material/dialog'
+import { MatDialogRef, MatDialogModule } from '@angular/material/dialog'
+import { MatButtonModule } from '@angular/material/button';
+import { NgTemplateOutlet } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-confirmation',
-  templateUrl: './confirmation.component.html',
-  styleUrls: ['./confirmation.component.css']
+    selector: 'app-confirmation',
+    templateUrl: './confirmation.component.html',
+    styleUrls: ['./confirmation.component.css'],
+    standalone: true,
+    imports: [MatIconModule, MatDialogModule, NgTemplateOutlet, MatButtonModule]
 })
 export class ConfirmationComponent implements OnInit {
   @Input() bodyTemplate: TemplateRef<any>

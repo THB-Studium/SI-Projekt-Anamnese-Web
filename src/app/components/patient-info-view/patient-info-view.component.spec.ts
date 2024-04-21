@@ -14,14 +14,14 @@ describe('PatientInfoViewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [PatientInfoViewComponent],
-      imports: [
-        RouterTestingModule, HttpClientTestingModule, MatSnackBarModule
-      ],
-      providers: [
+    imports: [
+        RouterTestingModule, HttpClientTestingModule, MatSnackBarModule,
+        PatientInfoViewComponent
+    ],
+    providers: [
         AppConfigService, SessionService, PersonService
-      ]
-    })
+    ]
+})
       .compileComponents()
   })
 

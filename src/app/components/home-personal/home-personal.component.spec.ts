@@ -9,11 +9,11 @@ describe('HommePersonalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [HomePersonalComponent],
-      imports: [
-        RouterTestingModule
-      ],
-    })
+    imports: [
+        RouterTestingModule,
+        HomePersonalComponent
+    ]
+})
       .compileComponents()
   })
 

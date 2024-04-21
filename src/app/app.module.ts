@@ -23,39 +23,37 @@ import { MatButtonModule } from '@angular/material/button'
 import { MatSnackBarModule } from '@angular/material/snack-bar'
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LogInComponent,
-    ResetPasswordComponent,
-    BackgroundComponent,
-  ],
-  imports: [
-    CommonModule,
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
-    SharedModule,
-    BrowserAnimationsModule,
-    MatCardModule,
-    MatFormFieldModule,
-    FormsModule,
-    MatInputModule,
-    MatIconModule,
-    MatButtonModule,
-    MatSnackBarModule
-  ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true
-    },
-    LoginService,
-    AppConfigService,
-    AuthGuard
-  ],
-  exports: [],
-  bootstrap: [AppComponent]
+    declarations: [AppComponent],
+    imports: [
+        CommonModule,
+        BrowserModule,
+        HttpClientModule,
+        AppRoutingModule,
+        SharedModule,
+        BrowserAnimationsModule,
+        MatCardModule,
+        MatFormFieldModule,
+        FormsModule,
+        MatInputModule,
+        MatIconModule,
+        MatButtonModule,
+        MatSnackBarModule,
+        LogInComponent,
+        ResetPasswordComponent,
+        BackgroundComponent
+    ],
+    providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthInterceptor,
+            multi: true
+        },
+        LoginService,
+        AppConfigService,
+        AuthGuard
+    ],
+    exports: [],
+    bootstrap: [AppComponent]
 })
 
 export class AppModule {

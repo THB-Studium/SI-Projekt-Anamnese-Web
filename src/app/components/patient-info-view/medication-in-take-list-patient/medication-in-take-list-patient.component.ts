@@ -9,11 +9,19 @@ import { IDeleteConfirmation } from '../../../model/delete-confirmation.interfac
 import { MatSnackBar } from '@angular/material/snack-bar'
 import { MatDialog, MatDialogRef } from '@angular/material/dialog'
 import { DeleteConfirmationComponent } from '../../../shared/dialogs/delete-confirmation/delete-confirmation.component'
+import { DatePipe } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  selector: 'app-medication-in-take-list-patient',
-  templateUrl: './medication-in-take-list-patient.component.html',
-  styleUrls: ['./medication-in-take-list-patient.component.css']
+    selector: 'app-medication-in-take-list-patient',
+    templateUrl: './medication-in-take-list-patient.component.html',
+    styleUrls: ['./medication-in-take-list-patient.component.css'],
+    standalone: true,
+    imports: [MatCardModule, MatTableModule, MatButtonModule, MatTooltipModule, MatIconModule, DatePipe]
 })
 export class MedicationInTakeListPatientComponent implements OnInit {
   displayedColumns: Array<string> = ['#', 'Bezeichnung ', 'Dosierung', 'Startdatum', 'bloodDiluent', 'action']

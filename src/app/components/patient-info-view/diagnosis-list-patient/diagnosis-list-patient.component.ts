@@ -5,11 +5,15 @@ import { SessionService } from '../../../core/authentification-and-authority/ses
 import { IDiagnosis } from '../../../model/diagnosis.interface'
 import { MatSnackBar } from '@angular/material/snack-bar'
 import { MatDialog } from '@angular/material/dialog'
+import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  selector: 'app-diagnosis-list-patient',
-  templateUrl: './diagnosis-list-patient.component.html',
-  styleUrls: ['./diagnosis-list-patient.component.css']
+    selector: 'app-diagnosis-list-patient',
+    templateUrl: './diagnosis-list-patient.component.html',
+    styleUrls: ['./diagnosis-list-patient.component.css'],
+    standalone: true,
+    imports: [MatCardModule, MatTableModule]
 })
 export class DiagnosisListPatientComponent implements OnInit, OnChanges {
   @Input() patientId: uuid

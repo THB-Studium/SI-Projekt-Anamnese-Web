@@ -18,16 +18,16 @@ describe('LogInComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
+    imports: [
         RouterTestingModule, HttpClientTestingModule, CommonModule,
         MatCardModule, MatTabsModule, MatSnackBarModule, FormsModule,
-        ReactiveFormsModule
-      ],
-      declarations: [LogInComponent],
-      providers: [
+        ReactiveFormsModule,
+        LogInComponent
+    ],
+    providers: [
         LoginService, SessionService, AppConfigService
-      ],
-    })
+    ]
+})
       .compileComponents()
   })
 

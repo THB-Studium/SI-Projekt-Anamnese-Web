@@ -5,11 +5,21 @@ import { rootingPaths } from '../../shared/const/rooting-paths'
 import { IPerson } from '../../model/person.interface'
 import { PersonService } from '../../services/person.service'
 import { MatSnackBar } from '@angular/material/snack-bar'
+import { MedicationInTakeListComponent } from './medication-in-take-list/medication-in-take-list.component';
+import { AllergyListComponent } from './allergy-list/allergy-list.component';
+import { DiseaseListComponent } from './disease-list/disease-list.component';
+import { DiagnosisListComponent } from './diagnosis-list/diagnosis-list.component';
+import { PersonListComponent } from './person-list/person-list.component';
+import { NgOptimizedImage, NgIf } from '@angular/common';
+import { MatTabsModule } from '@angular/material/tabs';
+import { HeaderComponent } from '../../shared/components/header/header.component';
 
 @Component({
-  selector: 'app-personal-info-view',
-  templateUrl: './personal-info-view.component.html',
-  styleUrls: ['./personal-info-view.component.css']
+    selector: 'app-personal-info-view',
+    templateUrl: './personal-info-view.component.html',
+    styleUrls: ['./personal-info-view.component.css'],
+    standalone: true,
+    imports: [HeaderComponent, MatTabsModule, NgOptimizedImage, NgIf, PersonListComponent, DiagnosisListComponent, DiseaseListComponent, AllergyListComponent, MedicationInTakeListComponent]
 })
 export class PersonalInfoViewComponent implements OnInit {
   readonly headerTitle: string = 'Personal information view'

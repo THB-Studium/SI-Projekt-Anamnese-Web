@@ -8,11 +8,19 @@ import { IPerson } from '../../../model/person.interface'
 import { MatSnackBar } from '@angular/material/snack-bar'
 import { MatDialog, MatDialogRef } from '@angular/material/dialog'
 import { DeleteConfirmationComponent } from '../../../shared/dialogs/delete-confirmation/delete-confirmation.component'
+import { DatePipe } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  selector: 'app-medication-in-take-list',
-  templateUrl: './medication-in-take-list.component.html',
-  styleUrls: ['./medication-in-take-list.component.css']
+    selector: 'app-medication-in-take-list',
+    templateUrl: './medication-in-take-list.component.html',
+    styleUrls: ['./medication-in-take-list.component.css'],
+    standalone: true,
+    imports: [MatCardModule, MatTableModule, MatButtonModule, MatTooltipModule, MatIconModule, DatePipe]
 })
 export class MedicationInTakeListComponent implements OnInit {
 

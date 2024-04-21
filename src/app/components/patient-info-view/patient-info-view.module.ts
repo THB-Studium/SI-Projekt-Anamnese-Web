@@ -18,37 +18,35 @@ import { MatTabsModule } from '@angular/material/tabs'
 import { SharedModule } from '../../shared/shared.module'
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule.forChild(PatientInfoViewRoutes),
-    MatCardModule,
-    MatTableModule,
-    ReactiveFormsModule,
-    MatIconModule,
-    MatTooltipModule,
-    MatButtonModule,
-    DatePipe,
-    FormsModule,
-    MatTabsModule,
-    NgOptimizedImage,
-    SharedModule,
-  ],
-  exports: [
-    PatientInfoViewComponent,
-    AllergyListPatientComponent,
-    DiagnosisListPatientComponent,
-    DiseaseListPatientComponent,
-    MedicationInTakeListPatientComponent
-  ],
-  declarations: [
-    PatientInfoViewComponent,
-    AllergyListPatientComponent,
-    DiagnosisListPatientComponent,
-    DiseaseListPatientComponent,
-    MedicationInTakeListPatientComponent,
-    PersonViewComponent
-  ],
-  providers: []
+    imports: [
+        CommonModule,
+        RouterModule.forChild(PatientInfoViewRoutes),
+        MatCardModule,
+        MatTableModule,
+        ReactiveFormsModule,
+        MatIconModule,
+        MatTooltipModule,
+        MatButtonModule,
+        DatePipe,
+        FormsModule,
+        MatTabsModule,
+        NgOptimizedImage,
+        SharedModule,
+        PatientInfoViewComponent,
+        AllergyListPatientComponent,
+        DiagnosisListPatientComponent,
+        DiseaseListPatientComponent,
+        MedicationInTakeListPatientComponent,
+        PersonViewComponent
+    ],
+    exports: [
+        PatientInfoViewComponent,
+        AllergyListPatientComponent,
+        DiagnosisListPatientComponent,
+        DiseaseListPatientComponent,
+        MedicationInTakeListPatientComponent
+    ],
+    providers: []
 })
 export class PatientInfoViewModule {
 }

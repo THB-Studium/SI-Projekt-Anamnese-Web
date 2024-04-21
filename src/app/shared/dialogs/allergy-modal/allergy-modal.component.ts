@@ -1,17 +1,26 @@
 import { Component, Inject, OnInit } from '@angular/core'
 import { IAllergy, IAllergyTO, IPerson } from '../../../model/person.interface'
 import { AllergyService } from '../../../services/allergy.service'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms'
 import { PersonService } from '../../../services/person.service'
 import { allergyValues } from '../../const/constante'
 import { FilterService } from '../../../core/filter.service'
 import { MatSnackBar } from '@angular/material/snack-bar'
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog'
+import { MatButtonModule } from '@angular/material/button';
+import { MatOptionModule } from '@angular/material/core';
+import { NgFor, NgIf } from '@angular/common';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDividerModule } from '@angular/material/divider';
 
 @Component({
-  selector: 'app-allergy-modal',
-  templateUrl: './allergy-modal.component.html',
-  styleUrls: ['./allergy-modal.component.css']
+    selector: 'app-allergy-modal',
+    templateUrl: './allergy-modal.component.html',
+    styleUrls: ['./allergy-modal.component.css'],
+    standalone: true,
+    imports: [MatDividerModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatAutocompleteModule, NgFor, MatOptionModule, MatButtonModule, NgIf]
 })
 export class AllergyModalComponent implements OnInit {
   allergyFormGroup: FormGroup

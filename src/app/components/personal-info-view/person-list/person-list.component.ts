@@ -10,11 +10,18 @@ import {
 } from '../../../shared/dialogs/start-new-registration-modal/start-new-registration-modal.component'
 import { MatSnackBar } from '@angular/material/snack-bar'
 import { MatDialog, MatDialogRef } from '@angular/material/dialog'
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  selector: 'app-person-list',
-  templateUrl: './person-list.component.html',
-  styleUrls: ['./person-list.component.css']
+    selector: 'app-person-list',
+    templateUrl: './person-list.component.html',
+    styleUrls: ['./person-list.component.css'],
+    standalone: true,
+    imports: [MatCardModule, MatTableModule, MatButtonModule, MatTooltipModule, MatIconModule]
 })
 export class PersonListComponent implements OnInit, OnChanges {
   displayedColumns: Array<string> = ['#', 'vorname', 'nachname', 'username', 'action']

@@ -9,11 +9,11 @@ describe('AllergyModalComponent', (): void => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AllergyModalComponent],
-      imports: [
-        MatDialogModule
-      ],
-    })
+    imports: [
+        MatDialogModule,
+        AllergyModalComponent
+    ]
+})
       .compileComponents()
   })
 

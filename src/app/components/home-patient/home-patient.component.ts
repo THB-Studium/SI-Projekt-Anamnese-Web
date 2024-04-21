@@ -4,17 +4,22 @@ import { rootingPaths } from '../../shared/const/rooting-paths'
 import { SessionService } from '../../core/authentification-and-authority/session.service'
 import { IPerson } from '../../model/person.interface'
 import { MyProfileModalComponent } from './my-profile-modal/my-profile-modal.component'
-import { Router } from '@angular/router'
+import { Router, RouterLink } from '@angular/router'
 import { IAddress } from '../../model/address.interface'
 import { PersonService } from '../../services/person.service'
 import { environment } from '../../../environments/environment'
 import { MatDialog, MatDialogRef } from '@angular/material/dialog'
 import { MatSnackBar } from '@angular/material/snack-bar'
+import { MatIconModule } from '@angular/material/icon';
+import { NgIf, NgOptimizedImage } from '@angular/common';
+import { HeaderComponent } from '../../shared/components/header/header.component';
 
 @Component({
-  selector: 'app-home-patient',
-  templateUrl: './home-patient.component.html',
-  styleUrls: ['./home-patient.component.css']
+    selector: 'app-home-patient',
+    templateUrl: './home-patient.component.html',
+    styleUrls: ['./home-patient.component.css'],
+    standalone: true,
+    imports: [HeaderComponent, NgIf, RouterLink, NgOptimizedImage, MatIconModule]
 })
 export class HomePatientComponent implements OnInit {
   headerTitle: string = 'Home - Willkomen!'

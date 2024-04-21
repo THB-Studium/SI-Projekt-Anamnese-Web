@@ -10,14 +10,14 @@ describe('DiseaseListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DiseaseListComponent],
-      imports: [
-        HttpClientTestingModule
-      ],
-      providers: [
+    imports: [
+        HttpClientTestingModule,
+        DiseaseListComponent
+    ],
+    providers: [
         AppConfigService
-      ]
-    })
+    ]
+})
       .compileComponents()
   })
 

@@ -9,11 +9,11 @@ describe('MedicationInTakeModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MedicationInTakeModalComponent],
-      imports: [
-        FormsModule, ReactiveFormsModule
-      ],
-    })
+    imports: [
+        FormsModule, ReactiveFormsModule,
+        MedicationInTakeModalComponent
+    ]
+})
       .compileComponents()
   })
 

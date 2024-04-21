@@ -13,25 +13,23 @@ import { SharedModule } from '../../shared/shared.module'
 
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SharedModule,
-    RouterModule.forChild(HomePatientRoutes),
-    FormsModule,
-    MatButtonModule,
-    MatTooltipModule,
-    MatDividerModule,
-    MatIconModule,
-    NgOptimizedImage,
-  ],
-  exports: [
-    HomePatientComponent,
-    MyProfileModalComponent
-  ],
-  declarations: [
-    HomePatientComponent,
-    MyProfileModalComponent
-  ]
+    imports: [
+        CommonModule,
+        SharedModule,
+        RouterModule.forChild(HomePatientRoutes),
+        FormsModule,
+        MatButtonModule,
+        MatTooltipModule,
+        MatDividerModule,
+        MatIconModule,
+        NgOptimizedImage,
+        HomePatientComponent,
+        MyProfileModalComponent
+    ],
+    exports: [
+        HomePatientComponent,
+        MyProfileModalComponent
+    ]
 })
 export class HomePatientModule {
 }

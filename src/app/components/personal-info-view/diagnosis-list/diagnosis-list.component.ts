@@ -8,11 +8,18 @@ import { IPerson } from '../../../model/person.interface'
 import { MatSnackBar } from '@angular/material/snack-bar'
 import { MatDialog, MatDialogRef } from '@angular/material/dialog'
 import { DeleteConfirmationComponent } from '../../../shared/dialogs/delete-confirmation/delete-confirmation.component'
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  selector: 'app-diagnosis-list',
-  templateUrl: './diagnosis-list.component.html',
-  styleUrls: ['./diagnosis-list.component.css']
+    selector: 'app-diagnosis-list',
+    templateUrl: './diagnosis-list.component.html',
+    styleUrls: ['./diagnosis-list.component.css'],
+    standalone: true,
+    imports: [MatCardModule, MatTableModule, MatButtonModule, MatTooltipModule, MatIconModule]
 })
 export class DiagnosisListComponent implements OnInit {
   @Input() patientsList: Array<IPerson> = []

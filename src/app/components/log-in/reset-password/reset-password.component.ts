@@ -6,11 +6,19 @@ import personsJson from '../../../shared/data/person-list.json'
 import { IPerson } from '../../../model/person.interface'
 import { environment } from '../../../../environments/environment'
 import { MatSnackBar } from '@angular/material/snack-bar'
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  selector: 'app-reset-password',
-  templateUrl: './reset-password.component.html',
-  styleUrls: ['./reset-password.component.css']
+    selector: 'app-reset-password',
+    templateUrl: './reset-password.component.html',
+    styleUrls: ['./reset-password.component.css'],
+    standalone: true,
+    imports: [MatCardModule, ReactiveFormsModule, FormsModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule]
 })
 export class ResetPasswordComponent implements OnInit {
   hidePassword: boolean = true

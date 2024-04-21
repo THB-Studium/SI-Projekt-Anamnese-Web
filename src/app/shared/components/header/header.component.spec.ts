@@ -14,14 +14,14 @@ describe('HeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [HeaderComponent],
-      imports: [
-        RouterTestingModule, HttpClientTestingModule, MatSnackBarModule
-      ],
-      providers: [
+    imports: [
+        RouterTestingModule, HttpClientTestingModule, MatSnackBarModule,
+        HeaderComponent
+    ],
+    providers: [
         LoginService, SessionService, AppConfigService
-      ],
-    })
+    ]
+})
       .compileComponents()
   })
 

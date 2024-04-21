@@ -16,14 +16,14 @@ describe('HomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [HomePatientComponent],
-      imports: [
+    imports: [
         RouterTestingModule, HttpClientTestingModule, CommonModule,
         MatCardModule, MatTabsModule, MatSnackBarModule, FormsModule,
-        ReactiveFormsModule
-      ],
-      providers: [SessionService],
-    })
+        ReactiveFormsModule,
+        HomePatientComponent
+    ],
+    providers: [SessionService]
+})
       .compileComponents()
   })
 

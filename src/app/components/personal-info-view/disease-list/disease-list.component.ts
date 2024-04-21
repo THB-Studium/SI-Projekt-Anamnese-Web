@@ -8,11 +8,19 @@ import { IPerson } from '../../../model/person.interface'
 import { MatSnackBar } from '@angular/material/snack-bar'
 import { MatDialog, MatDialogRef } from '@angular/material/dialog'
 import { DeleteConfirmationComponent } from '../../../shared/dialogs/delete-confirmation/delete-confirmation.component'
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatButtonModule } from '@angular/material/button';
+import { NgFor } from '@angular/common';
+import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  selector: 'app-disease-list',
-  templateUrl: './disease-list.component.html',
-  styleUrls: ['./disease-list.component.css']
+    selector: 'app-disease-list',
+    templateUrl: './disease-list.component.html',
+    styleUrls: ['./disease-list.component.css'],
+    standalone: true,
+    imports: [MatCardModule, MatTableModule, NgFor, MatButtonModule, MatTooltipModule, MatIconModule]
 })
 export class DiseaseListComponent implements OnInit {
   displayedColumns: Array<string> = ['#', 'patient', 'preExistingIllness', 'undergoneSurgery', 'surgeryReason', 'action']

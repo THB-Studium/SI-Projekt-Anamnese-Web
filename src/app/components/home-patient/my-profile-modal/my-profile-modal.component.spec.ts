@@ -11,11 +11,11 @@ describe('MyProfileModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MyProfileModalComponent, HeaderComponent],
-      imports: [
-        MatDialogModule, MatIconModule
-      ],
-    })
+    imports: [
+        MatDialogModule, MatIconModule,
+        MyProfileModalComponent, HeaderComponent
+    ]
+})
       .compileComponents()
   })
 

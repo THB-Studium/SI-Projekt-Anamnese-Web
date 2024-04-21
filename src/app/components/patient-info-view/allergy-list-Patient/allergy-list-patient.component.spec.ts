@@ -9,11 +9,11 @@ describe('AllergyListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AllergyListPatientComponent],
-      imports: [
-        HttpClientTestingModule
-      ],
-    })
+    imports: [
+        HttpClientTestingModule,
+        AllergyListPatientComponent
+    ]
+})
       .compileComponents()
   })
 

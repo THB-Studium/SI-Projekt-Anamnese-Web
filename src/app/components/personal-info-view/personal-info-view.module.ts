@@ -18,37 +18,35 @@ import { SharedModule } from '../../shared/shared.module'
 import { MatNativeDateModule } from '@angular/material/core'
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SharedModule,
-    RouterModule.forChild(PersonalInfoViewRoutes),
-    MatCardModule,
-    MatTableModule,
-    LowerCasePipe,
-    MatIconModule,
-    MatTooltipModule,
-    MatButtonModule,
-    MatTabsModule,
-    NgOptimizedImage,
-    MatNativeDateModule
-  ],
-  exports: [
-    PersonalInfoViewComponent,
-    AllergyListComponent,
-    DiagnosisListComponent,
-    DiseaseListComponent,
-    MedicationInTakeListComponent,
-    PersonListComponent,
-  ],
-  declarations: [
-    PersonalInfoViewComponent,
-    AllergyListComponent,
-    DiagnosisListComponent,
-    DiseaseListComponent,
-    MedicationInTakeListComponent,
-    PersonListComponent
-  ],
-  providers: []
+    imports: [
+        CommonModule,
+        SharedModule,
+        RouterModule.forChild(PersonalInfoViewRoutes),
+        MatCardModule,
+        MatTableModule,
+        LowerCasePipe,
+        MatIconModule,
+        MatTooltipModule,
+        MatButtonModule,
+        MatTabsModule,
+        NgOptimizedImage,
+        MatNativeDateModule,
+        PersonalInfoViewComponent,
+        AllergyListComponent,
+        DiagnosisListComponent,
+        DiseaseListComponent,
+        MedicationInTakeListComponent,
+        PersonListComponent
+    ],
+    exports: [
+        PersonalInfoViewComponent,
+        AllergyListComponent,
+        DiagnosisListComponent,
+        DiseaseListComponent,
+        MedicationInTakeListComponent,
+        PersonListComponent,
+    ],
+    providers: []
 })
 export class PersonalInfoViewModule {
 }

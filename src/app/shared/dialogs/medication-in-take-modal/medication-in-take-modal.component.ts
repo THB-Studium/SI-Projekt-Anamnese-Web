@@ -1,17 +1,27 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core'
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
+import { FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms'
 import { IMedication, IMedicationTO } from '../../../model/medication.interface'
 import { IPerson } from '../../../model/person.interface'
 import { MedicationService } from '../../../services/medication.service'
 import { FilterService } from '../../../core/filter.service'
-import { MatInput } from '@angular/material/input'
+import { MatInput, MatInputModule } from '@angular/material/input'
 import { MatSnackBar } from '@angular/material/snack-bar'
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog'
+import { MatButtonModule } from '@angular/material/button';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatOptionModule } from '@angular/material/core';
+import { NgFor } from '@angular/common';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDividerModule } from '@angular/material/divider';
 
 @Component({
-  selector: 'app-medication-in-take-modal',
-  templateUrl: './medication-in-take-modal.component.html',
-  styleUrls: ['./medication-in-take-modal.component.css']
+    selector: 'app-medication-in-take-modal',
+    templateUrl: './medication-in-take-modal.component.html',
+    styleUrls: ['./medication-in-take-modal.component.css'],
+    standalone: true,
+    imports: [MatDividerModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatAutocompleteModule, NgFor, MatOptionModule, MatDatepickerModule, MatButtonToggleModule, MatButtonModule]
 })
 export class MedicationInTakeModalComponent implements OnInit {
   @ViewChild('startDatumInput', {read: MatInput, static: true}) startDatumInput: MatInput

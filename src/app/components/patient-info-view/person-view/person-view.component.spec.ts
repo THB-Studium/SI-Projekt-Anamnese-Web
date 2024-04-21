@@ -9,11 +9,11 @@ describe('PersonViewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [PersonViewComponent],
-      imports: [
-        FormsModule, ReactiveFormsModule
-      ],
-    })
+    imports: [
+        FormsModule, ReactiveFormsModule,
+        PersonViewComponent
+    ]
+})
       .compileComponents()
   })
 

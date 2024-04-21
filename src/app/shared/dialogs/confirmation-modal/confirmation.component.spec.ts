@@ -11,14 +11,14 @@ describe('ConfirmationComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [ConfirmationComponent],
-            imports: [
-                BrowserAnimationsModule,
-                MatDialogModule,
-                MatIconModule
-            ],
-            providers: [{ provide: MatDialogRef, useValue: {} }]
-        })
+    imports: [
+        BrowserAnimationsModule,
+        MatDialogModule,
+        MatIconModule,
+        ConfirmationComponent
+    ],
+    providers: [{ provide: MatDialogRef, useValue: {} }]
+})
             .compileComponents()
     }))
 

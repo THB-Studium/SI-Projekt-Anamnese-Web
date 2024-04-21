@@ -8,20 +8,18 @@ import { SharedModule } from '../../shared/shared.module'
 
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SharedModule,
-    RouterModule.forChild(HomePersonalRoutes),
-    NgOptimizedImage,
-  ],
-  exports: [
-    HomePersonalComponent,
-    AdmissionComponent
-  ],
-  declarations: [
-    HomePersonalComponent,
-    AdmissionComponent
-  ]
+    imports: [
+        CommonModule,
+        SharedModule,
+        RouterModule.forChild(HomePersonalRoutes),
+        NgOptimizedImage,
+        HomePersonalComponent,
+        AdmissionComponent
+    ],
+    exports: [
+        HomePersonalComponent,
+        AdmissionComponent
+    ]
 })
 export class HomePersonalModule {
 }

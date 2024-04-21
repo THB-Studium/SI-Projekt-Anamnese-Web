@@ -24,44 +24,42 @@ import { RouterLink } from '@angular/router'
 import { MatTooltipModule } from '@angular/material/tooltip'
 
 @NgModule({
-  declarations: [
-    HeaderComponent,
-    DeleteConfirmationComponent,
-    ConfirmationComponent,
-    AllergyModalComponent,
-    DiagnosisModalComponent,
-    DiseaseModalComponent,
-    MedicationInTakeModalComponent,
-    StartNewRegistrationModalComponent,
-  ],
-  imports: [
-    CommonModule,
-    MatDividerModule,
-    MatStepperModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatButtonToggleModule,
-    MatInputModule,
-    MatAutocompleteModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatIconModule,
-    MatDialogModule,
-    MatDatepickerModule,
-    RouterLink,
-    MatTooltipModule,
-    NgOptimizedImage
-  ],
-  exports: [
-    HeaderComponent,
-    DeleteConfirmationComponent,
-    ConfirmationComponent,
-    AllergyModalComponent,
-    DiagnosisModalComponent,
-    DiseaseModalComponent,
-    MedicationInTakeModalComponent,
-    StartNewRegistrationModalComponent,
-  ]
+    imports: [
+        CommonModule,
+        MatDividerModule,
+        MatStepperModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatButtonToggleModule,
+        MatInputModule,
+        MatAutocompleteModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatIconModule,
+        MatDialogModule,
+        MatDatepickerModule,
+        RouterLink,
+        MatTooltipModule,
+        NgOptimizedImage,
+        HeaderComponent,
+        DeleteConfirmationComponent,
+        ConfirmationComponent,
+        AllergyModalComponent,
+        DiagnosisModalComponent,
+        DiseaseModalComponent,
+        MedicationInTakeModalComponent,
+        StartNewRegistrationModalComponent
+    ],
+    exports: [
+        HeaderComponent,
+        DeleteConfirmationComponent,
+        ConfirmationComponent,
+        AllergyModalComponent,
+        DiagnosisModalComponent,
+        DiseaseModalComponent,
+        MedicationInTakeModalComponent,
+        StartNewRegistrationModalComponent,
+    ]
 })
 
 export class SharedModule {

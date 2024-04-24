@@ -13,7 +13,7 @@ import { HeaderComponent } from '../../shared/components/header/header.component
     imports: [HeaderComponent, NgOptimizedImage]
 })
 export class HomePersonalComponent implements OnInit {
-  readonly headerTitle: string = 'Administration - Home'
+  readonly headerTitle: string = 'Personal - Home'
   readonly personal_info_view_path: string
   readonly currentEnvironment: string
 

@@ -43,7 +43,7 @@ export class LogInComponent implements OnInit {
   ) {
     this.currentEnvironment = environment.currentEnvironment
     this.new_registration_path = '/' + rootingPaths.new_registration
-    this.reset_password_path = '/' + rootingPaths.reset_password
+    this.reset_password_path = '/' + rootingPaths.login + '/reset_password'
   }
 
   ngOnInit(): void { this.cleanAllOnInit() }

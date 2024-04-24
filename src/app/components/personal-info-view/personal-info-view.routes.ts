@@ -1,7 +1,16 @@
 import { Routes } from '@angular/router'
 import { rootingPaths } from '../../shared/const/rooting-paths'
-import { PersonalInfoViewComponent } from './personal-info-view.component'
 
-export const PersonalInfoViewRoutes: Routes = [
-  {path: rootingPaths.personal_info_view, component: PersonalInfoViewComponent}
-]
+export default [
+  {
+    path: '',
+    providers: [],
+    children: [
+      {
+        path: rootingPaths.personal_info_view,
+        title: 'Personal Info',
+        loadComponent: () => import('./personal-info-view.component')
+          .then(module => module.PersonalInfoViewComponent)
+      }
+    ]
+  }] as Routes

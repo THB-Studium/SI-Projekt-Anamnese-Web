@@ -1,11 +1,14 @@
 export const rootingPaths = {
   login: 'login',
+  login_item: 'login/:id',
+
   home_patient: 'home_patient',
+  patient_info_view: 'patient_info',
+
   home_personal: 'home_personal',
+  personal_info_view: 'personal_info',
+
   aufnahme: 'aufnahme',
-  administration: 'administration',
-  patient_info_view: 'patient_info_view',
-  personal_info_view: 'personal_info_view',
+  personal: 'personal',
   new_registration: 'new_registration',
-  reset_password: 'login/reset_password'
 }

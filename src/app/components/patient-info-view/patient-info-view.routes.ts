@@ -1,7 +1,16 @@
 import { Routes } from '@angular/router'
-import { PatientInfoViewComponent } from './patient-info-view.component'
 import { rootingPaths } from '../../shared/const/rooting-paths'
 
-export const PatientInfoViewRoutes: Routes = [
-  { path: rootingPaths.patient_info_view, component: PatientInfoViewComponent },
-]
+export default [
+  {
+    path: '',
+    providers: [],
+    children: [
+      {
+        path: rootingPaths.patient_info_view,
+        title: 'Patient Info',
+        loadComponent: () => import('./patient-info-view.component')
+          .then(module => module.PatientInfoViewComponent)
+      }
+    ]
+  }] as Routes

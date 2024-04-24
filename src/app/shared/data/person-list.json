@@ -1,6 +1,20 @@
 [
   {
     "di": "3b5cf476-c4f7-48e3-83f3-ebddc2a05fe9",
+    "userName": "admin",
+    "passWord": "admin",
+    "firstName": "admin_first_name",
+    "lastName": "admin_last_name",
+    "type": "personal",
+    "recorded": false,
+    "security": {
+      "id": "980c324b-d566-456d-acca-978d1ed4b785",
+      "secretQuestion": "In welcher Straße sind Sie aufgewachsen?",
+      "answer": "Zanderstr"
+    }
+  },
+  {
+    "di": "3b5cf476-c4f7-48e3-83f3-ebddc2a05fe9",
     "userName": "steveCarmel",
     "passWord": "steve",
     "firstName": "Steve",

@@ -14,6 +14,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
+import { BackgroundComponent } from '../background/background.component'
 
 @Component({
     // eslint-disable-next-line @angular-eslint/component-selector
@@ -21,7 +22,10 @@ import { MatCardModule } from '@angular/material/card';
     templateUrl: './log-in.component.html',
     styleUrls: ['./log-in.component.css'],
     standalone: true,
-    imports: [MatCardModule, ReactiveFormsModule, FormsModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule]
+  imports: [
+    BackgroundComponent, MatCardModule, ReactiveFormsModule, FormsModule, MatFormFieldModule,
+    MatInputModule, MatIconModule, MatButtonModule
+  ]
 })
 export class LogInComponent implements OnInit {
   @Output() registered: EventEmitter<any> = new EventEmitter()
@@ -52,12 +56,12 @@ export class LogInComponent implements OnInit {
   login(): void {
     this.isClicked = true
     this.loginService.login(this.username, this.password)
-      .subscribe((data: any) => {
+      .subscribe((data: any): void => {
           this.sessionService.setSession(data, this.username)
           console.log('token: ' + this.sessionService.getToken())
           this.getConnectedUser(data.id)
         },
-        (error: any) => {
+        (error: any): void => {
           console.log('Error in LoginComponent.login()')
 
           if (error.status === 401) {
@@ -80,12 +84,12 @@ export class LogInComponent implements OnInit {
   }
 
   private getConnectedUser(userId: uuid): void {
-    this.personService.getOne(userId).subscribe((person: IPerson) => {
+    this.personService.getOne(userId).subscribe((person: IPerson): void => {
       if (person && person.id) {
         this.toDashboard(person.type.toLowerCase())
       }
     },
-      err => {
+        (err: Error): void => {
         console.log('Error in LoginComponent.getConnectedUser()')
         console.log(err)
         this.snackBar.open('Could not get current connected user', 'Close', {
@@ -98,7 +102,7 @@ export class LogInComponent implements OnInit {
   private toDashboard(personType: string): void {
     this.registered.emit()
     this.sessionService.setPersonTypeKey(personType)
-    this.router.navigate(['/home_' + personType.toLowerCase()])
+    this.router.navigate(['/home_' + personType.toLowerCase()]).then( )
   }
 
   /*** to clean the current session ***/

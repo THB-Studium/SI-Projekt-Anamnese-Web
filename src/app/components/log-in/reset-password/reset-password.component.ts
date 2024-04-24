@@ -12,13 +12,17 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
+import { BackgroundComponent } from '../../background/background.component'
 
 @Component({
     selector: 'app-reset-password',
     templateUrl: './reset-password.component.html',
     styleUrls: ['./reset-password.component.css'],
     standalone: true,
-    imports: [MatCardModule, ReactiveFormsModule, FormsModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule]
+    imports: [
+      BackgroundComponent, MatCardModule, ReactiveFormsModule, FormsModule, MatFormFieldModule,
+      MatInputModule, MatIconModule, MatButtonModule
+    ]
 })
 export class ResetPasswordComponent implements OnInit {
   hidePassword: boolean = true
@@ -46,16 +50,14 @@ export class ResetPasswordComponent implements OnInit {
 
   onUserName(event: any): void {
     if (event.length > 2) {
-      this.person = personsJson.filter((item: IPerson) => item.userName === event)[0]
+      this.person = personsJson.filter((item: IPerson): boolean => item.userName === event)[0]
 
-      if (this.person && this.person.id !== null) {
-        this.secretQuestion = this.person.security.secretQuestion
-      } else {
-        this.snackBar.open(
+      this.person?.id !== null
+        ? this.secretQuestion = this.person.security.secretQuestion
+        : this.snackBar.open(
           'No user found with this userName "' + event + '"', 'Close',
           {duration: 4000}
         )
-      }
     }
   }
 

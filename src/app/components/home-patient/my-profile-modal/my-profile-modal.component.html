@@ -1,42 +1,41 @@
 <form novalidate>
   <div class="form-inputs clearfix">
 
-    <div class="row" style="text-align: center">
+    <div id="modal-title">
       <h3>
         {{ modalTitle }}
       </h3>
     </div>
 
-    <mat-divider style="margin-bottom: 10px"></mat-divider>
+    <mat-divider></mat-divider>
 
-    <div class="row" style="text-align: right">
+    <!--  Action buttons  -->
+    <div id="action-buttons">
 
       <button (click)="editMode = true" *ngIf="!editMode" color="primary"
               id="edit-button"
               mat-mini-fab
-              matTooltip="Mein Profil editieren"
-              style="right: 10px">
+              matTooltip="Mein Profil editieren">
         <mat-icon class="example-tab-icon">edit</mat-icon>
       </button>
 
       <button (click)="editMode = false" *ngIf="editMode"
               id="cancel-button"
               mat-raised-button
-              matTooltip="Meine Änderungen abbrechen">
-        Abbrechen
+              matTooltip="Meine Änderungen abbrechen"> Abbrechen
       </button>
 
       <button (click)="onFormSubmit()" *ngIf="editMode" [disabled]="!person.firstName || !person.lastName"
               color="primary"
               id="save-button"
               mat-raised-button
-              matTooltip="Meine Änderungen speichern">
-        Speichern
+              matTooltip="Meine Änderungen speichern"> Speichern
       </button>
 
     </div>
 
-    <div class="row">
+    <!--  Person Infos  -->
+    <div class="row col-sm-12">
 
       <div class="col-sm-12">
         <div class="col-sm-4" style="margin-bottom: 15px">
@@ -103,6 +102,7 @@
         </div>
 
       </div>
+
 
       <p style="margin-left: 30px">Adresse: </p>
 

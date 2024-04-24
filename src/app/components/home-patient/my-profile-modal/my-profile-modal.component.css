@@ -1,5 +1,19 @@
-#save-button {
-  margin-left: 20px;
-  margin-bottom: 30px;
-  right: 10px
+form {
+  padding: 30px;
+}
+
+mat-divider {
+  margin-bottom: 20px;
+}
+
+button {
+  margin-left: 10px;
+}
+
+#modal-title {
+  text-align: center;
+}
+
+#action-buttons {
+  float: right;
 }

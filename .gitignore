@@ -15,6 +15,7 @@
 .settings/
 
 # misc
+/.nx/cache
 /.angular/cache
 /.sass-cache
 /connect.lock

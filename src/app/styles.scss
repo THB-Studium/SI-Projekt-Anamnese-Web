@@ -17,8 +17,6 @@
 //  If you don't need the default component typographies but still want the hierarchy styles,
 //  you can delete this line and instead use:
 //    `@include mat.legacy-typography-hierarchy(mat.define-legacy-typography-config());`
-@include mat.all-legacy-component-typographies();
-@include mat.legacy-core();
 
 
 //.mat-header-row {
@@ -30,11 +28,11 @@
 //}
 
 .default-theme {
-  @include mat.all-legacy-component-themes($insp-app-default-theme);
+  @include mat.all-component-themes($insp-app-default-theme);
 }
 
 .yellow-theme {
-  @include mat.all-legacy-component-themes($insp-app-yellow-theme);
+  @include mat.all-component-themes($insp-app-yellow-theme);
 }
 
 html, body, table {

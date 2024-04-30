@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute, Router } from '@angular/router'
-import { MatLegacyTabChangeEvent as MatTabChangeEvent } from '@angular/material/legacy-tabs'
 import { rootingPaths } from '../../shared/const/rooting-paths'
 import { IPerson } from '../../model/person.interface'
 import { PersonService } from '../../services/person.service'
@@ -11,7 +10,7 @@ import { AllergyListPatientComponent } from './allergy-list-Patient/allergy-list
 import { DiseaseListPatientComponent } from './disease-list-patient/disease-list-patient.component';
 import { DiagnosisListPatientComponent } from './diagnosis-list-patient/diagnosis-list-patient.component';
 import { NgOptimizedImage, NgIf } from '@angular/common';
-import { MatTabsModule } from '@angular/material/tabs';
+import {MatTabChangeEvent, MatTabsModule} from '@angular/material/tabs';
 import { HeaderComponent } from '../../shared/components/header/header.component';
 
 @Component({

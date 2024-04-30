@@ -92,24 +92,24 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "SI-Projekt-Anamnese-Web:build"
+            "buildTarget": "SI-Projekt-Anamnese-Web:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "SI-Projekt-Anamnese-Web:build:production"
+              "buildTarget": "SI-Projekt-Anamnese-Web:build:production"
             },
             "serve-aws": {
-              "browserTarget": "SI-Projekt-Anamnese-Web:build:serve-aws"
+              "buildTarget": "SI-Projekt-Anamnese-Web:build:serve-aws"
             },
             "serve-local": {
-              "browserTarget": "SI-Projekt-Anamnese-Web:build:serve-local"
+              "buildTarget": "SI-Projekt-Anamnese-Web:build:serve-local"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "SI-Projekt-Anamnese-Web:build"
+            "buildTarget": "SI-Projekt-Anamnese-Web:build"
           }
         },
         "test": {

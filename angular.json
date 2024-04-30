@@ -154,10 +154,11 @@
       }
     }
   },
-  "defaultProject": "SI-Projekt-Anamnese-Web",
   "cli": {
     "analytics": false,
-    "defaultCollection": "@angular-eslint/schematics"
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   },
   "schematics": {
     "@angular-eslint/schematics:application": {

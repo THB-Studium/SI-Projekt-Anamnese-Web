@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { CanActivate, Router } from '@angular/router'
+import { Router } from '@angular/router'
 
 import { SessionService } from './session.service'
 import { Observable } from 'rxjs'
@@ -7,7 +7,7 @@ import { rootingPaths } from '../../shared/const/rooting-paths'
 
 
 @Injectable()
-export class AuthGuard implements CanActivate {
+export class AuthGuard  {
   private loginPath: string = '/' + rootingPaths.login
 
 

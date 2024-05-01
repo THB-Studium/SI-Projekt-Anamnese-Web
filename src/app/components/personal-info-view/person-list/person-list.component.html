@@ -1,5 +1,5 @@
 <mat-card>
-  <table [dataSource]="filteredPersonsList" class="mat-elevation-z8" mat-table>
+  <table [dataSource]="personsList$ | async" class="mat-elevation-z8" mat-table>
 
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
@@ -31,8 +31,9 @@
     <!-- Symbol Column -->
     <ng-container matColumnDef="action">
       <th *matHeaderCellDef mat-header-cell style="text-align: right">
-        <button (click)="onAddNewPerson()" [matTooltip]="personType === 'patienten'
-                ? 'Einen neuen Patien hinzufuegen' : 'Einen neuen Personal hinzufuegen'" color="primary" id="add-button"
+        <button (click)="onAddNewPerson()"
+                [matTooltip]="'Einen neuen ' + currentPersonType.toUpperCase() + ' hinzufuegen'"
+                color="primary" id="add-button"
                 mat-mini-fab>
           <mat-icon class="example-tab-icon">add</mat-icon>
         </button>
@@ -40,7 +41,9 @@
 
       <td *matCellDef="let patient" mat-cell style="text-align: right">
 
-        <button (click)="onPersonInfo(patient)" [matTooltip]="patient.type === 'patient' ? 'Patientinfos ansehen' : 'Personalinfos ansehen'" id="person-view-button"
+        <button (click)="onPersonInfo(patient)"
+                [matTooltip]=" patient.type + '-infos ansehen'"
+                id="person-view-button"
                 mat-icon-button>
           <mat-icon class="example-tab-icon">remove_red_eye</mat-icon>
         </button>

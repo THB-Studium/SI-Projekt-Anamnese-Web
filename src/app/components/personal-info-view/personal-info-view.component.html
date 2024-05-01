@@ -9,7 +9,7 @@
            style="margin-right: 7px" viewBox="0 0 24 24" width="30">
       Personal
     </ng-template>
-    <app-person-list *ngIf="tabIndex === 0" [personType]="personType[0]"></app-person-list>
+    <app-person-list *ngIf="tabIndex === 0" [currentPersonType]="personType[0]"></app-person-list>
   </mat-tab>
 
   <!-- PATIENTS -->
@@ -19,7 +19,7 @@
            style="margin-right: 7px" viewBox="0 0 24 24" width="24">
       Patienten
     </ng-template>
-    <app-person-list *ngIf="tabIndex === 1" [personType]="personType[1]"></app-person-list>
+    <app-person-list *ngIf="tabIndex === 1" [currentPersonType]="personType[1]"></app-person-list>
   </mat-tab>
 
   <!-- DIAGNOSIS -->

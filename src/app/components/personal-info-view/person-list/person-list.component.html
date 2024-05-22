@@ -1,35 +1,32 @@
 <mat-card>
   <table [dataSource]="personsList$ | async" class="mat-elevation-z8" mat-table>
 
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-
-    <!-- Position Column -->
-    <ng-container matColumnDef="#">
-      <th *matHeaderCellDef mat-header-cell> #</th>
+    <!-- Index Column -->
+    <ng-container [matColumnDef]=displayedColumns[0]>
+      <th *matHeaderCellDef mat-header-cell> {{ displayedColumns[0] }}</th>
       <td *matCellDef="let personIndex = index" mat-cell> {{ personIndex + 1 }}</td>
     </ng-container>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="vorname">
-      <th *matHeaderCellDef mat-header-cell> Vorname</th>
+    <!-- First Name Column -->
+    <ng-container [matColumnDef]=displayedColumns[1]>
+      <th *matHeaderCellDef mat-header-cell> {{ displayedColumns[1] }}</th>
       <td *matCellDef="let patient" mat-cell> {{ patient.firstName }}</td>
     </ng-container>
 
-    <!-- Weight Column -->
-    <ng-container matColumnDef="nachname">
-      <th *matHeaderCellDef mat-header-cell> Nachname</th>
+    <!-- Last Name Column -->
+    <ng-container [matColumnDef]=displayedColumns[2]>
+      <th *matHeaderCellDef mat-header-cell> {{ displayedColumns[2] }}</th>
       <td *matCellDef="let patient" mat-cell> {{ patient.lastName }}</td>
     </ng-container>
 
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="username">
-      <th *matHeaderCellDef mat-header-cell> Benutzername</th>
+    <!-- User Name Column -->
+    <ng-container [matColumnDef]=displayedColumns[3]>
+      <th *matHeaderCellDef mat-header-cell> {{ displayedColumns[3] }}</th>
       <td *matCellDef="let patient" mat-cell> {{ patient.userName }}</td>
     </ng-container>
 
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="action">
+    <!-- Actions Buttons Column -->
+    <ng-container [matColumnDef]=displayedColumns[4]>
       <th *matHeaderCellDef mat-header-cell style="text-align: right">
         <button (click)="onAddNewPerson()"
                 [matTooltip]="'Einen neuen ' + currentPersonType.toUpperCase() + ' hinzufuegen'"

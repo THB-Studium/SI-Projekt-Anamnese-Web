@@ -15,9 +15,10 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
 import {MatCardModule} from '@angular/material/card';
-import {Observable} from "rxjs";
+import {catchError, Observable, throwError} from "rxjs";
 import {AsyncPipe} from "@angular/common";
 import {map} from "rxjs/operators";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-person-list',
@@ -32,9 +33,6 @@ export class PersonListComponent implements OnInit {
   displayedColumns: Array<string> = ['#', 'vorname', 'nachname', 'username', 'action']
   personsList$: Observable<IPerson[]> = undefined
 
-
-  // filteredPersonsList: Array<IPerson> = []
-
   constructor(
     private personService: PersonService,
     private snackBar: MatSnackBar,
@@ -48,9 +46,10 @@ export class PersonListComponent implements OnInit {
 
 
   onAddNewPerson(): void {
-    const dialogRef: MatDialogRef<StartNewRegistrationModalComponent> = this.dialog.open(StartNewRegistrationModalComponent, {
-      data: {personType: this.currentPersonType}
-    })
+    const dialogRef: MatDialogRef<StartNewRegistrationModalComponent> =
+      this.dialog.open(StartNewRegistrationModalComponent, {
+        data: {personType: this.currentPersonType}
+      })
 
     dialogRef.afterClosed().subscribe(result => {
       if (result && result.answer) {
@@ -89,22 +88,30 @@ export class PersonListComponent implements OnInit {
     this.personsList$ = this.personService.getAll()
       .pipe(
         map((persons: IPerson[]) =>
-          persons.filter((person: IPerson): boolean => person.type === this.currentPersonType))
+          persons.filter((person: IPerson): boolean => person.type === this.currentPersonType)
+        ),
+        catchError((error: HttpErrorResponse) => {
+          console.error('Error in PersonListComponent.listPersons()', error);
+          this.snackBar.open('Could not fetch patients', 'Close', {
+            duration: 4000
+          });
+          return throwError(() => new Error(error.message))
+        })
       )
   }
 
   private deletePerson(personId: string): void {
-    this.personService.delete(personId).subscribe((): void => {
-        this.listPersons()
-      },
-      (err: Error): void => {
-        console.log('Error in PersonListComponent.deletePerson()')
-        console.log(err)
-        this.snackBar.open('Could not delete user', 'Close', {
-          duration: 4000
+    this.personService.delete(personId)
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          console.error('Error in PersonListComponent.deletePerson():', error);
+          this.snackBar.open('Could not delete user', 'Close', {
+            duration: 4000
+          });
+          return throwError(() => new Error(error.message))
         })
-      }
-    )
+      )
+      .subscribe(() => this.listPersons());
   }
 
 }
